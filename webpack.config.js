@@ -54,7 +54,7 @@ module.exports = [
     Object.assign({}, commonConfig, {
         target: 'electron-main',
         entry: {
-            renderrer: './src/main/App.ts',
+            renderrer: './src/main/index.ts',
         },
         output: {
             filename: 'main.js',
@@ -64,7 +64,7 @@ module.exports = [
     Object.assign({}, commonConfig, {
         target: 'electron-renderer',
         entry: {
-            ui: './src/renderer/Renderer.ts',
+            ui: './src/renderer/index.ts',
         },
         output: {
             filename: 'renderer.js',
