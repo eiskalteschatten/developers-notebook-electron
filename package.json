@@ -20,23 +20,21 @@
         "dist": "electron-builder"
     },
     "build": {
-        "productName": "BookJournal",
+        "productName": "Developer's Notebook",
         "copyright": "Copyright © 2018 Alex Seifert",
-        "appId": "com.alexseifert.bookjournal",
+        "appId": "com.alexseifert.developersnotebook",
         "buildDependenciesFromSource": true,
         "files": [
             "!*.code-workspace",
             "!build-scripts",
-            "!glyph-iconset-master",
-            "!images",
-            "!Notes.md"
+            "!images"
         ],
         "mac": {
             "target": [
                 "dmg",
                 "pkg"
             ],
-            "category": "public.app-category.productivity",
+            "category": "public.app-category.developer-tools",
             "entitlements": "build/entitlements.mac.plist",
             "type": "development"
         },
@@ -47,7 +45,7 @@
                 "tar.gz",
                 "AppImage"
             ],
-            "category": "Office"
+            "category": "Development"
         },
         "win": {
             "target": [
