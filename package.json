@@ -4,8 +4,8 @@
     "description": "A digital notebook for developers",
     "main": "./dist/main.js",
     "scripts": {
-        "build": "./node_modules/.bin/webpack --mode=development",
-        "build:prod": "./node_modules/.bin/webpack --mode=production",
+        "build": "node ./build-scripts/build.js && ./node_modules/.bin/webpack --mode=development",
+        "build:prod": "node ./build-scripts/build.js && ./node_modules/.bin/webpack --mode=production",
         "prestart": "npm run build",
         "start": "NODE_ENV=development electron .",
         "prestart:prod": "npm run build:prod",
