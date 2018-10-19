@@ -1,4 +1,5 @@
 import { BrowserWindow } from 'electron';
+import path from 'path';
 
 export default class Main {
     static mainWindow: Electron.BrowserWindow;
@@ -17,7 +18,16 @@ export default class Main {
     }
 
     private static onReady() {
-        Main.mainWindow = new Main.BrowserWindow({ width: 800, height: 600 });
+        const browserWindow = {
+            width: 800,
+            height: 600,
+            icon: path.join(__dirname, './assets/images/icon128.png')
+        };
+
+        if (process.platform === 'darwin')
+            browserWindow['titleBarStyle'] = 'hidden';
+
+        Main.mainWindow = new Main.BrowserWindow(browserWindow);
         Main.mainWindow.loadFile('./src/index.html');
         Main.mainWindow.on('closed', Main.onClose);
     }

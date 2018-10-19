@@ -1,8 +1,6 @@
 <template>
     <div>
-        <div class="greeting">Hello {{name}}{{exclamationMarks}}</div>
-        <button @click="decrement">-</button>
-        <button @click="increment">+</button>
+        <div class="title-bar" v-bind:class="{'hidden' : hideTitlebar }"></div>
     </div>
 </template>
 
@@ -10,30 +8,35 @@
     import Vue from "vue";
 
     export default Vue.extend({
-        props: ['name', 'initialEnthusiasm'],
-        data() {
-            return {
-                enthusiasm: this.initialEnthusiasm,
+        mounted() {
+            const platform: string = process.platform;
+
+            document.body.className = platform;
+
+            if (platform === 'darwin') {
+                this.hideTitlebar = false;
             }
         },
-        methods: {
-            increment() { this.enthusiasm++; },
-            decrement() {
-                if (this.enthusiasm > 1) {
-                    this.enthusiasm--;
-                }
-            },
-        },
-        computed: {
-            exclamationMarks(): string {
-                return Array(this.enthusiasm + 1).join('!');
+        data() {
+            return {
+                hideTitlebar: true
             }
         }
     });
 </script>
 
 <style lang="scss">
-    .greeting {
-        font-size: 20px;
+    $titleBarHeight: 22px;
+
+    .title-bar {
+        display: block;
+        height: $titleBarHeight;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        -webkit-app-region: drag;
+        -webkit-user-select: none;
+        z-index: 1000;
     }
 </style>

@@ -4,9 +4,9 @@ import StructureComponent from './components/Structure.vue';
 new Vue({
     el: "#vueAnchor",
     template: `
-    <div>
-        <structure-component :name="name" :initialEnthusiasm="5" />
-    </div>`,
+        <div>
+            <structure-component/>
+        </div>`,
     components: {
         StructureComponent
     }
