@@ -18,7 +18,7 @@ export default class Main {
     }
 
     private static onReady() {
-        const browserWindow = {
+        const browserWindow: Object = {
             width: 800,
             height: 600,
             icon: path.join(__dirname, './assets/images/icon128.png')
