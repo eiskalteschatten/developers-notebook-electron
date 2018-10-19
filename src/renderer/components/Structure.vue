@@ -1,11 +1,15 @@
 <template>
-    <div>
-        <div class="title-bar" v-bind:class="{'hidden' : hideTitlebar }"></div>
+    <div class="structure-wrapper">
+        <div class="title-bar" v-if="showTitlebar"></div>
+        <div class="main-structure">
+            <nav-component/>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
+    import NavComponent from './Nav.vue';
 
     export default Vue.extend({
         mounted() {
@@ -14,19 +18,27 @@
             document.body.className = platform;
 
             if (platform === 'darwin') {
-                this.hideTitlebar = false;
+                this.showTitlebar = true;
             }
         },
         data() {
             return {
-                hideTitlebar: true
+                showTitlebar: false
             }
+        },
+        components: {
+            NavComponent
         }
     });
 </script>
 
 <style lang="scss">
     $titleBarHeight: 22px;
+
+    .structure-wrapper {
+        height: 100%;
+        width: 100%;
+    }
 
     .title-bar {
         display: block;
@@ -38,5 +50,18 @@
         -webkit-app-region: drag;
         -webkit-user-select: none;
         z-index: 1000;
+    }
+
+    .main-structure {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        width: 100%;
+    }
+
+    .darwin {
+        .main-structure {
+            padding-top: $titleBarHeight;
+        }
     }
 </style>
