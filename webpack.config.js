@@ -2,12 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: './src/main.ts',
+    entry: './src/App.ts',
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
         filename: 'build.js'
     },
+    target: 'electron-main',
     module: {
         rules: [{
             test: /\.vue$/,

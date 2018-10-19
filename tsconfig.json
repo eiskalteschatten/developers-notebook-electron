@@ -2,7 +2,7 @@
     "compilerOptions": {
         "outDir": "./built/",
         "sourceMap": true,
-        "strict": true,
+        "strict": false,
         "noImplicitReturns": true,
         "module": "es2015",
         "moduleResolution": "node",
@@ -10,5 +10,8 @@
     },
     "include": [
         "./src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
     ]
 }
