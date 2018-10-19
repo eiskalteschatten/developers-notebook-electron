@@ -12,7 +12,6 @@
         "start:prod": "electron .",
         "test": "npm run lint",
         "lint": "./node_modules/.bin/eslint .",
-        "precommit": "npm test",
         "postinstall": "install-app-deps",
         "prepack": "npm run build:prod",
         "pack": "electron-builder --dir",
@@ -62,6 +61,7 @@
     },
     "homepage": "https://www.alexseifert.com",
     "devDependencies": {
+        "compile-sass": "0.0.5",
         "css-loader": "^1.0.0",
         "electron": "^3.0.3",
         "electron-builder": "^20.28.4",
@@ -83,5 +83,10 @@
         "sequelize": "^4.40.0",
         "sqlite3": "^4.0.2",
         "umzug": "^2.1.0"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm test"
+        }
     }
 }
