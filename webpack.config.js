@@ -1,14 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = {
-    entry: './src/App.ts',
-    output: {
-        path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
-        filename: 'main.js'
-    },
-    target: 'electron-main',
+const commonConfig = {
     module: {
         rules: [{
             test: /\.vue$/,
@@ -56,6 +49,29 @@ module.exports = {
     },
     devtool: '#eval-source-map'
 };
+
+module.exports = [
+    Object.assign({}, commonConfig, {
+        target: 'electron-main',
+        entry: {
+            renderrer: './src/main/App.ts',
+        },
+        output: {
+            filename: 'main.js',
+            path: path.resolve(__dirname, 'dist')
+        },
+    }),
+    Object.assign({}, commonConfig, {
+        target: 'electron-renderer',
+        entry: {
+            ui: './src/renderer/Renderer.ts',
+        },
+        output: {
+            filename: 'renderer.js',
+            path: path.resolve(__dirname, 'dist')
+        },
+    })
+];
 
 if (process.env.NODE_ENV === 'production') {
     module.exports.devtool = '#source-map';
