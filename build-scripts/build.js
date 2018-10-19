@@ -4,6 +4,7 @@ const path = require('path');
 const compileSass = require('compile-sass');
 const fs = require('fs');
 
+const pathToCss = path.resolve('./src/assets/css');
 const pathToScss = path.resolve('./src/assets/scss');
 
 
@@ -24,7 +25,7 @@ async function build() {
 
             await compileSass.compileSassAndSaveMultiple({
                 sassPath: pathToScss,
-                cssPath: path.resolve('./dist'),
+                cssPath: pathToCss,
                 files: scssFiles
             });
         });

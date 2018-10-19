@@ -2,7 +2,7 @@
     "name": "developers-notebook",
     "version": "0.0.1",
     "description": "A digital notebook for developers",
-    "main": "./dist/main.js",
+    "main": "./src/dist/main.js",
     "scripts": {
         "build": "node ./build-scripts/build.js && ./node_modules/.bin/webpack --mode=development",
         "build:prod": "node ./build-scripts/build.js && ./node_modules/.bin/webpack --mode=production",

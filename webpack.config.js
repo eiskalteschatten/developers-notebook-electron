@@ -92,7 +92,7 @@ module.exports = [
         },
         output: {
             filename: 'main.js',
-            path: path.resolve(__dirname, 'dist')
+            path: path.resolve(__dirname, 'src', 'dist')
         },
     }),
     Object.assign({}, commonConfig, {
@@ -102,7 +102,7 @@ module.exports = [
         },
         output: {
             filename: 'renderer.js',
-            path: path.resolve(__dirname, 'dist')
+            path: path.resolve(__dirname, 'src', 'dist')
         },
     })
 ];
