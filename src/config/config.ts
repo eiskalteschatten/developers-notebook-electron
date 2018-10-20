@@ -26,7 +26,7 @@ if (!fs.existsSync(storagePath)) {
 console.log('Application data is saved at:', storagePath);
 
 
-const config = {
+export default {
     app: {
         name: "Developer's Notebook",
         version: '0.1.0',
@@ -39,6 +39,4 @@ const config = {
         path: storagePath,
         fileName: env === 'development' ? 'devnotebook-dev.sqlite' : 'devnotebook.sqlite'
     }
-};
-
-export default config;
+};;
