@@ -1,7 +1,7 @@
 <template>
     <div class="nav">
-        <nav-item-component label="Home" itemClass="home" v-bind:active="active === 0"/>
-        <nav-item-component label="Projects" itemClass="projects" v-bind:active="active === 0"/>
+        <nav-item-component label="Projects" itemClass="projects" v-bind:active="active === 'projects'"/>
+        <nav-item-component label="Preferences" itemClass="preferences" v-bind:active="active === 'preferences'"/>
     </div>
 </template>
 
@@ -12,7 +12,7 @@
     export default Vue.extend({
         data() {
             return {
-                active: 0
+                active: 'projects'
             }
         },
         components: {
