@@ -8,6 +8,7 @@ export default class Main {
     static mainWindow: Electron.BrowserWindow;
     static application: Electron.App;
     static BrowserWindow: any;
+    static windowSettingsPath: string;
 
     private static onWindowAllClosed() {
         if (process.platform !== 'darwin') {
@@ -16,20 +17,30 @@ export default class Main {
     }
 
     private static onClose() {
-        // Dereference the window object.
+        const windowBounds: Electron.Rectangle = Main.mainWindow.getBounds();
+
+        const windowSettings: Object = {
+            width: windowBounds.width,
+            height: windowBounds.height,
+            x: windowBounds.x,
+            y: windowBounds.y,
+            isMaximized: Main.mainWindow.isMaximized(),
+            isFullScreen: Main.mainWindow.isFullScreen(),
+        };
+
+        fs.writeFile(Main.windowSettingsPath, JSON.stringify(windowSettings), error => {
+            if (error) {
+                console.error(error);
+            }
+        });
+    }
+
+    private static onClosed() {
         Main.mainWindow = null;
     }
 
     private static onReady() {
-        const storagePath: string = config.app.storagePath;
-        const windowSettingsPath: string = path.join(storagePath, config.app.windowSettingsFile);
-
-        if (!fs.existsSync(windowSettingsPath)) {
-            const defaultWindowSettingsPath: string = path.resolve('src', 'config', 'windowSettings.json');
-            fs.createReadStream(defaultWindowSettingsPath).pipe(fs.createWriteStream(windowSettingsPath));
-        }
-
-        fs.readFile(windowSettingsPath, 'utf8', (error, data) => {
+        fs.readFile(Main.windowSettingsPath, 'utf8', (error, data) => {
             if (error) {
                 return console.error(error);
             }
@@ -58,7 +69,8 @@ export default class Main {
 
                 Main.mainWindow = new Main.BrowserWindow(browserWindow);
                 Main.mainWindow.loadFile('./src/index.html');
-                Main.mainWindow.on('closed', Main.onClose);
+                Main.mainWindow.on('close', Main.onClose);
+                Main.mainWindow.on('closed', Main.onClosed);
 
                 if (windowSettings.isMaximized) {
                     Main.mainWindow.maximize();
@@ -82,5 +94,12 @@ export default class Main {
         Main.application.on('window-all-closed', Main.onWindowAllClosed);
         Main.application.on('ready', Main.onReady);
         app.setName(config.app.name);
+
+        this.windowSettingsPath = path.join(config.app.storagePath, config.app.windowSettingsFile);
+
+        if (!fs.existsSync(this.windowSettingsPath)) {
+            const defaultWindowSettingsPath: string = path.resolve('src', 'config', 'windowSettings.json');
+            fs.createReadStream(defaultWindowSettingsPath).pipe(fs.createWriteStream(this.windowSettingsPath));
+        }
     }
 }
