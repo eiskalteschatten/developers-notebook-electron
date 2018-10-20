@@ -2,54 +2,53 @@
 
 Developer's Notebook is intended to be a cross-platform, open-source application that provides developers a series of organizational tools.
 
-The project is currently in its infancy.
+## Release Notes
+
+### 0.1.0
+- [x] Get the base program running with TypeScript and Vue.js
+- [ ] Base structure and functionality
+    - [ ] Setup Sqlite database
+    - [ ] Saved window status (size, position, maximized, etc) in separate JSON file
+    - [ ] Nav column on the left that switches views
+    - [ ] Light and dark themes and the ability to switch between them
+    - [ ] Main menu
+- [ ] Projects
+- [ ] Preferences
+    - [ ] Switch themes
+    - [ ] Move database (similar to iTerm2's preferences)
+- [ ] About modal
+
 
 ## Roadmap
 
-### 0.1
+### 0.2.0
+- [ ] To dos
+- [ ] Issues
+- [ ] Search for projects, to dos, issues
 
-- Home
-- Projects
-- Preferences
-- Check for updates
+### 0.3.0
+- [ ] Tools (color picker/converter, image and file compression, etc)
+- [ ] Bookmarks
+- [ ] Search for bookmarks
 
+### 0.4.0
+- [ ] Notes
+- [ ] Code cache
+- [ ] Search for code cache, notes
 
-### 0.2
-
-- Ability to have multiple databases and save them wherever the user wants
-- To dos
-- Issues
-- Updated home
-
-
-### 0.3
-
-- Tools (color picker/converter, image and file compression, etc)
-- Bookmarks
-- Updated home
+### 0.4.0
+- [ ] Journal
+- [ ] Search for journal
 
 
-### 0.4
-
-- Journal
-- Notes
-- Code cache
-- Updated home
+### 1.0.0
+- [ ] Command palette
+- [ ] Check for updates
 
 
-### 1.0
-
-- Icons in the menu on the left
-- Command palette
-- Search
-- Updated home
-
-
-### 2.0
-
-- Custom UI theme?
-- Support for multiple databases?
-- ...
+### Future Ideos
+- [ ] Custom UI theme
+- [ ] Support for multiple databases
 
 
 ## Notes
