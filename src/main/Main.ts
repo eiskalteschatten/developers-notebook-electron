@@ -1,5 +1,6 @@
 import { BrowserWindow } from 'electron';
 import path from 'path';
+import fs from 'fs';
 
 import config from '../config/config';
 
@@ -20,18 +21,55 @@ export default class Main {
     }
 
     private static onReady() {
-        const browserWindow: Object = {
-            width: 800,
-            height: 600,
-            icon: path.join(__dirname, './assets/images/icon128.png')
-        };
+        const storagePath: string = config.app.storagePath;
+        const windowSettingsPath: string = path.join(storagePath, config.app.windowSettingsFile);
 
-        if (process.platform === 'darwin')
-            browserWindow['titleBarStyle'] = 'hidden';
+        if (!fs.existsSync(windowSettingsPath)) {
+            const defaultWindowSettingsPath: string = path.resolve('src', 'config', 'windowSettings.json');
+            fs.createReadStream(defaultWindowSettingsPath).pipe(fs.createWriteStream(windowSettingsPath));
+        }
 
-        Main.mainWindow = new Main.BrowserWindow(browserWindow);
-        Main.mainWindow.loadFile('./src/index.html');
-        Main.mainWindow.on('closed', Main.onClose);
+        fs.readFile(windowSettingsPath, 'utf8', (error, data) => {
+            if (error) {
+                return console.error(error);
+            }
+
+            try {
+                const windowSettings = JSON.parse(data);
+
+                const browserWindow: Object = {
+                    width: windowSettings.width,
+                    height: windowSettings.height,
+                    icon: path.join(__dirname, './assets/images/icon128.png')
+                };
+
+                if (process.platform === 'darwin') {
+                    browserWindow['titleBarStyle'] = 'hidden';
+                }
+
+                if (windowSettings.x !== 0) {
+                    browserWindow['x'] = windowSettings.x;
+                }
+
+                if (windowSettings.y !== 0) {
+                    browserWindow['y'] = windowSettings.y;
+                }
+
+
+                Main.mainWindow = new Main.BrowserWindow(browserWindow);
+                Main.mainWindow.loadFile('./src/index.html');
+                Main.mainWindow.on('closed', Main.onClose);
+
+                if (windowSettings.isMaximized) {
+                    Main.mainWindow.maximize();
+                }
+
+                Main.mainWindow.setFullScreen(windowSettings.isFullScreen || false);
+            }
+            catch(error) {
+                console.error(error);
+            }
+        });
     }
 
     static main(app: Electron.App, browserWindow: typeof BrowserWindow) {

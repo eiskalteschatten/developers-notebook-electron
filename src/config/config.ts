@@ -30,7 +30,8 @@ export default {
     app: {
         name: "Developer's Notebook",
         version: '0.1.0',
-        storagePath
+        storagePath,
+        windowSettingsFile: 'windowSettings.json'
     },
     updates: {
         url: 'https://www.alexseifert.com/bookjournal/api/check-for-updates/'
