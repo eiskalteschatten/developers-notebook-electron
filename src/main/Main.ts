@@ -1,6 +1,8 @@
 import { BrowserWindow } from 'electron';
 import path from 'path';
 
+import config from '../config/config';
+
 export default class Main {
     static mainWindow: Electron.BrowserWindow;
     static application: Electron.App;
@@ -41,5 +43,6 @@ export default class Main {
         Main.application = app;
         Main.application.on('window-all-closed', Main.onWindowAllClosed);
         Main.application.on('ready', Main.onReady);
+        app.setName(config.app.name);
     }
 }
