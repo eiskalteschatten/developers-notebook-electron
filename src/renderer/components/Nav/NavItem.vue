@@ -9,9 +9,6 @@
 
     export default Vue.extend({
         props: ['label', 'itemClass', 'active'],
-        mounted() {
-            console.log(this.active);
-        },
         methods: {
             getClasses() {
                 return [
