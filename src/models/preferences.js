@@ -1,5 +1,7 @@
-import Sequelize from 'sequelize';
-import db from '../db';
+'use strict';
+
+const Sequelize = require('sequelize');
+const db = require('../db');
 
 
 const Preferences = db.define('preferences', {
@@ -15,4 +17,4 @@ const Preferences = db.define('preferences', {
 
 Preferences.sync();
 
-export default Preferences;
+module.exports = Preferences;

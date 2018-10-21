@@ -1,18 +1,20 @@
-import path from 'path';
-import os from 'os';
-import fs from 'fs';
-import mkdirp from 'mkdirp';
+'use strict';
 
-const env: string = process.env.NODE_ENV;
+const path = require('path');
+const os = require('os');
+const fs = require('fs');
+const mkdirp = require('mkdirp');
 
-let storagePath: string;
+const env = process.env.NODE_ENV;
+
+let storagePath;
 
 switch(process.platform) {
     case 'darwin':
-        storagePath = path.join(os.homedir(), 'Library', 'Application Support', "Developer's Notebook");
+        storagePath = path.join(os.homedir(), 'Library', 'Application Support', 'DevelopersNotebook');
         break;
     case 'win32':
-        storagePath = path.join(os.homedir(), 'AppData', 'Roaming', 'Alex Seifert', "Developer's Notebook");
+        storagePath = path.join(os.homedir(), 'AppData', 'Roaming', 'Alex Seifert', 'DevelopersNotebook');
         break;
     default:
         storagePath = path.join(os.homedir(), '.devnotebook');
@@ -26,18 +28,18 @@ if (!fs.existsSync(storagePath)) {
 console.log('Application data is saved at:', storagePath);
 
 
-export default {
+module.exports = {
     app: {
-        name: "Developer's Notebook",
+        name: 'Developer\'s Notebook',
         version: '0.1.0',
         storagePath,
         windowSettingsFile: 'windowSettings.json'
     },
     updates: {
-        url: 'https://www.alexseifert.com/bookjournal/api/check-for-updates/'
+        url: 'https://www.alexseifert.com/devnotebook/api/check-for-updates/'
     },
     database: {
         path: storagePath,
         fileName: env === 'development' ? 'devnotebook-dev.sqlite' : 'devnotebook.sqlite'
-    }
-};;
+    },
+};

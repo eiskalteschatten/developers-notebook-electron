@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const nodeExternals = require('webpack-node-externals');
 
 const commonConfig = {
     module: {
@@ -49,14 +50,6 @@ const commonConfig = {
             ],
         },
         {
-            test: /\.tsx?$/,
-            loader: 'ts-loader',
-            exclude: /node_modules/,
-            options: {
-                appendTsSuffixTo: [/\.vue$/],
-            }
-        },
-        {
             test: /\.(png|jpg|gif|svg)$/,
             loader: 'file-loader',
             options: {
@@ -66,7 +59,7 @@ const commonConfig = {
         ]
     },
     resolve: {
-        extensions: ['.ts', '.js', '.vue', '.json'],
+        extensions: ['.js', '.vue', '.json'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js'
         }
@@ -81,24 +74,18 @@ const commonConfig = {
     devtool: '#eval-source-map',
     plugins: [
         new VueLoaderPlugin()
-    ]
+    ],
+    externals: [nodeExternals()],
+    node: {
+        fs: 'empty'
+    }
 };
 
 module.exports = [
     Object.assign({}, commonConfig, {
-        target: 'electron-main',
-        entry: {
-            renderrer: './src/main/index.ts',
-        },
-        output: {
-            filename: 'main.js',
-            path: path.resolve(__dirname, 'src', 'dist')
-        },
-    }),
-    Object.assign({}, commonConfig, {
         target: 'electron-renderer',
         entry: {
-            ui: './src/renderer/index.ts',
+            ui: './src/renderer.js',
         },
         output: {
             filename: 'renderer.js',

@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import StructureComponent from './components/Structure.vue';
-import loadPreferences from '../common/preferences';
+import loadPreferences from './initialPreferences';
+
 
 new Vue({
-    el: "#vueAnchor",
+    el: '#vueAnchor',
     template: '<structure-component/>',
     async mounted() {
         const preferences = await loadPreferences();

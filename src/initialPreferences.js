@@ -1,6 +1,8 @@
-import Preferences from './models/preferences';
+'use strict';
 
-let preferences: Object;
+const Preferences = require('./models/preferences');
+
+let preferences;
 
 async function loadPreferences() {
     try {
@@ -19,4 +21,7 @@ async function loadPreferences() {
     }
 }
 
-export default loadPreferences;
+module.exports = {
+    preferences,
+    loadPreferences
+};

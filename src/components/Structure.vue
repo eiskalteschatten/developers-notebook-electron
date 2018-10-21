@@ -7,13 +7,13 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
     import Vue from "vue";
     import NavComponent from './Nav.vue';
 
     export default Vue.extend({
         mounted() {
-            const platform: string = process.platform;
+            const platform = process.platform;
 
             document.body.className = platform;
 

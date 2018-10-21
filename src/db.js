@@ -1,12 +1,13 @@
-import Sequelize from 'sequelize';
-import mkdirp from 'mkdirp';
-import fs from 'fs';
-import path from 'path';
+'use strict';
 
-import config from '../config/config';
-const database: Object = config.database;
-const dbPath: string = database.path;
-const dbFile: string = path.join(dbPath, database.fileName);
+const Sequelize = require('sequelize');
+const mkdirp = require('mkdirp');
+const fs = require('fs');
+const path = require('path');
+
+const config = require('./config/config').database;
+const dbPath = config.path;
+const dbFile = path.join(dbPath, config.fileName);
 
 if (!fs.existsSync(dbPath)) {
     mkdirp.sync(dbPath);
@@ -26,4 +27,4 @@ sequelize.authenticate()
         console.error('Unable to connect to the database:', error);
     });
 
-export default sequelize;
+module.exports = sequelize;
