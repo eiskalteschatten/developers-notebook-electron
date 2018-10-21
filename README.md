@@ -21,8 +21,9 @@ Developer's Notebook is intended to be a cross-platform, open-source application
     - [ ] Switch themes
     - [ ] Move database (similar to iTerm2's preferences)
 - [x] Add Vue Routing to remember where the user was when the program is next launched. Save the user's location in localStorage when switching routes.
-- [ ] About modal
+- [x] About modal
 - [ ] Back and forward navigation button using Vue's routing
+- [ ] Figure out a better way to have two themes with Vue's Single File Components
 
 
 ## Roadmap
