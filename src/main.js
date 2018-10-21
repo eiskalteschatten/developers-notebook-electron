@@ -3,6 +3,7 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron');
 const path = require('path');
+const fs = require('fs');
 
 const config = require('./config/config');
 const appConfig = config.app;
@@ -19,7 +20,7 @@ const windowSettingsPath = path.join(appConfig.storagePath, appConfig.windowSett
 let mainWindow;
 
 async function createWindow() {
-    fs.readFile(Main.windowSettingsPath, 'utf8', (error, data) => {
+    fs.readFile(windowSettingsPath, 'utf8', (error, data) => {
         if (error) {
             return console.error(error);
         }

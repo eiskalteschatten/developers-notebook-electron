@@ -75,22 +75,19 @@ const commonConfig = {
     plugins: [
         new VueLoaderPlugin()
     ],
-    externals: [nodeExternals()],
-    node: {
-        fs: 'empty'
-    }
+    externals: [nodeExternals()]
 };
 
 module.exports = [
     Object.assign({}, commonConfig, {
         target: 'electron-renderer',
         entry: {
-            ui: './src/renderer.js',
+            renderer: './src/renderer.js'
         },
         output: {
             filename: 'renderer.js',
             path: path.resolve(__dirname, 'src', 'dist')
-        },
+        }
     })
 ];
 

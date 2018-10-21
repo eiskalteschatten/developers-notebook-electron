@@ -9,10 +9,13 @@
 
 <script>
     import Vue from "vue";
+
+    import {loadPreferences} from '../initialPreferences';
+
     import NavComponent from './Nav.vue';
 
     export default Vue.extend({
-        mounted() {
+        async mounted() {
             const platform = process.platform;
 
             document.body.className = platform;
@@ -20,6 +23,10 @@
             if (platform === 'darwin') {
                 this.showTitlebar = true;
             }
+
+            const preferences = await loadPreferences();
+            localStorage.setItem('preferences', JSON.stringify(preferences));
+            localStorage.setItem('theme', preferences.theme);
         },
         data() {
             return {

@@ -1,17 +1,21 @@
 import Vue from 'vue';
-import StructureComponent from './components/Structure.vue';
-import loadPreferences from './initialPreferences';
+// import VueRouter from 'vue-router';
 
+import App from './components/App.vue';
+
+
+// Vue.use(VueRouter);
+
+// const router = new VueRouter({
+//     routes: [{
+//         path: '/projects',
+//         name: 'projects',
+//         component: Home
+//     },
+// // .. others
+// });
 
 new Vue({
-    el: '#vueAnchor',
-    template: '<structure-component/>',
-    async mounted() {
-        const preferences = await loadPreferences();
-        localStorage.setItem('preferences', JSON.stringify(preferences));
-        localStorage.setItem('theme', preferences.theme);
-    },
-    components: {
-        StructureComponent
-    }
-});
+    // router,
+    render: createEle => createEle(App),
+}).$mount('#vueAnchor');
