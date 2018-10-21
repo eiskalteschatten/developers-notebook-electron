@@ -40,7 +40,7 @@
         }
 
         &.preferences {
-            background-image: url(../../assets/images/projects-icon.svg);
+            background-image: url(../../assets/images/preferences-icon.svg);
         }
     }
 </style>
