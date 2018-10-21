@@ -27,7 +27,7 @@
         color: #ffffff;
         cursor: default;
         font-size: .8em;
-        height: 60px;
+        height: 55px;
         opacity: .7;
         text-decoration: none;
 
