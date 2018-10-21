@@ -7,8 +7,8 @@
                 <router-view/>
             </div>
         </div>
-        <div class="modal-container" v-if="showModal" v-bind:class="{ 'open': showModal }" @click="closeModal">
-            <modal v-bind:class="{ 'open': showModal }" v-if="modalToShow === 'about'">
+        <div class="modal-container" v-if="showModal" v-bind:class="{ 'open': showOpenModalClass }" @click="closeModal">
+            <modal v-bind:class="{ 'open': showOpenModalClass }" v-if="modalToShow === 'about'">
                 <about-modal/>
             </modal>
         </div>
@@ -37,7 +37,8 @@
         data() {
             return {
                 showTitlebar: false,
-                showModal: false
+                showModal: false,
+                showOpenModalClass: false
             }
         },
         methods: {
@@ -50,16 +51,26 @@
         },
         created() {
             eventBus.$on('toggle-modal', modal => {
-                if (!modal) {
-                    this.showModal = false;
-                    this.modalToShow = '';
-                    return;
+                if (this.showModal && modal && this.modalToShow !== modal) return;
+
+                const self = this;
+
+                if (!modal || self.showModal) {
+                    self.showOpenModalClass = false;
+
+                    setTimeout(() => {
+                        self.showModal = false;
+                        self.modalToShow = '';
+                    }, 400);
                 }
+                else {
+                    self.showModal = true;
+                    self.modalToShow = modal;
 
-                if (this.showModal && this.modalToShow !== modal) return;
-
-                this.showModal = this.showModal ? false: true;
-                this.modalToShow = this.showModal ? modal : '';
+                    setTimeout(() => {
+                        self.showOpenModalClass = true;
+                    }, 50);
+                }
             });
         },
         components: {
