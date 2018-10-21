@@ -3,6 +3,7 @@
         <div class="title-bar" v-if="showTitlebar"></div>
         <div class="main-structure">
             <nav-component/>
+            <router-view/>
         </div>
     </div>
 </template>
@@ -10,12 +11,10 @@
 <script>
     import Vue from "vue";
 
-    import {loadPreferences} from '../initialPreferences';
-
     import NavComponent from './Nav.vue';
 
     export default Vue.extend({
-        async mounted() {
+        mounted() {
             const platform = process.platform;
 
             document.body.className = platform;
@@ -23,10 +22,6 @@
             if (platform === 'darwin') {
                 this.showTitlebar = true;
             }
-
-            const preferences = await loadPreferences();
-            localStorage.setItem('preferences', JSON.stringify(preferences));
-            localStorage.setItem('theme', preferences.theme);
         },
         data() {
             return {

@@ -1,7 +1,7 @@
 <template>
     <div class="nav">
-        <nav-item-component label="Projects" itemClass="projects" v-bind:active="active === 'projects'"/>
-        <nav-item-component label="Preferences" itemClass="preferences" v-bind:active="active === 'preferences'"/>
+        <nav-item-component label="Projects" route="/projects" itemClass="projects" v-bind:active="active === 'projects'"/>
+        <nav-item-component label="Preferences" route="/preferences" itemClass="preferences" v-bind:active="active === 'preferences'"/>
     </div>
 </template>
 

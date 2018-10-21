@@ -7,7 +7,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 ### 0.1.0
 - [x] Get the base program running with Vue.js
 - [ ] Base structure and functionality
-    - [ ] Setup Sqlite database
+    - [x] Setup Sqlite database
     - [ ] Setup database migration functionality
     - [x] Saved window status (size, position, maximized, etc) in separate JSON file
     - [ ] Nav column on the left that switches views
@@ -20,7 +20,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 - [ ] Preferences
     - [ ] Switch themes
     - [ ] Move database (similar to iTerm2's preferences)
-- [ ] Add Vue Routing to remember where the user was when the program is next launched. Save the user's location in localStorage when closing the program.
+- [x] Add Vue Routing to remember where the user was when the program is next launched. Save the user's location in localStorage when switching routes.
 - [ ] About modal
 
 

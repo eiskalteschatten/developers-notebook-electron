@@ -82,10 +82,10 @@ module.exports = [
     Object.assign({}, commonConfig, {
         target: 'electron-renderer',
         entry: {
-            renderer: './src/renderer.js'
+            app: './src/app.js'
         },
         output: {
-            filename: 'renderer.js',
+            filename: 'app.js',
             path: path.resolve(__dirname, 'src', 'dist')
         }
     })

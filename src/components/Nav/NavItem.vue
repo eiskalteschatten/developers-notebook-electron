@@ -1,14 +1,14 @@
 <template>
-    <div v-bind:class="getClasses()">
+    <router-link :to="route"  v-bind:class="getClasses()">
         <div class="label">{{ label }}</div>
-    </div>
+    </router-link>
 </template>
 
 <script>
     import Vue from "vue";
 
     export default Vue.extend({
-        props: ['label', 'itemClass', 'active'],
+        props: ['label', 'route', 'itemClass', 'active'],
         methods: {
             getClasses() {
                 return [
