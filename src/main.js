@@ -12,8 +12,8 @@ const appConfig = config.app;
 const windowSettingsPath = path.join(appConfig.storagePath, appConfig.windowSettingsFile);
 
 // Database
-// const {cmdMigrate} = require('./dbMigrate');
-// cmdMigrate();
+const {cmdMigrate} = require('./dbMigrate');
+cmdMigrate();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
