@@ -10,7 +10,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
     - [x] Setup Sqlite database
     - [x] Setup database migration functionality
     - [x] Saved window status (size, position, maximized, etc) in separate JSON file
-    - [ ] Nav column on the left that switches views
+    - [x] Nav column on the left that switches views
     - [ ] Light and dark themes and the ability to switch between them
     - [ ] Main menu
 - [ ] Projects
