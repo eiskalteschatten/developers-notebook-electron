@@ -3,30 +3,17 @@ import VueRouter from 'vue-router';
 
 import {loadPreferences} from './initialPreferences';
 import {setSavedRoute, getSavedRoute} from './helper';
+import setupEvents from './events';
 
+import router from './router';
 import App from './components/App.vue';
-import Projects from './components/Views/Projects.vue';
-import Preferences from './components/Views/Preferences.vue';
 
 
 Vue.use(VueRouter);
 
-const router = new VueRouter({
-    routes: [{
-        path: '/projects',
-        name: 'projects',
-        component: Projects
-    },
-    {
-        path: '/preferences',
-        name: 'preferences',
-        component: Preferences
-    }]
-});
-
 new Vue({
     router,
-    render: createEle => createEle(App),
+    render: createElement => createElement(App),
     watch:{
         '$route' (to) {
             setSavedRoute(to.fullPath);
@@ -34,6 +21,7 @@ new Vue({
     },
     async mounted() {
         this.$router.push(getSavedRoute());
+        setupEvents();
 
         const preferences = await loadPreferences();
         localStorage.setItem('preferences', JSON.stringify(preferences));
