@@ -114,7 +114,7 @@ if (process.platform === 'darwin') {
             {
                 label: `About ${config.app.name}`,
                 click: (item, focusedWindow) => {
-                    focusedWindow.webContents.send('open-about');
+                    focusedWindow.webContents.send('open-modal', 'about');
                 }
             },
             {type: 'separator'},
@@ -179,7 +179,7 @@ else {
         {
             label: `About ${config.app.name}`,
             click: (item, focusedWindow) => {
-                focusedWindow.webContents.send('open-about');
+                focusedWindow.webContents.send('open-modal', 'about');
             }
         }
     ];

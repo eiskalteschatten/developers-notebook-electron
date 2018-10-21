@@ -2,19 +2,24 @@
     <div class="structure-wrapper">
         <div class="title-bar" v-if="showTitlebar" @dblclick="maximizeWindow"></div>
         <div class="main-structure">
-            <nav-component/>
+            <left-nav/>
             <div class="view">
                 <router-view/>
             </div>
+        </div>
+        <div class="modal-container" v-if="showModal">
+            <about-modal v-if="modalToShow === 'about'"/>
         </div>
     </div>
 </template>
 
 <script>
     import Vue from 'vue';
+    import {eventBus} from '../app';
     import {remote} from 'electron';
 
-    import NavComponent from './Nav.vue';
+    import LeftNav from './Nav.vue';
+    import AboutModal from './Modal/About.vue';
 
     export default Vue.extend({
         mounted() {
@@ -28,7 +33,8 @@
         },
         data() {
             return {
-                showTitlebar: false
+                showTitlebar: false,
+                showModal: false
             }
         },
         methods: {
@@ -36,8 +42,17 @@
                 remote.getCurrentWindow().maximize();
             }
         },
+        created() {
+            eventBus.$on('toggle-modal', modal => {
+                if (this.showModal && this.modalToShow !== modal) return;
+
+                this.showModal = this.showModal ? false: true;
+                this.modalToShow = modal
+            });
+        },
         components: {
-            NavComponent
+            LeftNav,
+            AboutModal
         }
     });
 </script>

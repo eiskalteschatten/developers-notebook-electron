@@ -9,6 +9,8 @@ import router from './router';
 import App from './components/App.vue';
 
 
+export const eventBus = new Vue();
+
 Vue.use(VueRouter);
 
 new Vue({
