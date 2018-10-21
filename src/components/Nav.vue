@@ -1,7 +1,7 @@
 <template>
     <div class="nav">
-        <nav-item-component label="Projects" route="/projects" itemClass="projects" v-bind:active="active === 'projects'"/>
-        <nav-item-component label="Preferences" route="/preferences" itemClass="preferences" v-bind:active="active === 'preferences'"/>
+        <nav-item-component label="Projects" route="/projects" itemClass="projects"/>
+        <nav-item-component label="Preferences" route="/preferences" itemClass="preferences"/>
     </div>
 </template>
 
@@ -10,11 +10,6 @@
     import NavItemComponent from './Nav/NavItem.vue';
 
     export default Vue.extend({
-        data() {
-            return {
-                active: 'projects'
-            }
-        },
         components: {
             NavItemComponent
         }
@@ -27,6 +22,6 @@
         display: flex;
         flex: 0 1 auto;
         flex-direction: column;
-        width: 75px;
+        width: 60px;
     }
 </style>
