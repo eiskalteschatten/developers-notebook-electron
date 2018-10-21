@@ -5,7 +5,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 ## Release Notes
 
 ### 0.1.0
-- [x] Get the base program running with TypeScript and Vue.js
+- [x] Get the base program running with Vue.js
 - [ ] Base structure and functionality
     - [ ] Setup Sqlite database
     - [ ] Setup database migration functionality
@@ -14,9 +14,13 @@ Developer's Notebook is intended to be a cross-platform, open-source application
     - [ ] Light and dark themes and the ability to switch between them
     - [ ] Main menu
 - [ ] Projects
+    - [ ] Create projects
+    - [ ] Archive projects
+    - [ ] Blank project overview page
 - [ ] Preferences
     - [ ] Switch themes
     - [ ] Move database (similar to iTerm2's preferences)
+- [ ] Add Vue Routing to remember where the user was when the program is next launched. Save the user's location in localStorage when closing the program.
 - [ ] About modal
 
 
@@ -25,20 +29,24 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 ### 0.2.0
 - [ ] To dos
 - [ ] Issues
+- [ ] Update project overview page
 - [ ] Search for projects, to dos, issues
 
 ### 0.3.0
 - [ ] Tools (color picker/converter, image and file compression, etc)
 - [ ] Bookmarks
+- [ ] Update project overview page
 - [ ] Search for bookmarks
 
 ### 0.4.0
 - [ ] Notes
 - [ ] Code cache
+- [ ] Update project overview page
 - [ ] Search for code cache, notes
 
 ### 0.4.0
 - [ ] Journal
+- [ ] Update project overview page
 - [ ] Search for journal
 
 
