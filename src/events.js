@@ -1,6 +1,7 @@
 import {ipcRenderer, shell} from 'electron';
 import $ from 'jquery';
 
+import {eventBus} from './app';
 import setupMenuEvents from './events/menu';
 
 import helper from './events/helper';
@@ -19,6 +20,12 @@ export default () => {
         e.preventDefault();
         const href = $(this).attr('href');
         shell.openExternal(href);
+    });
+
+    $(document).keydown(function(e) {
+        if (e.keyCode === 27) {
+            eventBus.$emit('toggle-modal');
+        }
     });
 
     setupMenuEvents();
