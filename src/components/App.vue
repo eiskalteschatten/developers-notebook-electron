@@ -7,8 +7,10 @@
                 <router-view/>
             </div>
         </div>
-        <div class="modal-container" v-if="showModal">
-            <about-modal v-if="modalToShow === 'about'"/>
+        <div class="modal-container" v-if="showModal" v-bind:class="{ 'open': showModal }" @click="closeModal">
+            <modal v-bind:class="{ 'open': showModal }" v-if="modalToShow === 'about'">
+                <about-modal/>
+            </modal>
         </div>
     </div>
 </template>
@@ -19,6 +21,7 @@
     import {remote} from 'electron';
 
     import LeftNav from './Nav.vue';
+    import Modal from './Modal.vue';
     import AboutModal from './Modal/About.vue';
 
     export default Vue.extend({
@@ -40,18 +43,28 @@
         methods: {
             maximizeWindow() {
                 remote.getCurrentWindow().maximize();
+            },
+            closeModal() {
+                eventBus.$emit('toggle-modal');
             }
         },
         created() {
             eventBus.$on('toggle-modal', modal => {
+                if (!modal) {
+                    this.showModal = false;
+                    this.modalToShow = '';
+                    return;
+                }
+
                 if (this.showModal && this.modalToShow !== modal) return;
 
                 this.showModal = this.showModal ? false: true;
-                this.modalToShow = modal
+                this.modalToShow = this.showModal ? modal : '';
             });
         },
         components: {
             LeftNav,
+            Modal,
             AboutModal
         }
     });
