@@ -51,7 +51,7 @@
     });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .modal-title {
         margin: 0 0 5px 0;
         padding-right: 35px;
