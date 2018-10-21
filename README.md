@@ -6,13 +6,13 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 
 ### 0.1.0
 - [x] Get the base program running with Vue.js
-- [ ] Base structure and functionality
+- [x] Base structure and functionality
     - [x] Setup Sqlite database
     - [x] Setup database migration functionality
     - [x] Saved window status (size, position, maximized, etc) in separate JSON file
     - [x] Nav column on the left that switches views
-    - [ ] Light and dark themes and the ability to switch between them
-    - [ ] Main menu
+    - [x] Light and dark themes and the ability to switch between them
+    - [x] Main menu
 - [ ] Projects
     - [ ] Create projects
     - [ ] Archive projects

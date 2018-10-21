@@ -14,7 +14,10 @@
         <div id="vueAnchor"></div>
 
         <script>
-            require('../dist/app.js');
+            setTimeout(() => {
+                require('../dist/app.js');
+                require('../events');
+            }, 50);
         </script>
     </body>
 </html>

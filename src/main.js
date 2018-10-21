@@ -1,13 +1,13 @@
 'use strict';
 
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow, Menu} = require('electron');
 const path = require('path');
 const fs = require('fs');
 
 const config = require('./config/config');
 const appConfig = config.app;
-// const appMenu = require('./menus/config/app');
+const appMenu = require('./menus/config/app');
 
 const windowSettingsPath = path.join(appConfig.storagePath, appConfig.windowSettingsFile);
 
@@ -15,12 +15,15 @@ const windowSettingsPath = path.join(appConfig.storagePath, appConfig.windowSett
 const {cmdMigrate} = require('./dbMigrate');
 cmdMigrate();
 
+// Preferences
+const {loadPreferences} = require('./initialPreferences');
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
 async function createWindow() {
-    fs.readFile(windowSettingsPath, 'utf8', (error, data) => {
+    fs.readFile(windowSettingsPath, 'utf8', async (error, data) => {
         if (error) {
             return console.error(error);
         }
@@ -50,7 +53,7 @@ async function createWindow() {
             mainWindow.loadFile('./src/html/index.html');
 
             if (windowSettings.isMaximized) {
-                Main.mainWindow.maximize();
+                mainWindow.maximize();
             }
 
             mainWindow.setFullScreen(windowSettings.isFullScreen || false);
@@ -82,10 +85,12 @@ async function createWindow() {
                 mainWindow = null;
             });
 
-            // const menu = Menu.buildFromTemplate(appMenu);
-            // const menuItem = `${preferences.theme}Theme`;
-            // Menu.setApplicationMenu(menu);
-            // menu.getMenuItemById(menuItem).checked = true;
+            const preferences = await loadPreferences();
+
+            const menu = Menu.buildFromTemplate(appMenu);
+            const menuItem = `${preferences.theme}Theme`;
+            Menu.setApplicationMenu(menu);
+            menu.getMenuItemById(menuItem).checked = true;
         }
         catch(error) {
             console.error(error);
@@ -123,4 +128,4 @@ if (!fs.existsSync(windowSettingsPath)) {
 }
 
 // Menus
-// require('./menus/menus');
+require('./menus/menus');
