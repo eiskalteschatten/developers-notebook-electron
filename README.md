@@ -62,7 +62,8 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 
 ## Notes
 
-[TypeScript and Vue.js](https://github.com/Microsoft/TypeScript-Vue-Starter)
+- [TypeScript and Vue.js](https://github.com/Microsoft/TypeScript-Vue-Starter)
+- Icons from https://glyph.smarticons.co and https://material.io/tools/icons/?style=sharp
 
 ---
 
