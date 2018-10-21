@@ -22,6 +22,12 @@
         display: flex;
         flex: 0 1 auto;
         flex-direction: column;
-        width: 60px;
+        width: 70px;
+    }
+
+    .darwin {
+        .nav {
+            padding-top: 22px;
+        }
     }
 </style>

@@ -3,7 +3,9 @@
         <div class="title-bar" v-if="showTitlebar"></div>
         <div class="main-structure">
             <nav-component/>
-            <router-view/>
+            <div class="view">
+                <router-view/>
+            </div>
         </div>
     </div>
 </template>
@@ -59,11 +61,18 @@
         flex-direction: row;
         height: 100%;
         width: 100%;
+
+        .view {
+            margin-left: 15px;
+        }
     }
 
     .darwin {
         .main-structure {
-            padding-top: $titleBarHeight;
+            .view {
+                margin-left: 15px;
+                padding-top: $titleBarHeight;
+            }
         }
     }
 </style>
