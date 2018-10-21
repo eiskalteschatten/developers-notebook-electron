@@ -57,6 +57,14 @@ const template = [
                 }
             },
             {type: 'separator'},
+            {
+                label: 'Projects',
+                accelerator: 'CmdOrCtrl+1',
+                click: async (item, focusedWindow) => {
+                    focusedWindow.webContents.send('open-route', '/projects');
+                }
+            },
+            {type: 'separator'},
             {role: 'resetzoom'},
             {role: 'zoomin'},
             {role: 'zoomout'},
@@ -114,7 +122,7 @@ if (process.platform === 'darwin') {
                 label: 'Preferences',
                 accelerator: 'Cmd+,',
                 click: (item, focusedWindow) => {
-                    focusedWindow.webContents.send('open-preferences');
+                    focusedWindow.webContents.send('open-route', '/preferences');
                 }
             },
             {type: 'separator'},
@@ -156,7 +164,7 @@ else {
             label: 'Preferences',
             accelerator: 'Ctrl+,',
             click: (item, focusedWindow) => {
-                focusedWindow.webContents.send('open-preferences');
+                focusedWindow.webContents.send('open-route', '/preferences');
             }
         }
     );

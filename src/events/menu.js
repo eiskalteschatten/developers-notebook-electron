@@ -3,7 +3,7 @@ import router from '../router';
 
 
 export default () => {
-    ipcRenderer.on('open-preferences', () => {
-        router.push('/preferences');
+    ipcRenderer.on('open-route', (event, route) => {
+        router.push(route);
     });
 };
