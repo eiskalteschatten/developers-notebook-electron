@@ -1,6 +1,6 @@
 <template>
     <div class="structure-wrapper">
-        <div class="title-bar" v-if="showTitlebar"></div>
+        <div class="title-bar" v-if="showTitlebar" @dblclick="maximizeWindow"></div>
         <div class="main-structure">
             <nav-component/>
             <div class="view">
@@ -11,7 +11,8 @@
 </template>
 
 <script>
-    import Vue from "vue";
+    import Vue from 'vue';
+    import {remote} from 'electron';
 
     import NavComponent from './Nav.vue';
 
@@ -28,6 +29,11 @@
         data() {
             return {
                 showTitlebar: false
+            }
+        },
+        methods: {
+            maximizeWindow() {
+                remote.getCurrentWindow().maximize();
             }
         },
         components: {
