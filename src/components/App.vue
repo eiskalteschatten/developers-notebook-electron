@@ -50,18 +50,6 @@
         width: 100%;
     }
 
-    .title-bar {
-        display: block;
-        height: $titleBarHeight;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        -webkit-app-region: drag;
-        -webkit-user-select: none;
-        z-index: 1000;
-    }
-
     .main-structure {
         display: flex;
         flex-direction: row;
@@ -74,6 +62,18 @@
     }
 
     .darwin {
+        .title-bar {
+            display: block;
+            height: $titleBarHeight;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            -webkit-app-region: drag;
+            -webkit-user-select: none;
+            z-index: 1000;
+        }
+
         .main-structure {
             .view {
                 margin-left: 15px;

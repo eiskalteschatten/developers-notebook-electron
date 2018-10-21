@@ -1,7 +1,11 @@
 <template>
     <div class="nav">
-        <nav-item-component label="Projects" route="/projects" itemClass="projects"/>
-        <nav-item-component label="Preferences" route="/preferences" itemClass="preferences"/>
+        <div class="top-nav">
+            <nav-item-component label="Projects" route="/projects" itemClass="projects"/>
+        </div>
+        <div class="bottom-nav">
+            <nav-item-component label="Preferences" route="/preferences" itemClass="preferences"/>
+        </div>
     </div>
 </template>
 
@@ -23,6 +27,10 @@
         flex: 0 1 auto;
         flex-direction: column;
         width: 70px;
+
+        .top-nav {
+            flex: 1 0 auto;
+        }
     }
 
     .darwin {

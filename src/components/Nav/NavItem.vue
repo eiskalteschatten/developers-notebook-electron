@@ -26,6 +26,7 @@
         background-size: 35px;
         color: #ffffff;
         cursor: default;
+        display: block;
         font-size: .8em;
         height: 55px;
         opacity: .7;
