@@ -5,6 +5,6 @@ module.exports = {
         localStorage.setItem('savedRoute', route);
     },
     getSavedRoute: () => {
-        return localStorage.getItem('savedRoute') || '/projects';
+        return localStorage.getItem('savedRoute') || '/categories';
     }
 };

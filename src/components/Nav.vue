@@ -1,7 +1,8 @@
 <template>
     <div class="nav">
         <div class="top-nav">
-            <nav-item-component label="Projects" route="/projects" itemClass="projects"/>
+            <nav-item-component label="Categories" route="/categories" itemClass="categories"/>
+            <!-- <nav-item-component label="Projects" route="/projects" itemClass="projects"/> -->
         </div>
         <div class="bottom-nav">
             <nav-item-component label="Preferences" route="/preferences" itemClass="preferences"/>

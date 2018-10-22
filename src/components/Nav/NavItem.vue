@@ -36,6 +36,10 @@
             opacity: 1;
         }
 
+        &.categories {
+            background-image: url(../../assets/images/projects-icon.svg);
+        }
+
         &.projects {
             background-image: url(../../assets/images/projects-icon.svg);
         }
