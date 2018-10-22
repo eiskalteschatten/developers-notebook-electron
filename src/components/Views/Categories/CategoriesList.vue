@@ -7,8 +7,10 @@
                     <div class="name">Name</div>
                     <div class="description">The description goes here</div>
                 </div>
-                <div class="links">
-                    <router-link :to="{ name: 'editCategory', params: { id: 1 }}">Edit</router-link>
+                <div class="buttons">
+                    <router-link :to="{ name: 'editCategory', params: { id: 1 }}">
+                        <edit-button/>
+                    </router-link>
                 </div>
             </list-item>
             <list-item v-bind:class="getListItemClasses(2)">
@@ -17,8 +19,10 @@
                     <div class="name">Another one</div>
                     <div class="description">Here is another description</div>
                 </div>
-                <div class="links">
-                    <router-link :to="{ name: 'editCategory', params: { id: 2 }}">Edit</router-link>
+                <div class="buttons">
+                    <router-link :to="{ name: 'editCategory', params: { id: 2 }}">
+                        <edit-button/>
+                    </router-link>
                 </div>
             </list-item>
         </list>
@@ -33,6 +37,7 @@
 
     import List from '../../List.vue';
     import ListItem from '../../List/ListItem.vue';
+    import EditButton from '../../Elements/EditButton.vue';
 
     export default Vue.extend({
         props: ['id'],
@@ -54,7 +59,8 @@
         },
         components: {
             List,
-            ListItem
+            ListItem,
+            EditButton
         },
         async mounted() {
             this.categories = await Category.getAllSorted();
@@ -87,6 +93,17 @@
             .description {
                 font-size: .8em;
                 opacity: .7;
+            }
+        }
+
+        .buttons {
+            position: relative;
+
+            .edit-button {
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
             }
         }
     }
