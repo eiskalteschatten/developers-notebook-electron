@@ -41,6 +41,7 @@
         },
         data() {
             return {
+                viewTitle: '',
                 showTitlebar: false,
                 showModal: false,
                 showOpenModalClass: false
