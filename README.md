@@ -36,8 +36,11 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 ### 0.2.0
 - [ ] Projects
     - [ ] Create projects
-    - [ ] Archive projects
-    - [ ] Blank project overview page
+    - [ ] Finish projects
+    - [ ] Create project overview page
+        - [ ] How much time did the project take?
+            - Add up the time taken by issues and to dos
+            - Start and end date of the project
     - [ ] Add projects to client overview page
 - [ ] To dos
 - [ ] Issues
@@ -59,16 +62,15 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 - [ ] Update category, client and project overview pages
 - [ ] Search for code cache, notes
 
-### 0.4.0
+### 1.0.0
+- [ ] Command palette
+- [ ] Check for updates
+
+### 1.1.0
 - [ ] Journal
 - [ ] Allow raw SQL queries for journal. Show the database schema in a sidebar.
 - [ ] Update category, client and project overview pages
 - [ ] Search for journal
-
-
-### 1.0.0
-- [ ] Command palette
-- [ ] Check for updates
 
 
 ### Future Ideos
