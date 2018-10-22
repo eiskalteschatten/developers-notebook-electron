@@ -12,7 +12,7 @@ const Preferences = db.define('preferences', {
     checkForUpdates: {
         type: Sequelize.BOOLEAN,
         defaultValue: true
-    },
+    }
 });
 
 Preferences.sync();
