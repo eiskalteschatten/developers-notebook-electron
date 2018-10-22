@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="route"  v-bind:class="getClasses()" :title="label" />
+    <router-link :to="route" v-bind:class="getClasses()" :title="label" />
 </template>
 
 <script>

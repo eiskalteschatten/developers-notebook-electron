@@ -2,18 +2,22 @@
     <div class="full-width">
         <list scrollable="false">
             <list-item @click="selectCategory">
-                <div class="color-stripe" style="background-color: red;"></div>
-                <div class="content">
-                    <div class="name">Name</div>
-                    <div class="description">The description goes here</div>
-                </div>
+                <router-link to="/categores/1/"/>
+                    <div class="color-stripe" style="background-color: red;"></div>
+                    <div class="content">
+                        <div class="name">Name</div>
+                        <div class="description">The description goes here</div>
+                    </div>
+                </route-link>
             </list-item>
             <list-item @click="selectCategory">
-                <div class="color-stripe" style="background-color: blue;"></div>
-                <div class="content">
-                    <div class="name">Another one</div>
-                    <div class="description">Here is another description</div>
-                </div>
+                <router-link to="/categores/2/"/>
+                    <div class="color-stripe" style="background-color: blue;"></div>
+                    <div class="content">
+                        <div class="name">Another one</div>
+                        <div class="description">Here is another description</div>
+                    </div>
+                </route-link>
             </list-item>
         </list>
     </div>
