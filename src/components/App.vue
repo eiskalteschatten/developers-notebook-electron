@@ -119,11 +119,10 @@
             display: flex;
             flex: 1 1 auto;
             flex-direction: column;
-            padding: 0 15px;
+            padding: 15px;
 
             .main-header {
                 flex: 0 1 auto;
-                margin-bottom: 10px;
             }
 
             .view {
