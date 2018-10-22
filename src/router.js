@@ -32,7 +32,7 @@ export default new VueRouter({
                 path: 'edit/:id/',
                 name: 'editCategory',
                 components: { default: CategoriesList, sidebar: CategoriesSidebar },
-                props: { default: false, sidebar: true }
+                props: { default: true, sidebar: true }
             },
             {
                 path: 'view/:id/',

@@ -3,46 +3,22 @@
         <list scrollable="false">
             <list-item>
                 <div class="color-stripe" style="background-color: red;"></div>
-                <div class="content">
+                <div @click="viewCategory(1)" class="content">
                     <div class="name">Name</div>
                     <div class="description">The description goes here</div>
                 </div>
                 <div class="links">
                     <router-link :to="{ name: 'editCategory', params: { id: 1 }}">Edit</router-link>
-                    <router-link :to="{ name: 'viewCategory', params: { id: 1 }}">View</router-link>
                 </div>
             </list-item>
             <list-item>
                 <div class="color-stripe" style="background-color: blue;"></div>
-                <div class="content">
+                <div @click="viewCategory(2)" class="content">
                     <div class="name">Another one</div>
                     <div class="description">Here is another description</div>
                 </div>
                 <div class="links">
-                    <router-link  :to="{ name: 'editCategory', params: { id: 2 }}">Edit</router-link>
-                    <router-link  :to="{ name: 'viewCategory', params: { id: 2 }}">View</router-link>
-                </div>
-            </list-item>
-            <list-item>
-                <div class="color-stripe" style="background-color: red;"></div>
-                <div class="content">
-                    <div class="name">Name</div>
-                    <div class="description">The description goes here</div>
-                </div>
-                <div class="links">
-                    <router-link :to="{ name: 'editCategory', params: { id: 1 }}">Edit</router-link>
-                    <router-link :to="{ name: 'viewCategory', params: { id: 1 }}">View</router-link>
-                </div>
-            </list-item>
-            <list-item>
-                <div class="color-stripe" style="background-color: blue;"></div>
-                <div class="content">
-                    <div class="name">Another one</div>
-                    <div class="description">Here is another description</div>
-                </div>
-                <div class="links">
-                    <router-link  :to="{ name: 'editCategory', params: { id: 2 }}">Edit</router-link>
-                    <router-link  :to="{ name: 'viewCategory', params: { id: 2 }}">View</router-link>
+                    <router-link :to="{ name: 'editCategory', params: { id: 2 }}">Edit</router-link>
                 </div>
             </list-item>
         </list>
@@ -51,16 +27,23 @@
 
 <script>
     import Vue from 'vue';
+    import router from '../../../router';
+
     import Category from '../../../models/category';
 
     import List from '../../List.vue';
     import ListItem from '../../List/ListItem.vue';
 
     export default Vue.extend({
+        props: ['selectedCategoryId'],
         data() {
             return {
-                categories: [],
-                seletedCategoryId: -1
+                categories: []
+            }
+        },
+        methods: {
+            viewCategory(id) {
+                router.push({ name: 'viewCategory', params: { id }});
             }
         },
         components: {
@@ -85,6 +68,7 @@
         }
 
         .content {
+            cursor: pointer;
             flex: 1 1 auto;
             padding: 15px;
 
