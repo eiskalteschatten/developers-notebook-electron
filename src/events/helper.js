@@ -3,9 +3,11 @@
 const $ = require('jquery');
 
 
-function switchCss(id) {
-    $('.js-main-css').prop('disabled', true);
-    $(`#${id}`).prop('disabled', false);
+function switchCss(theme) {
+    const $body = $('body');
+    $body.removeClass('light');
+    $body.removeClass('dark');
+    $body.addClass(theme);
 }
 
 module.exports = {

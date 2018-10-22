@@ -26,11 +26,7 @@
 
     export default Vue.extend({
         mounted() {
-            const platform = process.platform;
-
-            document.body.className = platform;
-
-            if (platform === 'darwin') {
+            if (process.platform === 'darwin') {
                 this.showTitlebar = true;
             }
         },

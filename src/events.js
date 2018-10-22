@@ -12,7 +12,7 @@ export default () => {
     });
 
     ipcRenderer.on('switch-theme', (event, theme) => {
-        helper.switchCss(`${theme}Css`);
+        helper.switchCss(theme);
         localStorage.setItem('theme', theme);
     });
 
