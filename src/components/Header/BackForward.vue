@@ -1,7 +1,7 @@
 <template>
     <div>
-        <button @click="goBack" class="button" v-bind:disabled="disableBack">&lt;</button>
-        <button @click="goForward" class="button" v-bind:disabled="disableForward">&gt;</button>
+        <button @click="goBack" class="button" v-bind:disabled="disableBack">&larr;</button>
+        <button @click="goForward" class="button" v-bind:disabled="disableForward">&rarr;</button>
     </div>
 </template>
 
