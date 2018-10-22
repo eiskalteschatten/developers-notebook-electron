@@ -10,10 +10,13 @@
             <label for="decription">Description</label>
             <textarea class="form-control full-width" id="decription" v-model="category.description"></textarea>
         </div>
-        <div class="form-group">
-            <label for="colorcolorForm">Color</label>
-            <input type="color" id="colorForm" class="hidden" v-model="category.color">
-            <div class="color-stripe" v-bind:style="{ 'background-color': category.color }" @click="openColorPicker"></div>
+        <div class="flex-row">
+            <div class="form-group color-form-group">
+                <label for="colorcolorForm">Color</label>
+                <input type="color" id="colorForm" class="hidden" v-model="category.color">
+                <div class="color-stripe" v-bind:style="{ 'background-color': category.color }" @click="openColorPicker"></div>
+            </div>
+            <delete-button/>
         </div>
     </Sidebar>
 </template>
@@ -23,6 +26,7 @@
     import Category from '../../../models/category';
 
     import Sidebar from '../Sidebar';
+    import DeleteButton from '../../Elements/DeleteButton.vue';
 
     export default Vue.extend({
         props: ['id'],
@@ -32,7 +36,8 @@
             }
         },
         components: {
-            Sidebar
+            Sidebar,
+            DeleteButton
         },
         methods: {
             async getCategory() {
@@ -58,12 +63,20 @@
         min-height: 200px;
     }
 
-    .color-stripe {
-        $size: 30px;
-        border: 1px solid #333333;
-        border-radius: 50%;
-        cursor: pointer;
-        height: $size;
-        width: $size;
+    .color-form-group {
+        flex: 1 1 auto;
+
+        .color-stripe {
+            $size: 30px;
+            border: 1px solid #333333;
+            border-radius: 50%;
+            cursor: pointer;
+            height: $size;
+            width: $size;
+        }
+    }
+
+    .delete-button {
+        margin-top: 5px;
     }
 </style>

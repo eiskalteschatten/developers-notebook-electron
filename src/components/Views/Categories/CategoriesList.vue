@@ -8,9 +8,12 @@
                     <div class="description">The description goes here</div>
                 </div>
                 <div class="buttons">
-                    <router-link :to="{ name: 'editCategory', params: { id: 1 }}">
-                        <edit-button/>
-                    </router-link>
+                    <div class="buttons-wrapper">
+                        <router-link :to="{ name: 'editCategory', params: { id: 1 }}">
+                            <edit-button/>
+                        </router-link>
+                        <delete-button/>
+                    </div>
                 </div>
             </list-item>
             <list-item v-bind:class="getListItemClasses(2)">
@@ -20,9 +23,12 @@
                     <div class="description">Here is another description</div>
                 </div>
                 <div class="buttons">
-                    <router-link :to="{ name: 'editCategory', params: { id: 2 }}">
-                        <edit-button/>
-                    </router-link>
+                    <div class="buttons-wrapper">
+                        <router-link :to="{ name: 'editCategory', params: { id: 2 }}">
+                            <edit-button/>
+                        </router-link>
+                        <delete-button/>
+                    </div>
                 </div>
             </list-item>
         </list>
@@ -38,6 +44,7 @@
     import List from '../../List.vue';
     import ListItem from '../../List/ListItem.vue';
     import EditButton from '../../Elements/EditButton.vue';
+    import DeleteButton from '../../Elements/DeleteButton.vue';
 
     export default Vue.extend({
         props: ['id'],
@@ -60,7 +67,8 @@
         components: {
             List,
             ListItem,
-            EditButton
+            EditButton,
+            DeleteButton
         },
         async mounted() {
             this.categories = await Category.getAllSorted();
@@ -99,11 +107,17 @@
         .buttons {
             position: relative;
 
-            .edit-button {
+            .buttons-wrapper {
+                display: flex;
+                flex-direction: row;
                 position: absolute;
                 right: 15px;
                 top: 50%;
                 transform: translateY(-50%);
+
+                a, div {
+                    margin-left: 8px;
+                }
             }
         }
     }
