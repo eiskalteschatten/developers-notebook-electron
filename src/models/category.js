@@ -1,20 +1,39 @@
-// 'use strict';
+'use strict';
 
-// const Sequelize = require('sequelize');
-// const db = require('../db');
+const Sequelize = require('sequelize');
+const db = require('../db');
 
 
-// const Category = db.define('category', {
-//     theme: {
-//         type: Sequelize.STRING,
-//         defaultValue: 'light'
-//     },
-//     checkForUpdates: {
-//         type: Sequelize.BOOLEAN,
-//         defaultValue: true
-//     },
-// });
+const Category = db.define('category', {
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    description: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    color: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    slug: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
+});
 
-// Category.sync();
+Category.getAllSorted = async function() {
+    return await this.findAll({
+        order: [
+            [
+                Sequelize.fn('lower', Sequelize.col('name')),
+                'ASC'
+            ]
+        ]
+    });
+};
 
-// module.exports = Category;
+Category.sync();
+
+module.exports = Category;
