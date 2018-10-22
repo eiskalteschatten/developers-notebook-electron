@@ -45,6 +45,16 @@ body {
     width: 100%;
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
 .loading {
     background: url('../images/loader.svg') no-repeat center center;
     background-size: 32px;

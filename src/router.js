@@ -1,35 +1,59 @@
 import VueRouter from 'vue-router';
+import ViewWrapper from './components/Views/ViewWrapper.vue';
 
-import Categories from './components/Views/Categories.vue';
+import CategoriesList from './components/Views/Categories/CategoriesList.vue';
+import CategoriesSidebar from './components/Views/Categories/CategoriesSidebar.vue';
+
 import Clients from './components/Views/Clients.vue';
 import Projects from './components/Views/Projects.vue';
 import Preferences from './components/Views/Preferences.vue';
 
 
+export const routeTitles = {
+    categories: 'Categories',
+    editCategory: 'Categories',
+    viewCategory: 'Categories',
+    clients: 'Clients',
+    projects: 'Projects',
+    preferences: 'Preferences'
+};
+
 export default new VueRouter({
     mode: 'history',
     routes: [{
         path: '/categories',
-        name: 'Categories',
-        component: Categories,
+        component: ViewWrapper,
         children: [
-            { path: '/edit/:id/', component: Categories },
-            { path: '/view/:id/', component: Categories }
+            {
+                path: '',
+                name: 'categories',
+                component: CategoriesList
+            },
+            {
+                path: 'edit/:id/',
+                name: 'editCategory',
+                components: { default: CategoriesList, sidebar: CategoriesSidebar }
+            },
+            {
+                path: 'view/:id/',
+                name: 'viewCategory',
+                component: CategoriesList
+            },
         ]
     },
     {
         path: '/clients',
-        name: 'Clients',
+        name: 'clients',
         component: Clients
     },
     {
         path: '/projects',
-        name: 'Projects',
+        name: 'projects',
         component: Projects
     },
     {
         path: '/preferences',
-        name: 'Preferences',
+        name: 'preferences',
         component: Preferences
     }]
 });

@@ -27,6 +27,7 @@
     import Vue from 'vue';
     import {eventBus} from '../app';
     import {remote} from 'electron';
+    import {routeTitles} from '../router';
 
     import LeftNav from './Nav.vue';
     import BackForward from './Header/BackForward.vue';
@@ -82,7 +83,7 @@
             });
 
             eventBus.$on('route-changed', (to, from) => {
-                vm.viewTitle = to.name;
+                vm.viewTitle = routeTitles[to.name];
             });
         },
         components: {
@@ -119,7 +120,7 @@
             display: flex;
             flex: 1 1 auto;
             flex-direction: column;
-            padding: 15px;
+            padding: 15px 0 0 15px;
 
             .main-header {
                 flex: 0 1 auto;
@@ -129,8 +130,7 @@
                 display: flex;
                 flex: 1 1 auto;
                 flex-direction: row;
-                overflow: auto;
-                position: relative;
+                margin-top: 15px;
             }
         }
     }
