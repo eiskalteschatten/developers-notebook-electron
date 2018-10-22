@@ -55,6 +55,8 @@
             }
         },
         created() {
+            const vm = this;
+
             eventBus.$on('toggle-modal', modal => {
                 if (this.showModal && modal && this.modalToShow !== modal) return;
 
@@ -76,10 +78,11 @@
                         self.showOpenModalClass = true;
                     }, 50);
                 }
-            }),
+            });
+
             eventBus.$on('route-changed', (to, from) => {
-                this.viewTitle = to.name;
-            })
+                vm.viewTitle = to.name;
+            });
         },
         components: {
             LeftNav,

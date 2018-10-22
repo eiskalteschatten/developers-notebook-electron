@@ -5,6 +5,7 @@ import Preferences from './components/Views/Preferences.vue';
 
 
 export default new VueRouter({
+    mode: 'history',
     routes: [{
         path: '/projects',
         name: 'Projects',
