@@ -16,6 +16,7 @@
 
     .list-item {
         border-radius: 5px;
+        padding: 15px;
     }
 
     .dark {

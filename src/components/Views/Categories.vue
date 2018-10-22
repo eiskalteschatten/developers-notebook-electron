@@ -46,6 +46,7 @@
     .list-item {
         display: flex;
         flex-direction: row;
+        padding: 0;
 
         .color-stripe {
             margin-right: 5px;
