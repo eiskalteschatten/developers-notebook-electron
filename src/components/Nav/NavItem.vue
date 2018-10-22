@@ -37,7 +37,7 @@
         }
 
         &.categories {
-            background-image: url(../../assets/images/projects-icon.svg);
+            background-image: url(../../assets/images/categories-icon.svg);
         }
 
         &.clients {
