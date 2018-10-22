@@ -18,20 +18,20 @@ const template = [
                     {
                         label: 'Category',
                         click: (item, focusedWindow) => {
-                            focusedWindow.webContents.send('create-new', 'category');
+                            focusedWindow.webContents.send('category-event', 'new');
                         }
                     },
                     {
                         label: 'Client',
                         click: (item, focusedWindow) => {
-                            focusedWindow.webContents.send('create-new', 'client');
+                            focusedWindow.webContents.send('client-event', 'new');
                         }
                     },
                     // {
                     //     label: 'Project',
                     //     accelerator: 'CmdOrCtrl+N',
                     //     click: (item, focusedWindow) => {
-                    //         focusedWindow.webContents.send('create-new', 'project');
+                    //         focusedWindow.webContents.send('project-event', 'new');
                     //     }
                     // },
                 ]
