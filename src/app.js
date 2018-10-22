@@ -17,7 +17,8 @@ new Vue({
     router,
     render: createElement => createElement(App),
     watch:{
-        '$route' (to) {
+        '$route'(to, from) {
+            eventBus.$emit('route-changed', to, from);
             setSavedRoute(to.fullPath);
         }
     },

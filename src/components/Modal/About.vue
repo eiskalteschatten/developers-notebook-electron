@@ -32,7 +32,6 @@
 
 <script>
     import Vue from 'vue';
-    import {eventBus} from '../../app';
     import config from '../../config/config';
 
     export default Vue.extend({

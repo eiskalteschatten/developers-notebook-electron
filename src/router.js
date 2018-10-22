@@ -7,12 +7,12 @@ import Preferences from './components/Views/Preferences.vue';
 export default new VueRouter({
     routes: [{
         path: '/projects',
-        name: 'projects',
+        name: 'Projects',
         component: Projects
     },
     {
         path: '/preferences',
-        name: 'preferences',
+        name: 'Preferences',
         component: Preferences
     }]
 });
