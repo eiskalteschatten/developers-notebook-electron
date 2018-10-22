@@ -1,7 +1,7 @@
 <template>
     <div>
         <button @click="goBack" class="button" v-bind:disabled="disableBack">&lt;</button>
-        <button @click="goForward" class="button">&gt;</button>
+        <button @click="goForward" class="button" v-bind:disabled="disableForward">&gt;</button>
     </div>
 </template>
 
@@ -14,6 +14,7 @@
         data() {
             return {
                 disableBack: true,
+                disableForward: true,
                 historyPositionIndex: 0
             }
         },
@@ -30,8 +31,10 @@
             const vm = this;
 
             eventBus.$on('route-changed', (to, from) => {
+                const windowHistory = window.history.length - 1;
                 vm.historyPositionIndex++;
                 vm.disableBack = vm.historyPositionIndex <= 1;
+                vm.disableForward = vm.historyPositionIndex === windowHistory;
             });
         }
     });
