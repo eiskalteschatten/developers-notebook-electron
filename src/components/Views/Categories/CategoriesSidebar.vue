@@ -1,7 +1,8 @@
 <template>
     <Sidebar>
-        sidebar here!
-        {{ category }}
+        sidebar here!<br>
+        {{ category }}<br>
+        id: {{ id }}
     </Sidebar>
 </template>
 
@@ -12,17 +13,27 @@
     import Sidebar from '../Sidebar';
 
     export default Vue.extend({
+        props: ['id'],
         data() {
             return {
-                id: $router.param.id,
                 category: {}
             }
         },
         components: {
             Sidebar
         },
+        methods: {
+            async getCategory() {
+                this.category = await Category.findById(this.id);
+            }
+        },
         async mounted() {
-            this.category = await Category.findById(this.id);
+            this.getCategory();
+        },
+        watch: {
+            id: async function() {
+                this.getCategory();
+            }
         }
     });
 </script>

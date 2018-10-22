@@ -19,7 +19,6 @@ export const routeTitles = {
 };
 
 export default new VueRouter({
-    mode: 'history',
     routes: [{
         path: '/categories',
         component: ViewWrapper,
@@ -32,7 +31,8 @@ export default new VueRouter({
             {
                 path: 'edit/:id/',
                 name: 'editCategory',
-                components: { default: CategoriesList, sidebar: CategoriesSidebar }
+                components: { default: CategoriesList, sidebar: CategoriesSidebar },
+                props: { default: false, sidebar: true }
             },
             {
                 path: 'view/:id/',
