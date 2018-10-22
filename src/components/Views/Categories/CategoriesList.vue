@@ -1,7 +1,7 @@
 <template>
     <div class="full-width">
         <list scrollable="false">
-            <list-item>
+            <list-item v-bind:class="getListItemClasses(1)">
                 <div class="color-stripe" style="background-color: red;"></div>
                 <div @click="viewCategory(1)" class="content">
                     <div class="name">Name</div>
@@ -11,7 +11,7 @@
                     <router-link :to="{ name: 'editCategory', params: { id: 1 }}">Edit</router-link>
                 </div>
             </list-item>
-            <list-item>
+            <list-item v-bind:class="getListItemClasses(2)">
                 <div class="color-stripe" style="background-color: blue;"></div>
                 <div @click="viewCategory(2)" class="content">
                     <div class="name">Another one</div>
@@ -35,7 +35,7 @@
     import ListItem from '../../List/ListItem.vue';
 
     export default Vue.extend({
-        props: ['selectedCategoryId'],
+        props: ['id'],
         data() {
             return {
                 categories: []
@@ -44,6 +44,12 @@
         methods: {
             viewCategory(id) {
                 router.push({ name: 'viewCategory', params: { id }});
+            },
+            getListItemClasses(id) {
+                if (this.id === id) {
+                    return 'selected';
+                }
+                return '';
             }
         },
         components: {
@@ -57,6 +63,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '../../../assets/scss/variables';
+
     .list-item {
         display: flex;
         flex-direction: row;
@@ -79,6 +87,22 @@
             .description {
                 font-size: .8em;
                 opacity: .7;
+            }
+        }
+    }
+
+    .dark {
+        .list-item {
+            &.selected {
+                background-color: lighten($mainBgDark, 4%);
+            }
+        }
+    }
+
+    .light {
+        .list-item {
+            &.selected {
+                background-color: darken($mainBgLight, 4%);
             }
         }
     }

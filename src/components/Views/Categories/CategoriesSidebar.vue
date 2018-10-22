@@ -47,7 +47,7 @@
         },
         watch: {
             id: async function() {
-                this.getCategory();
+                await this.getCategory();
             }
         }
     });
