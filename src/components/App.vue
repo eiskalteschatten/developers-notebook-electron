@@ -6,7 +6,7 @@
             <div class="main-view">
                 <header class="main-header">
                     <div class="nav-buttons float-left">
-                        nav buttons
+                        <back-forward/>
                     </div>
                     <h1 class="float-left">{{ viewTitle }}</h1>
                 </header>
@@ -29,6 +29,7 @@
     import {remote} from 'electron';
 
     import LeftNav from './Nav.vue';
+    import BackForward from './Header/BackForward.vue';
     import Modal from './Modal.vue';
     import AboutModal from './Modal/About.vue';
 
@@ -82,6 +83,7 @@
         },
         components: {
             LeftNav,
+            BackForward,
             Modal,
             AboutModal
         }
@@ -171,7 +173,7 @@
         }
 
         .main-structure {
-            .view {
+            .main-view {
                 padding-top: $titleBarHeight;
             }
         }
