@@ -10,8 +10,8 @@ $boxShadowColorLight: darken($mainBgLight, 50%);
 
 $modalContainerBgDark: rgba(2, 2, 2, .5);
 $modalContainerBgLight: rgba(240, 240, 240, .8);
-$modalCloseXDark: '../images/dark/modal-close-x.svg';
-$modalCloseXLight: '../images/light/modal-close-x.svg';
+$modalCloseXDark: '../assets/images/dark/modal-close-x.svg';
+$modalCloseXLight: '../assets/images/light/modal-close-x.svg';
 $modalHeaderBorderColorDark: darken($mainFontColorDark, 70%);
 $modalHeaderBorderColorLight: lighten($mainFontColorLight, 80%);
 

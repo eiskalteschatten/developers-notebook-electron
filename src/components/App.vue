@@ -78,6 +78,8 @@
 </script>
 
 <style lang="scss">
+    @import '../assets/scss/variables';
+
     $titleBarHeight: 22px;
 
     .structure-wrapper {
@@ -95,6 +97,34 @@
             margin-left: 15px;
         }
     }
+
+    .modal-container {
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        position: fixed;
+        top: 0;
+        transition: all 400ms;
+        width: 100%;
+        z-index: 100;
+
+        &.open {
+            opacity: 1;
+        }
+    }
+
+    .dark {
+        .modal-container {
+            background: $modalContainerBgDark;
+        }
+    }
+
+    .light {
+        .modal-container {
+            background: $modalContainerBgLight;
+        }
+    }
+
 
     .darwin {
         .title-bar {
