@@ -5,7 +5,7 @@
             <left-nav/>
             <div class="main-view">
                 <header class="main-header">
-                    <div class="nav-buttons float-left">
+                    <div class="float-left">
                         <back-forward/>
                     </div>
                     <h1 class="float-left">{{ viewTitle }}</h1>

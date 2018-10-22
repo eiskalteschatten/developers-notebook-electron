@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="nav-buttons">
         <button @click="goBack" class="button" v-bind:disabled="disableBack">&larr;</button>
         <button @click="goForward" class="button" v-bind:disabled="disableForward">&rarr;</button>
     </div>
@@ -45,5 +45,9 @@
         font-size: 1.4em;
         outline: none;
         padding: 1px 8px;
+    }
+
+    .nav-buttons {
+        margin-top: 9px;
     }
 </style>
