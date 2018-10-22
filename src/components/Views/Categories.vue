@@ -1,14 +1,14 @@
 <template>
     <div class="full-width">
         <list scrollable="false">
-            <list-item>
+            <list-item @click="selectCategory">
                 <div class="color-stripe" style="background-color: red;"></div>
                 <div class="content">
                     <div class="name">Name</div>
                     <div class="description">The description goes here</div>
                 </div>
             </list-item>
-            <list-item>
+            <list-item @click="selectCategory">
                 <div class="color-stripe" style="background-color: blue;"></div>
                 <div class="content">
                     <div class="name">Another one</div>
@@ -29,7 +29,13 @@
     export default Vue.extend({
         data() {
             return {
-                categories: []
+                categories: [],
+                seletedCategory: -1
+            }
+        },
+        methods: {
+            selectCategory() {
+
             }
         },
         components: {

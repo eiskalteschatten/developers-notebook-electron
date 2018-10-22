@@ -16,6 +16,7 @@
 
     .list-item {
         border-radius: 5px;
+        cursor: default;
         padding: 15px;
     }
 
