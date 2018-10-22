@@ -40,6 +40,10 @@
             background-image: url(../../assets/images/projects-icon.svg);
         }
 
+        &.clients {
+            background-image: url(../../assets/images/clients-icon.svg);
+        }
+
         &.projects {
             background-image: url(../../assets/images/projects-icon.svg);
         }
