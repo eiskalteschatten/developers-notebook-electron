@@ -16,10 +16,12 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 - [ ] Categories
     - [ ] Create categories
     - [ ] Archive categories
+    - [ ] Pagination
     - [ ] Blank category overview page
 - [ ] Clients
     - [ ] Create clients
     - [ ] Archive clients
+    - [ ] Pagination
     - [ ] Blank client overview page
     - [ ] Add clients module to category overview page
 - [ ] Preferences
@@ -37,13 +39,16 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 - [ ] Projects
     - [ ] Create projects
     - [ ] Finish projects
+    - [ ] Pagination
     - [ ] Create project overview page
         - [ ] How much time did the project take?
             - Add up the time taken by issues and to dos
             - Start and end date of the project
     - [ ] Add projects to client overview page
 - [ ] To dos
+    - [ ] Pagination
 - [ ] Issues
+    - [ ] Pagination
 - [ ] Allow raw SQL queries for clients, projects, to dos & issues. Show the database schema in a sidebar.
 - [ ] Update category, client and project overview pages
 - [ ] Search for projects, to dos, issues
@@ -51,13 +56,16 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 ### 0.3.0
 - [ ] Tools (color picker/converter, image and file compression, etc)
 - [ ] Bookmarks
+    - [ ] Pagination
 - [ ] Allow raw SQL queries for bookmarks. Show the database schema in a sidebar.
 - [ ] Update category, client and project overview pages
 - [ ] Search for bookmarks
 
 ### 0.4.0
 - [ ] Notes
+    - [ ] Pagination
 - [ ] Code cache
+    - [ ] Pagination
 - [ ] Allow raw SQL queries for notes & code cache. Show the database schema in a sidebar.
 - [ ] Update category, client and project overview pages
 - [ ] Search for code cache, notes
@@ -68,6 +76,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 
 ### 1.1.0
 - [ ] Journal
+    - [ ] Pagination
 - [ ] Allow raw SQL queries for journal. Show the database schema in a sidebar.
 - [ ] Update category, client and project overview pages
 - [ ] Search for journal
