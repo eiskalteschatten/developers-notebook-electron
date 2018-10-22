@@ -58,12 +58,26 @@ const template = [
             },
             {type: 'separator'},
             {
-                label: 'Projects',
+                label: 'Categories',
                 accelerator: 'CmdOrCtrl+1',
                 click: async (item, focusedWindow) => {
-                    focusedWindow.webContents.send('open-route', '/projects');
+                    focusedWindow.webContents.send('open-route', '/categories');
                 }
             },
+            {
+                label: 'Clients',
+                accelerator: 'CmdOrCtrl+2',
+                click: async (item, focusedWindow) => {
+                    focusedWindow.webContents.send('open-route', '/clients');
+                }
+            },
+            // {
+            //     label: 'Projects',
+            //     accelerator: 'CmdOrCtrl+1',
+            //     click: async (item, focusedWindow) => {
+            //         focusedWindow.webContents.send('open-route', '/projects');
+            //     }
+            // },
             {type: 'separator'},
             {role: 'resetzoom'},
             {role: 'zoomin'},
