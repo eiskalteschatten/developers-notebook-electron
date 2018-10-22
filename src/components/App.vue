@@ -115,13 +115,13 @@
 
     .dark {
         .modal-container {
-            background: $modalContainerBgDark;
+            background: rgba(2, 2, 2, .5);
         }
     }
 
     .light {
         .modal-container {
-            background: $modalContainerBgLight;
+            background: rgba(240, 240, 240, .8);
         }
     }
 

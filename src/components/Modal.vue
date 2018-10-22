@@ -76,11 +76,11 @@
             box-shadow: 0 0 25px $boxShadowColorDark;
 
             .modal-close {
-                background: url($modalCloseXDark) no-repeat center;
+                background: url('../assets/images/dark/modal-close-x.svg') no-repeat center;
             }
 
             .modal-header {
-                border-bottom: 1px solid $modalHeaderBorderColorDark;
+                border-bottom: 1px solid darken($mainFontColorDark, 70%);
             }
         }
     }
@@ -91,11 +91,11 @@
             box-shadow: 0 0 25px $boxShadowColorLight;
 
             .modal-close {
-                background: url($modalCloseXDark) no-repeat center;
+                background: url('../assets/images/light/modal-close-x.svg') no-repeat center;
             }
 
             .modal-header {
-                border-bottom: 1px solid $modalHeaderBorderColorLight;
+                border-bottom: 1px solid lighten($mainFontColorLight, 80%);
             }
         }
     }

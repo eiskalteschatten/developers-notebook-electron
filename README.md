@@ -28,7 +28,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 - [x] Add Vue Routing to remember where the user was when the program is next launched. Save the user's location in localStorage when switching routes.
 - [x] About modal
 - [ ] Back and forward navigation button using Vue's routing
-- [ ] Figure out a better way to have two themes with Vue's Single File Components
+- [x] Figure out a better way to have two themes with Vue's Single File Components
 
 
 ## Roadmap

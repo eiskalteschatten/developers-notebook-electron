@@ -53,8 +53,10 @@ const commonConfig = {
             test: /\.(png|jpg|gif|svg)$/,
             loader: 'file-loader',
             options: {
-                name: '[name].[ext]',
-                outputPath: '../assets/images',
+                name: '[path][name].[ext]',
+                publicPath: '../',
+                useRelativePath: true,
+                context: path.resolve(__dirname, 'src')
             }
         }]
     },
