@@ -1,5 +1,5 @@
 <template>
-    <Sidebar>
+    <Sidebar closeRoute="/categories">
         <h3 class="sidebar-title">Edit Category</h3>
 
         <div class="form-group">
