@@ -15,8 +15,13 @@
     @import '../../assets/scss/variables';
 
     .sidebar {
-        min-width: 200px;
+        min-width: 300px;
         padding: 15px;
+
+        .sidebar-title {
+            font-size: 1.1em;
+            margin-top: 0;
+        }
     }
 
     .dark {
