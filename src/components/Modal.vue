@@ -48,6 +48,8 @@
         .modal-close {
             $size: 15px;
 
+            background-position: center;
+            background-repeat: no-repeat;
             background-size: $size;
             cursor: pointer;
             height: $size;
@@ -76,7 +78,7 @@
             box-shadow: 0 0 25px $boxShadowColorDark;
 
             .modal-close {
-                background: url('../assets/images/dark/modal-close-x.svg') no-repeat center;
+                background-image: url('../assets/images/dark/modal-close-x.svg');
             }
 
             .modal-header {
@@ -91,7 +93,7 @@
             box-shadow: 0 0 25px $boxShadowColorLight;
 
             .modal-close {
-                background: url('../assets/images/light/modal-close-x.svg') no-repeat center;
+                background-image: url('../assets/images/light/modal-close-x.svg');
             }
 
             .modal-header {
