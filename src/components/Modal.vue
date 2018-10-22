@@ -1,6 +1,6 @@
 <template>
     <div class="modal">
-        <div class="modal-close" @click="closeModal"></div>
+        <close-button @click="closeModal"></close-button>
         <slot/>
     </div>
 </template>
@@ -9,11 +9,16 @@
     import Vue from 'vue';
     import {eventBus} from '../app';
 
+    import CloseButton from './Elements/CloseButton.vue';
+
     export default Vue.extend({
         methods: {
             closeModal() {
                 eventBus.$emit('toggle-modal');
             }
+        },
+        components: {
+            CloseButton
         }
     });
 </script>
@@ -45,20 +50,6 @@
             margin-top: 0;
         }
 
-        .modal-close {
-            $size: 15px;
-
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: $size;
-            cursor: pointer;
-            height: $size;
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            width: $size;
-        }
-
         .modal-scroll {
             flex: 1 1 auto;
             overflow: auto;
@@ -77,10 +68,6 @@
             background: $mainBgDark;
             box-shadow: 0 0 25px $boxShadowColorDark;
 
-            .modal-close {
-                background-image: url('../assets/images/dark/modal-close-x.svg');
-            }
-
             .modal-header {
                 border-bottom: 1px solid darken($mainFontColorDark, 70%);
             }
@@ -91,10 +78,6 @@
         .modal {
             background: $mainBgLight;
             box-shadow: 0 0 25px $boxShadowColorLight;
-
-            .modal-close {
-                background-image: url('../assets/images/light/modal-close-x.svg');
-            }
 
             .modal-header {
                 border-bottom: 1px solid lighten($mainFontColorLight, 80%);
