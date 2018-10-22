@@ -13,11 +13,28 @@ const template = [
         label: 'File',
         submenu: [
             {
-                label: 'New Project',
-                accelerator: 'CmdOrCtrl+N',
-                click: async (item, focusedWindow) => {
-                    focusedWindow.webContents.send('create-new-project');
-                }
+                label: 'New',
+                submenu: [
+                    {
+                        label: 'Category',
+                        click: (item, focusedWindow) => {
+                            focusedWindow.webContents.send('create-new', 'category');
+                        }
+                    },
+                    {
+                        label: 'Client',
+                        click: (item, focusedWindow) => {
+                            focusedWindow.webContents.send('create-new', 'client');
+                        }
+                    },
+                    // {
+                    //     label: 'Project',
+                    //     accelerator: 'CmdOrCtrl+N',
+                    //     click: (item, focusedWindow) => {
+                    //         focusedWindow.webContents.send('create-new', 'project');
+                    //     }
+                    // },
+                ]
             },
             {type: 'separator'},
             {role: 'close'}
