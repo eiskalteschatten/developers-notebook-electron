@@ -7,3 +7,16 @@ $linkColorDark: #019CEE;
 $linkColorLight: #019CEE;
 $boxShadowColorDark: darken($mainBgDark, 50%);
 $boxShadowColorLight: darken($mainBgLight, 50%);
+
+$formBgDark: lighten($mainBgDark, 7%);
+$formBgLight: lighten($mainBgLight, 7%);
+$formColorDark: $mainFontColorDark;
+$formColorLight: $mainFontColorLight;
+$buttonBgLight: lighten($mainBgLight, 7%);
+$buttonBgDark: lighten($mainBgDark, 7%);
+$buttonColorDark: $mainFontColorDark;
+$buttonColorLight: $mainFontColorLight;
+$buttonHoverBgDark: darken($buttonBgDark, 2%);
+$buttonHoverBgLight: darken($buttonBgLight, 2%);
+$buttonActiveBgDark: darken($buttonBgDark, 10%);
+$buttonActiveBgLight: darken($buttonBgLight, 10%);

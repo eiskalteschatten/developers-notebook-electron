@@ -1,0 +1,84 @@
+.form-group {
+    margin-bottom: 20px;
+
+    label {
+        display: block;
+        font-size: .8em;
+        margin-bottom: 10px;
+        opacity: .7;
+        -webkit-user-select: none;
+    }
+}
+
+.form-control {
+    border: none;
+    font-size: 1em;
+    padding: 8px;
+
+    &[type="date"] {
+        padding: 5px;
+    }
+
+    &:disabled {
+        opacity: .5;
+    }
+
+    &.full-width {
+        width: 100%;
+    }
+
+    &.book-textarea {
+        min-height: 200px;
+    }
+}
+
+.button {
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    padding: 5px 10px;
+
+    &:disabled {
+        opacity: 0.5;
+    }
+}
+
+.dark {
+    .form-control {
+        background: $formBgDark;
+        color: $formColorDark;
+    }
+
+    .button {
+        background-color: $buttonBgDark;
+        color: $buttonColorDark;
+
+        &:hover {
+            background-color: $buttonHoverBgDark;
+        }
+
+        &:active {
+            background-color: $buttonActiveBgDark;
+        }
+    }
+}
+
+.light {
+    .form-control {
+        background: $formBgLight;
+        color: $formColorLight;
+    }
+
+    .button {
+        background-color: $buttonBgLight;
+        color: $buttonColorLight;
+
+        &:hover {
+            background-color: $buttonHoverBgLight;
+        }
+
+        &:active {
+            background-color: $buttonActiveBgLight;
+        }
+    }
+}
