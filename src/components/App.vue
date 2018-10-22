@@ -3,8 +3,16 @@
         <div class="title-bar" v-if="showTitlebar" @dblclick="maximizeWindow"></div>
         <div class="main-structure">
             <left-nav/>
-            <div class="view">
-                <router-view/>
+            <div class="main-view">
+                <header class="main-header">
+                    <div class="nav-buttons float-left">
+                        nav buttons
+                    </div>
+                    <h1 class="float-left">{{ viewTitle }}</h1>
+                </header>
+                <div class="view">
+                    <router-view/>
+                </div>
             </div>
         </div>
         <div class="modal-container" v-if="showModal" v-bind:class="{ 'open': showOpenModalClass }" @click="closeModal">
@@ -67,7 +75,10 @@
                         self.showOpenModalClass = true;
                     }, 50);
                 }
-            });
+            }),
+            eventBus.$on('route-changed', (to, from) => {
+                this.viewTitle = to.name;
+            })
         },
         components: {
             LeftNav,
@@ -77,10 +88,15 @@
     });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import '../assets/scss/variables';
 
     $titleBarHeight: 22px;
+
+    h1 {
+        font-size: 1.2em;
+        padding: 0 0 0 15px;
+    }
 
     .structure-wrapper {
         height: 100%;
@@ -93,8 +109,23 @@
         height: 100%;
         width: 100%;
 
-        .view {
+        .main-view {
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: column;
             margin-left: 15px;
+
+            .main-header {
+                flex: 0 1 auto;
+            }
+
+            .view {
+                display: flex;
+                flex: 1 1 auto;
+                flex-direction: row;
+                overflow: auto;
+                position: relative;
+            }
         }
     }
 
@@ -141,7 +172,6 @@
 
         .main-structure {
             .view {
-                margin-left: 15px;
                 padding-top: $titleBarHeight;
             }
         }
