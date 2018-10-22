@@ -15,11 +15,13 @@ Developer's Notebook is intended to be a cross-platform, open-source application
     - [x] Main menu
 - [ ] Categories
     - [ ] Create categories
+    - [ ] Edit & delete categories
     - [ ] Archive categories
     - [ ] Pagination
     - [ ] Blank category overview page
 - [ ] Clients
     - [ ] Create clients
+    - [ ] Edit & delete clients
     - [ ] Archive clients
     - [ ] Pagination
     - [ ] Blank client overview page
@@ -38,6 +40,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 ### 0.2.0
 - [ ] Projects
     - [ ] Create projects
+    - [ ] Edit & delete projects
     - [ ] Finish projects
     - [ ] Pagination
     - [ ] Create project overview page
