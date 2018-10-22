@@ -11,7 +11,11 @@ export default new VueRouter({
     routes: [{
         path: '/categories',
         name: 'Categories',
-        component: Categories
+        component: Categories,
+        children: [
+            { path: '/edit/:id/', component: Categories },
+            { path: '/view/:id/', component: Categories }
+        ]
     },
     {
         path: '/clients',
