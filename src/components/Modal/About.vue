@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-6">
-                <img src="../../assets/images/icon.svg" class="icon">
+                <div class="icon"></div>
             </div>
             <div class="col-xs-6">
                 <div class="padding">
@@ -57,6 +57,9 @@
     }
 
     .icon {
+        background: url('../../assets/images/icon.svg') no-repeat;
+        background-size: cover;
+        height: 175px;
         width: 175px;
     }
 
