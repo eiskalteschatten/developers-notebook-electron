@@ -13,15 +13,15 @@ Developer's Notebook is intended to be a cross-platform, open-source application
     - [x] Nav column on the left that switches views
     - [x] Light and dark themes and the ability to switch between them
     - [x] Main menu
+- [ ] Categories
+    - [ ] Create categories
+    - [ ] Archive categories
+    - [ ] Blank category overview page
 - [ ] Clients
     - [ ] Create clients
     - [ ] Archive clients
     - [ ] Blank client overview page
-- [ ] Projects
-    - [ ] Create projects
-    - [ ] Archive projects
-    - [ ] Blank project overview page
-    - [ ] Add projects to client overview page
+    - [ ] Add clients module to category overview page
 - [ ] Preferences
     - [ ] Switch themes
     - [ ] Move database (similar to iTerm2's preferences)
@@ -34,30 +34,35 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 ## Roadmap
 
 ### 0.2.0
+- [ ] Projects
+    - [ ] Create projects
+    - [ ] Archive projects
+    - [ ] Blank project overview page
+    - [ ] Add projects to client overview page
 - [ ] To dos
 - [ ] Issues
 - [ ] Allow raw SQL queries for clients, projects, to dos & issues. Show the database schema in a sidebar.
-- [ ] Update client and project overview pages
+- [ ] Update category, client and project overview pages
 - [ ] Search for projects, to dos, issues
 
 ### 0.3.0
 - [ ] Tools (color picker/converter, image and file compression, etc)
 - [ ] Bookmarks
 - [ ] Allow raw SQL queries for bookmarks. Show the database schema in a sidebar.
-- [ ] Update client and project overview pages
+- [ ] Update category, client and project overview pages
 - [ ] Search for bookmarks
 
 ### 0.4.0
 - [ ] Notes
 - [ ] Code cache
 - [ ] Allow raw SQL queries for notes & code cache. Show the database schema in a sidebar.
-- [ ] Update client and project overview pages
+- [ ] Update category, client and project overview pages
 - [ ] Search for code cache, notes
 
 ### 0.4.0
 - [ ] Journal
 - [ ] Allow raw SQL queries for journal. Show the database schema in a sidebar.
-- [ ] Update client and project overview pages
+- [ ] Update category, client and project overview pages
 - [ ] Search for journal
 
 
