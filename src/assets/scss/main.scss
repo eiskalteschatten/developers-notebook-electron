@@ -41,6 +41,10 @@ body {
     visibility: hidden !important;
 }
 
+.full-width {
+    width: 100%;
+}
+
 .loading {
     background: url('../images/loader.svg') no-repeat center center;
     background-size: 32px;

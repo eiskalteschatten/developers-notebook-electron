@@ -1,5 +1,5 @@
 <template>
-    <div v-bind:class="{'scrollable': scrollable}">
+    <div v-bind:class="{'scrollable': scrollable}" class="list">
         <slot/>
     </div>
 </template>
@@ -17,8 +17,12 @@
 </script>
 
 <style lang="scss" scoped>
-    .scrollable {
-        overflow: auto;
-        position: relative;
+    .list {
+        width: 100%;
+
+        &.scrollable {
+            overflow: auto;
+            position: relative;
+        }
     }
 </style>
