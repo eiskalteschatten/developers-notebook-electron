@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button>New Category</button>
+        <button class="button">New Category</button>
     </div>
 </template>
 

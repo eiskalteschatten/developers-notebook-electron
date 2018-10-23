@@ -27,7 +27,7 @@ export default new VueRouter({
             {
                 path: '',
                 name: 'categories',
-                component: CategoriesList
+                components: { default: CategoriesList, topRightToolbar: CategoriesTopRightToolbar },
             },
             {
                 path: 'edit/:id/',
@@ -38,7 +38,7 @@ export default new VueRouter({
             {
                 path: 'view/:id/',
                 name: 'viewCategory',
-                component: CategoriesList
+                components: { default: CategoriesList, topRightToolbar: CategoriesTopRightToolbar },
             }
         ]
     },
