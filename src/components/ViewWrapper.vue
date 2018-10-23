@@ -1,18 +1,29 @@
 <template>
-    <div class="full-width flex-row">
-        <router-view class="main-column"></router-view>
-        <router-view class="sidebar" name="sidebar"></router-view>
+    <div class="full-width">
+        <toolbar/>
+        <div class="full-width flex-row view">
+            <router-view class="main-column"/>
+            <router-view class="sidebar" name="sidebar"/>
+        </div>
     </div>
 </template>
 
 <script>
     import Vue from 'vue';
+    import Toolbar from './Toolbar.vue';
 
     export default Vue.extend({
+        components: {
+            Toolbar
+        }
     });
 </script>
 
 <style lang="scss" scoped>
+    .view {
+        margin-top: 15px;
+    }
+
     .main-column {
         flex: 1 1 auto;
         margin-right: 15px;

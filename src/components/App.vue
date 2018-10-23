@@ -4,20 +4,7 @@
         <div class="main-structure">
             <left-nav/>
             <div class="main-view">
-                <header class="flex-0-1-auto flex-row">
-                    <div class="flex-0-0-auto">
-                        <back-forward/>
-                    </div>
-                    <div class="flex-1-0-auto">
-                        <h1>{{ viewTitle }}</h1>
-                    </div>
-                    <div class="flex-0-0-auto top-right-toolbar">
-                        <router-view name="topRightToolbar"/>
-                    </div>
-                </header>
-                <div class="view">
-                    <router-view/>
-                </div>
+                <router-view/>
             </div>
         </div>
         <div class="modal-container" v-if="showModal" v-bind:class="{ 'open': showOpenModalClass }" @click="closeModal">
@@ -35,7 +22,6 @@
     import {routeTitles} from '../router';
 
     import LeftNav from './Nav.vue';
-    import BackForward from './Header/BackForward.vue';
     import Modal from './Modal.vue';
     import AboutModal from './Modal/About.vue';
 
@@ -47,7 +33,6 @@
         },
         data() {
             return {
-                viewTitle: '',
                 showTitlebar: false,
                 showModal: false,
                 showOpenModalClass: false
@@ -62,8 +47,6 @@
             }
         },
         created() {
-            const vm = this;
-
             eventBus.$on('toggle-modal', modal => {
                 if (this.showModal && modal && this.modalToShow !== modal) return;
 
@@ -86,14 +69,9 @@
                     }, 50);
                 }
             });
-
-            eventBus.$on('route-changed', (to, from) => {
-                vm.viewTitle = routeTitles[to.name];
-            });
         },
         components: {
             LeftNav,
-            BackForward,
             Modal,
             AboutModal
         }
@@ -101,14 +79,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import '../assets/scss/variables';
-
     $titleBarHeight: 22px;
-
-    h1 {
-        font-size: 1.2em;
-        padding: 0 0 0 15px;
-    }
 
     .structure-wrapper {
         height: 100%;
@@ -121,22 +92,11 @@
         height: 100%;
         width: 100%;
 
-        .top-right-toolbar {
-            padding: 15px;
-        }
-
         .main-view {
             display: flex;
             flex: 1 1 auto;
             flex-direction: column;
             padding: 15px 0 0 15px;
-
-            .view {
-                display: flex;
-                flex: 1 1 auto;
-                flex-direction: row;
-                margin-top: 15px;
-            }
         }
     }
 

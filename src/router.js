@@ -1,8 +1,9 @@
 import VueRouter from 'vue-router';
-import ViewWrapper from './components/Views/ViewWrapper.vue';
+import ViewWrapper from './components/ViewWrapper.vue';
 
 import CategoriesList from './components/Views/Categories/List.vue';
 import CategoriesSidebar from './components/Views/Categories/Sidebar.vue';
+import CategoriesTopRightToolbar from './components/Views/Categories/TopRightToolbar.vue';
 
 import Clients from './components/Views/Clients.vue';
 import Projects from './components/Views/Projects.vue';
@@ -31,29 +32,47 @@ export default new VueRouter({
             {
                 path: 'edit/:id/',
                 name: 'editCategory',
-                components: { default: CategoriesList, sidebar: CategoriesSidebar },
+                components: { default: CategoriesList, sidebar: CategoriesSidebar, topRightToolbar: CategoriesTopRightToolbar },
                 props: { default: true, sidebar: true }
             },
             {
                 path: 'view/:id/',
                 name: 'viewCategory',
                 component: CategoriesList
-            },
+            }
         ]
     },
     {
         path: '/clients',
-        name: 'clients',
-        component: Clients
+        component: ViewWrapper,
+        children: [
+            {
+                path: '',
+                name: 'clients',
+                component: Clients
+            },
+        ]
     },
     {
         path: '/projects',
-        name: 'projects',
-        component: Projects
+        component: ViewWrapper,
+        children: [
+            {
+                path: '',
+                name: 'projects',
+                component: Projects
+            }
+        ]
     },
     {
         path: '/preferences',
-        name: 'preferences',
-        component: Preferences
+        component: ViewWrapper,
+        children: [
+            {
+                path: '',
+                name: 'preferences',
+                component: Preferences
+            }
+        ]
     }]
 });
