@@ -1,8 +1,8 @@
 import VueRouter from 'vue-router';
 import ViewWrapper from './components/Views/ViewWrapper.vue';
 
-import CategoriesList from './components/Views/Categories/CategoriesList.vue';
-import CategoriesSidebar from './components/Views/Categories/CategoriesSidebar.vue';
+import CategoriesList from './components/Views/Categories/List.vue';
+import CategoriesSidebar from './components/Views/Categories/Sidebar.vue';
 
 import Clients from './components/Views/Clients.vue';
 import Projects from './components/Views/Projects.vue';
