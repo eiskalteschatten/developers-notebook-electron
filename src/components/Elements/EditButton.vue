@@ -10,8 +10,6 @@
 </script>
 
 <style lang="scss">
-    @import '../../assets/scss/variables';
-
      .edit-button {
         $size: 15px;
 

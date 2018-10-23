@@ -12,7 +12,7 @@
                         <router-link :to="{ name: 'editCategory', params: { id: 1 }}">
                             <edit-button/>
                         </router-link>
-                        <delete-button/>
+                        <context-menu-button @click.native="showContextMenu"/>
                     </div>
                 </div>
             </list-item>
@@ -27,7 +27,7 @@
                         <router-link :to="{ name: 'editCategory', params: { id: 2 }}">
                             <edit-button/>
                         </router-link>
-                        <delete-button/>
+                        <context-menu-button @click.native="showContextMenu"/>
                     </div>
                 </div>
             </list-item>
@@ -45,7 +45,7 @@
     import List from '../../List.vue';
     import ListItem from '../../List/ListItem.vue';
     import EditButton from '../../Elements/EditButton.vue';
-    import DeleteButton from '../../Elements/DeleteButton.vue';
+    import ContextMenuButton from '../../Elements/ContextMenuButton.vue';
 
     export default Vue.extend({
         props: ['id'],
@@ -72,7 +72,7 @@
             List,
             ListItem,
             EditButton,
-            DeleteButton
+            ContextMenuButton
         },
         async mounted() {
             this.categories = await Category.getAllSorted();
@@ -120,7 +120,7 @@
                 transform: translateY(-50%);
 
                 a, div {
-                    margin-left: 8px;
+                    margin-left: 15px;
                 }
             }
         }
