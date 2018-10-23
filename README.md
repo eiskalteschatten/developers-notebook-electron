@@ -57,6 +57,10 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 - [ ] Search for projects, to dos, issues
 
 ### 0.3.0
+- [ ] Dashboard
+    - [ ] Logo?
+    - [ ] Links to creating new projects, clients, to dos and issues
+    - [ ] List of projects, to dos and issues due within the next week
 - [ ] Tools (color picker/converter, image and file compression, etc)
 - [ ] Bookmarks
     - [ ] Pagination
@@ -72,6 +76,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 - [ ] Allow raw SQL queries for notes & code cache. Show the database schema in a sidebar.
 - [ ] Update category, client and project overview pages
 - [ ] Search for code cache, notes
+- [ ] Update dashboard with links to creating notes and new code stashes
 
 ### 1.0.0
 - [ ] Command palette
@@ -83,6 +88,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 - [ ] Allow raw SQL queries for journal. Show the database schema in a sidebar.
 - [ ] Update category, client and project overview pages
 - [ ] Search for journal
+- [ ] Update dashboard with links to creating journal entries
 
 
 ### Future Ideos
