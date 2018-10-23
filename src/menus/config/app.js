@@ -16,15 +16,15 @@ const template = [
                 label: 'New',
                 submenu: [
                     {
-                        label: 'Category',
-                        click: (item, focusedWindow) => {
-                            focusedWindow.webContents.send('category-event', 'new');
-                        }
-                    },
-                    {
                         label: 'Client',
                         click: (item, focusedWindow) => {
                             focusedWindow.webContents.send('client-event', 'new');
+                        }
+                    },
+                    {
+                        label: 'Category',
+                        click: (item, focusedWindow) => {
+                            focusedWindow.webContents.send('category-event', 'new');
                         }
                     },
                     // {
@@ -75,17 +75,17 @@ const template = [
             },
             {type: 'separator'},
             {
-                label: 'Categories',
+                label: 'Clients',
                 accelerator: 'CmdOrCtrl+1',
                 click: async (item, focusedWindow) => {
-                    focusedWindow.webContents.send('open-route', '/categories');
+                    focusedWindow.webContents.send('open-route', '/clients');
                 }
             },
             {
-                label: 'Clients',
+                label: 'Categories',
                 accelerator: 'CmdOrCtrl+2',
                 click: async (item, focusedWindow) => {
-                    focusedWindow.webContents.send('open-route', '/clients');
+                    focusedWindow.webContents.send('open-route', '/categories');
                 }
             },
             // {
