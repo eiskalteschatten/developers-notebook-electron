@@ -1,8 +1,8 @@
 <template>
-    <div class="full-width">
+    <div class="full-size">
         <toolbar/>
-        <div class="full-width flex-row view">
-            <router-view class="main-column"/>
+        <div class="full-size flex-row view">
+            <router-view class="main-column flex-1-1-auto"/>
             <router-view class="sidebar" name="sidebar"/>
         </div>
     </div>
@@ -25,7 +25,6 @@
     }
 
     .main-column {
-        flex: 1 1 auto;
         margin-right: 15px;
         overflow: auto;
         padding-bottom: 15px;
@@ -33,7 +32,6 @@
     }
 
     .sidebar {
-        flex: 0 0 auto;
         overflow: auto;
         position: relative;
     }
