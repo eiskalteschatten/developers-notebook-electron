@@ -55,6 +55,22 @@ body {
     flex-direction: row;
 }
 
+.flex-1-1-auto {
+    flex: 1 1 auto;
+}
+
+.flex-0-1-auto {
+    flex: 0 1 auto;
+}
+
+.flex-1-0-auto {
+    flex: 1 0 auto;
+}
+
+.flex-0-0-auto {
+    flex: 0 0 auto;
+}
+
 .loading {
     background: url('../images/loader.svg') no-repeat center center;
     background-size: 32px;

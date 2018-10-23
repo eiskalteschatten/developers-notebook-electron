@@ -4,11 +4,16 @@
         <div class="main-structure">
             <left-nav/>
             <div class="main-view">
-                <header class="main-header">
-                    <div class="float-left">
+                <header class="flex-0-1-auto flex-row">
+                    <div class="flex-0-0-auto">
                         <back-forward/>
                     </div>
-                    <h1 class="float-left">{{ viewTitle }}</h1>
+                    <div class="flex-1-0-auto">
+                        <h1>{{ viewTitle }}</h1>
+                    </div>
+                    <div class="flex-0-0-auto top-right-toolbar">
+                        <router-view name="topRightToolbar"/>
+                    </div>
                 </header>
                 <div class="view">
                     <router-view/>
@@ -116,15 +121,15 @@
         height: 100%;
         width: 100%;
 
+        .top-right-toolbar {
+            padding: 15px;
+        }
+
         .main-view {
             display: flex;
             flex: 1 1 auto;
             flex-direction: column;
             padding: 15px 0 0 15px;
-
-            .main-header {
-                flex: 0 1 auto;
-            }
 
             .view {
                 display: flex;
