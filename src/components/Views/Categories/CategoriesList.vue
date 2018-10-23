@@ -1,7 +1,7 @@
 <template>
     <div class="full-width">
         <list scrollable="false">
-            <list-item v-bind:class="getListItemClasses(1)">
+            <list-item v-bind:class="getListItemClasses(1)" @contextmenu.native="showContextMenu">
                 <div class="color-stripe" style="background-color: red;"></div>
                 <div @click="viewCategory(1)" class="content">
                     <div class="name">Name</div>
@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </list-item>
-            <list-item v-bind:class="getListItemClasses(2)">
+            <list-item v-bind:class="getListItemClasses(2)" @contextmenu.native="showContextMenu">
                 <div class="color-stripe" style="background-color: blue;"></div>
                 <div @click="viewCategory(2)" class="content">
                     <div class="name">Another one</div>
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+    import {ipcRenderer} from 'electron';
     import Vue from 'vue';
     import router from '../../../router';
 
@@ -62,6 +63,9 @@
                     return 'selected';
                 }
                 return '';
+            },
+            showContextMenu() {
+                ipcRenderer.send('show-category-context-menu');
             }
         },
         components: {
