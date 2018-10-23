@@ -1,6 +1,6 @@
 'use strict';
 
-const {ipcMain} = require('electron');
+const {BrowserWindow, Menu, ipcMain} = require('electron');
 
 const {switchMenu} = require('../lib/preferences/theme');
 
