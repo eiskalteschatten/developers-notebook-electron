@@ -8,8 +8,6 @@ import setupEvents from './events';
 import router from './router';
 import App from './components/App.vue';
 
-import {routeTitles} from './router';
-
 
 export const eventBus = new Vue();
 
@@ -29,9 +27,7 @@ new Vue({
     },
     async mounted() {
         const savedRoute = getSavedRoute();
-        this.$router.push(savedRoute.fullPath);
-
-        sessionStorage.setItem('initialViewTitle', routeTitles[savedRoute.name]);
+        this.$router.replace(savedRoute.fullPath);
 
         setupEvents();
 

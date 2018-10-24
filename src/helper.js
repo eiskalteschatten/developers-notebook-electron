@@ -10,7 +10,7 @@ module.exports = {
         try {
             let savedRoute = localStorage.getItem('savedRoute') || defaultRoute;
 
-            if (typeof savedRoute !== Object) {
+            if (typeof savedRoute != 'object') {
                 savedRoute = JSON.parse(savedRoute);
             }
 
