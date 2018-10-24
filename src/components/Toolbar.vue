@@ -36,7 +36,7 @@
             const initialViewTitle = sessionStorage.getItem('initialViewTitle');
             if (initialViewTitle) {
                 this.viewTitle = initialViewTitle;
-                sessionStorage.setItem('initialViewTitle', '')
+                sessionStorage.setItem('initialViewTitle', '');
             }
         },
         components: {
