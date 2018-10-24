@@ -41,7 +41,7 @@
         },
         methods: {
             async getCategory() {
-                this.category = await Category.findById(this.id);
+                this.category = this.id ? await Category.findById(this.id) : {};
             },
             openColorPicker() {
                 document.getElementById('colorForm').click();
@@ -77,11 +77,6 @@
             saveCategoryTimer() {
                 clearTimeout(saveTimeout);
                 saveTimeout = setTimeout(this.saveCategory, 500);
-            }
-        },
-        async created() {
-            if (this.id) {
-                await this.getCategory();
             }
         },
         watch: {

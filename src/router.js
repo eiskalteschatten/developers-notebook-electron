@@ -37,12 +37,12 @@ export default new VueRouter({
             {
                 path: '',
                 name: 'categories',
-                components: { default: CategoriesList, topRightToolbar: CategoriesTopRightToolbar },
+                components: { default: CategoriesList, topRightToolbar: CategoriesTopRightToolbar }
             },
             {
                 path: 'new/',
                 name: 'newCategory',
-                components: { default: CategoriesList, sidebar: CategoriesSidebar, topRightToolbar: CategoriesTopRightToolbar },
+                components: { default: CategoriesList, sidebar: CategoriesSidebar, topRightToolbar: CategoriesTopRightToolbar }
             },
             {
                 path: 'edit/:id/',
@@ -53,7 +53,7 @@ export default new VueRouter({
             {
                 path: 'view/:id/',
                 name: 'viewCategory',
-                components: { default: CategoriesList, topRightToolbar: CategoriesTopRightToolbar },
+                components: { default: CategoriesList, topRightToolbar: CategoriesTopRightToolbar }
             }
         ]
     },
