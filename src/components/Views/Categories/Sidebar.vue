@@ -2,16 +2,16 @@
     <Sidebar closeRoute="/categories">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control full-width" id="name" v-model="category.name">
+            <input type="text" class="form-control full-width" id="name" v-model="category.name" @change="saveCategoryTimer">
         </div>
         <div class="form-group">
             <label for="decription">Description</label>
-            <textarea class="form-control full-width" id="decription" v-model="category.description"></textarea>
+            <textarea class="form-control full-width" id="decription" v-model="category.description" @change="saveCategoryTimer"></textarea>
         </div>
         <div class="flex-row">
             <div class="form-group color-form-group">
                 <label for="colorcolorForm">Color</label>
-                <input type="color" id="colorForm" class="hidden" v-model="category.color">
+                <input type="color" id="colorForm" class="hidden" v-model="category.color" @change="saveCategoryTimer">
                 <div class="color-stripe" v-bind:style="{ 'background-color': category.color }" @click="openColorPicker"></div>
             </div>
             <delete-button/>
