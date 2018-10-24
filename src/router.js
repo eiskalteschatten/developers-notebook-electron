@@ -28,7 +28,7 @@ export const defaultRoute = {
 export default new VueRouter({
     routes: [{
         path: '/',
-        redirect: { name: 'categories' }
+        redirect: { name: defaultRoute.name }
     },
     {
         path: '/categories',
