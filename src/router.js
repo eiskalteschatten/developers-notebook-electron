@@ -12,6 +12,7 @@ import Preferences from './components/Views/Preferences.vue';
 
 export const routeTitles = {
     categories: 'Categories',
+    newCategory: 'Categories',
     editCategory: 'Categories',
     viewCategory: 'Categories',
     clients: 'Clients',
@@ -33,6 +34,11 @@ export default new VueRouter({
                 path: '',
                 name: 'categories',
                 components: { default: CategoriesList, topRightToolbar: CategoriesTopRightToolbar },
+            },
+            {
+                path: 'new/',
+                name: 'newCategory',
+                components: { default: CategoriesList, sidebar: CategoriesSidebar, topRightToolbar: CategoriesTopRightToolbar },
             },
             {
                 path: 'edit/:id/',

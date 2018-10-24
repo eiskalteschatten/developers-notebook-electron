@@ -1,7 +1,5 @@
 <template>
     <Sidebar closeRoute="/categories">
-        <h3 class="sidebar-title">Edit Category</h3>
-
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control full-width" id="name" v-model="category.name">

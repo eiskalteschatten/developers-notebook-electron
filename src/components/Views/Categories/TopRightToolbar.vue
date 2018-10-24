@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="button">New Category</button>
+        <router-link :to="{ name: 'newCategory' }" class="button">New Category</router-link>
     </div>
 </template>
 
