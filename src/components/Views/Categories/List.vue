@@ -1,30 +1,15 @@
 <template>
     <div class="full-width">
         <list scrollable="false">
-            <list-item v-bind:class="getListItemClasses(1)" @contextmenu.native="showContextMenu">
-                <div class="color-stripe" style="background-color: red;"></div>
-                <div @click="viewCategory(1)" class="content">
-                    <div class="name">Name</div>
-                    <div class="description">The description goes here</div>
+            <list-item v-bind:class="getListItemClasses(category.id)" @contextmenu.native="showContextMenu" v-for="category in categories" :key="category.id">
+                <div class="color-stripe" v-bind:style="{ 'background-color': category.color }"></div>
+                <div @click="viewCategory(category.id)" class="content">
+                    <div class="name">{{ category.name }}</div>
+                    <div class="description">{{ category.description }}</div>
                 </div>
                 <div class="buttons">
                     <div class="buttons-wrapper">
-                        <router-link :to="{ name: 'editCategory', params: { id: 1 }}">
-                            <edit-button/>
-                        </router-link>
-                        <context-menu-button @click.native="showContextMenu"/>
-                    </div>
-                </div>
-            </list-item>
-            <list-item v-bind:class="getListItemClasses(2)" @contextmenu.native="showContextMenu">
-                <div class="color-stripe" style="background-color: blue;"></div>
-                <div @click="viewCategory(2)" class="content">
-                    <div class="name">Another one</div>
-                    <div class="description">Here is another description</div>
-                </div>
-                <div class="buttons">
-                    <div class="buttons-wrapper">
-                        <router-link :to="{ name: 'editCategory', params: { id: 2 }}">
+                        <router-link :to="{ name: 'editCategory', params: { id: category.id }}">
                             <edit-button/>
                         </router-link>
                         <context-menu-button @click.native="showContextMenu"/>
