@@ -27,7 +27,6 @@
             const self = this;
             document.onmouseup = function() {
                 if (dragging) {
-                    console.log(self.saveName);
                     const dragElement = document.getElementById(self.dragElementId);
                     document.onmousemove = null;
                     dragging = false;
