@@ -17,9 +17,8 @@
 
 <script>
     import Vue from 'vue';
-    import {eventBus} from '../app';
     import {remote} from 'electron';
-    import {routeTitles} from '../router';
+    import {eventBus} from '../app';
 
     import LeftNav from './Nav.vue';
     import Modal from './Modal.vue';

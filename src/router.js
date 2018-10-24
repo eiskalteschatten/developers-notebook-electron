@@ -19,6 +19,11 @@ export const routeTitles = {
     preferences: 'Preferences'
 };
 
+export const defaultRoute = {
+    fullPath: '/categories',
+    name: 'categories'
+};
+
 export default new VueRouter({
     routes: [{
         path: '/categories',

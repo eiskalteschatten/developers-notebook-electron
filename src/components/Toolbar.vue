@@ -26,11 +26,18 @@
             }
         },
         created() {
-            const vm = this;
+            const self = this;
 
             eventBus.$on('route-changed', (to, from) => {
-                vm.viewTitle = routeTitles[to.name];
+                self.viewTitle = routeTitles[to.name];
             });
+        },
+        mounted() {
+            const initialViewTitle = sessionStorage.getItem('initialViewTitle');
+            if (initialViewTitle) {
+                this.viewTitle = initialViewTitle;
+                sessionStorage.setItem('initialViewTitle', '')
+            }
         },
         components: {
             BackForward
