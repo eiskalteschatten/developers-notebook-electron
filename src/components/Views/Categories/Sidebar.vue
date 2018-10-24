@@ -2,11 +2,11 @@
     <Sidebar closeRoute="/categories">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control full-width" id="name" v-model="category.name" @change="saveCategoryTimer">
+            <input type="text" class="form-control full-width" id="name" v-model="category.name" @keyup="saveCategoryTimer">
         </div>
         <div class="form-group">
             <label for="decription">Description</label>
-            <textarea class="form-control full-width" id="decription" v-model="category.description" @change="saveCategoryTimer"></textarea>
+            <textarea class="form-control full-width" id="decription" v-model="category.description" @keyup="saveCategoryTimer"></textarea>
         </div>
         <div class="flex-row">
             <div class="form-group color-form-group">
@@ -47,11 +47,14 @@
                 document.getElementById('colorForm').click();
             },
             async saveCategory() {
+                const loader = document.getElementById('generalLoader');
                 const category = this.category;
                 const id = category.id;
 
                 try {
                     if (category.name) {
+                        loader.classList.remove('hidden');
+
                         if (!id) {
                             this.category = await Category.create(category);
                         }
@@ -62,10 +65,13 @@
                                 color: category.color
                             });
                         }
+
+                        loader.classList.add('hidden');
                     }
                 }
                 catch(error) {
                     console.error(error);
+                    loader.classList.add('hidden');
                 }
             },
             saveCategoryTimer() {

@@ -3,8 +3,11 @@
         <div class="flex-0-0-auto">
             <back-forward/>
         </div>
-        <div class="flex-1-0-auto">
+        <div class="flex-0-0-auto">
             <h1>{{ viewTitle }}</h1>
+        </div>
+        <div class="flex-1-0-auto loader-wraper">
+            <loader/>
         </div>
         <div class="flex-0-0-auto top-right-toolbar">
             <router-view name="topRightToolbar"/>
@@ -18,6 +21,7 @@
     import {routeTitles} from '../router';
 
     import BackForward from './Header/BackForward.vue';
+    import Loader from './Elements/Loader.vue';
 
     export default Vue.extend({
         data() {
@@ -33,7 +37,8 @@
             });
         },
         components: {
-            BackForward
+            BackForward,
+            Loader
         }
     });
 </script>
@@ -42,6 +47,10 @@
     h1 {
         font-size: 1.2em;
         padding: 0 0 0 15px;
+    }
+
+    .loader-wraper {
+        margin: 15px;
     }
 
     .top-right-toolbar {

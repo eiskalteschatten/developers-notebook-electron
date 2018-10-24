@@ -76,20 +76,6 @@ body {
     flex: 0 0 auto;
 }
 
-.loading {
-    background: url('../images/loader.svg') no-repeat center center;
-    background-size: 32px;
-
-    &.inline {
-        $size: 15px;
-        background-size: $size;
-        display: inline-block;
-        height: $size;
-        margin-right: 5px;
-        width: $size;
-    }
-}
-
 .dark {
     background: $mainBgDark;
     color: $mainFontColorDark;
@@ -108,5 +94,5 @@ body {
     }
 }
 
-@import "../../../node_modules/bootstrap/scss/bootstrap-grid";
+// @import "../../../node_modules/bootstrap/scss/bootstrap-grid";
 @import "forms";
