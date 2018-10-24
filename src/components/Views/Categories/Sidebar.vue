@@ -52,10 +52,10 @@
                 try {
                     if (this.category.name) {
                         if (id === '') {
-                            this.category = await Category.create(category);
+                            this.category = await Category.create(this.category);
                         }
                         else {
-                            await Category.update(category, {where: {id}});
+                            await Category.update(this.category, {where: {id}});
                         }
                     }
                 }
