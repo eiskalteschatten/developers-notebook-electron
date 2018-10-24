@@ -9,7 +9,7 @@ module.exports = {
     getSavedRoute: () => {
         try {
             const savedRoute = localStorage.getItem('savedRoute');
-            return typeof savedRoute != 'object' ? JSON.parse(savedRoute) : defaultRoute;
+            return savedRoute && typeof savedRoute != 'object' ? JSON.parse(savedRoute) : defaultRoute;
         }
         catch(error) {
             console.error(error);
