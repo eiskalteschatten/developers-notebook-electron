@@ -11,29 +11,25 @@
     export default Vue.extend({
         methods: {
             drag(e) {
-                // const mainView = document.getElementsByClassName('js-main-column')[0];
                 const sidebar = document.getElementById('sidebar');
                 dragging = true;
                 startX = e.pageX;
 
                 document.onmousemove = function(e2) {
-                    const newWidth = (startX - (e2.pageX + startX)) * -1; //e.pageX - sidebar.offsetLeft;
+                    const newWidth = window.innerWidth - e2.pageX;
                     sidebar.style.width = `${newWidth}px`;
                 };
             }
         },
         mounted() {
-            // $(document).mouseup(async function() {
-            //     if (dragging) {
-            //         $(document).unbind('mousemove');
-            //         dragging = false;
-
-            //         changePreferences({
-            //             sidebarWidth: parseInt($('#sidebarWrapper').css('width')),
-            //             middleColumnWidth: parseInt($('#bookListWrapper').css('width'))
-            //         });
-            //     }
-            // });
+            document.onmouseup = function() {
+                if (dragging) {
+                    const sidebar = document.getElementById('sidebar');
+                    document.onmousemove = null;
+                    dragging = false;
+                    localStorage.setItem('sidebarWidth', sidebar.style.width);
+                }
+            };
         }
     });
 </script>
