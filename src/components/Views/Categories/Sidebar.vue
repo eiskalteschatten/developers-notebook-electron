@@ -47,15 +47,20 @@
                 document.getElementById('colorForm').click();
             },
             async saveCategory() {
-                const id = this.category.id;
+                const category = this.category;
+                const id = category.id;
 
                 try {
-                    if (this.category.name) {
+                    if (category.name) {
                         if (!id) {
-                            this.category = await Category.create(this.category);
+                            this.category = await Category.create(category);
                         }
                         else {
-                            await Category.update(this.category, {where: {id}});
+                            await category.update({
+                                name: category.name,
+                                description: category.description,
+                                color: category.color
+                            });
                         }
                     }
                 }
@@ -66,6 +71,11 @@
             saveCategoryTimer() {
                 clearTimeout(saveTimeout);
                 saveTimeout = setTimeout(this.saveCategory, 500);
+            }
+        },
+        async created() {
+            if (this.id) {
+                await this.getCategory();
             }
         },
         watch: {
