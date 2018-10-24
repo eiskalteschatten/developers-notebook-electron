@@ -50,11 +50,13 @@
                 const id = this.category.id;
 
                 try {
-                    if (id === '') {
-                        this.category = await Category.create(category);
-                    }
-                    else {
-                        await Category.update(category, {where: {id}});
+                    if (this.category.name) {
+                        if (id === '') {
+                            this.category = await Category.create(category);
+                        }
+                        else {
+                            await Category.update(category, {where: {id}});
+                        }
                     }
                 }
                 catch(error) {
