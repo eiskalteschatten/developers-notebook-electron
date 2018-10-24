@@ -68,9 +68,6 @@
                 saveTimeout = setTimeout(this.saveCategory, 500);
             }
         },
-        async mounted() {
-            this.getCategory();
-        },
         watch: {
             id: async function() {
                 await this.getCategory();
