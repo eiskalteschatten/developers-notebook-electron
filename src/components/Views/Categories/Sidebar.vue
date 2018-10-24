@@ -26,6 +26,8 @@
     import Sidebar from '../Sidebar';
     import DeleteButton from '../../Elements/DeleteButton.vue';
 
+    let saveTimeout;
+
     export default Vue.extend({
         props: ['id'],
         data() {
@@ -43,6 +45,23 @@
             },
             openColorPicker() {
                 document.getElementById('colorForm').click();
+            },
+            async saveCategory() {
+                try {
+                    if (this.category.id === '') {
+                        this.category = await Category.create(category);
+                    }
+                    else {
+                        await Category.update(category, {where: {id: this.category.id}});
+                    }
+                }
+                catch(error) {
+                    console.error(error);
+                }
+            },
+            saveCategoryTimer() {
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(this.saveCategory, 500);
             }
         },
         async mounted() {
