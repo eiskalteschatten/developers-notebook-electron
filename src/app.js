@@ -28,6 +28,7 @@ new Vue({
     async mounted() {
         const savedRoute = getSavedRoute();
         this.$router.replace({ name: savedRoute.name });
+        eventBus.$emit('route-changed', savedRoute, {});
 
         setupEvents();
 
