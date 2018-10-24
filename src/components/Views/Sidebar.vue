@@ -24,7 +24,7 @@
 
     .sidebar {
         min-width: 300px;
-        padding: 15px;
+        padding: 25px 15px 15px 15px;
 
         .sidebar-title {
             font-size: 1.1em;
