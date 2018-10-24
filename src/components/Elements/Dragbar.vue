@@ -6,18 +6,16 @@
     import Vue from 'vue';
 
     let dragging = false;
-    let startX;
 
     export default Vue.extend({
         props: ['dragElementId', 'saveName'],
         methods: {
-            drag(e) {
+            drag() {
                 const dragElement = document.getElementById(this.dragElementId);
                 dragging = true;
-                startX = e.pageX;
 
-                document.onmousemove = function(e2) {
-                    const newWidth = window.innerWidth - e2.pageX;
+                document.onmousemove = function(e) {
+                    const newWidth = window.innerWidth - e.pageX;
                     dragElement.style.width = `${newWidth}px`;
                 };
             }
