@@ -47,12 +47,14 @@
                 document.getElementById('colorForm').click();
             },
             async saveCategory() {
+                const id = this.category.id;
+
                 try {
-                    if (this.category.id === '') {
+                    if (id === '') {
                         this.category = await Category.create(category);
                     }
                     else {
-                        await Category.update(category, {where: {id: this.category.id}});
+                        await Category.update(category, {where: {id}});
                     }
                 }
                 catch(error) {
