@@ -16,10 +16,6 @@ const Category = db.define('category', {
     color: {
         type: Sequelize.STRING,
         allowNull: true
-    },
-    slug: {
-        type: Sequelize.STRING,
-        allowNull: false
     }
 });
 

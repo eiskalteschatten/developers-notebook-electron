@@ -51,7 +51,7 @@
 
                 try {
                     if (this.category.name) {
-                        if (id === '') {
+                        if (!id) {
                             this.category = await Category.create(this.category);
                         }
                         else {
