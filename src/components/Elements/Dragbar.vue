@@ -9,25 +9,28 @@
     let startX;
 
     export default Vue.extend({
+        props: ['dragElementId', 'saveName'],
         methods: {
             drag(e) {
-                const sidebar = document.getElementById('sidebar');
+                const dragElement = document.getElementById(this.dragElementId);
                 dragging = true;
                 startX = e.pageX;
 
                 document.onmousemove = function(e2) {
                     const newWidth = window.innerWidth - e2.pageX;
-                    sidebar.style.width = `${newWidth}px`;
+                    dragElement.style.width = `${newWidth}px`;
                 };
             }
         },
         mounted() {
+            const self = this;
             document.onmouseup = function() {
                 if (dragging) {
-                    const sidebar = document.getElementById('sidebar');
+                    console.log(self.saveName);
+                    const dragElement = document.getElementById(self.dragElementId);
                     document.onmousemove = null;
                     dragging = false;
-                    localStorage.setItem('sidebarWidth', sidebar.style.width);
+                    localStorage.setItem(self.saveName, dragElement.style.width);
                 }
             };
         }

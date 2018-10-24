@@ -1,6 +1,6 @@
 <template>
     <div class="flex-row" id="sidebar" v-bind:style="{ 'width': sidebarWidth }">
-        <dragbar/>
+        <dragbar dragElementId="sidebar" saveName="sidebarWidth"/>
         <div class="content flex-1-1-auto">
             <router-link :to="closeRoute">
                 <close-button/>
@@ -16,7 +16,12 @@
     import Dragbar from '../Elements/Dragbar';
 
     export default Vue.extend({
-        props: ['closeRoute', 'sidebarWidth'],
+        props: ['closeRoute'],
+        data() {
+            return {
+                sidebarWidth: '300px'
+            };
+        },
         components: {
             CloseButton,
             Dragbar
