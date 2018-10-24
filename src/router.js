@@ -27,6 +27,10 @@ export const defaultRoute = {
 
 export default new VueRouter({
     routes: [{
+        path: '/',
+        redirect: { name: 'categories' }
+    },
+    {
         path: '/categories',
         component: ViewWrapper,
         children: [
