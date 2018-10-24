@@ -1,20 +1,25 @@
 <template>
-    <div>
-        <router-link :to="closeRoute">
-            <close-button></close-button>
-        </router-link>
-        <slot/>
+    <div class="flex-row" id="sidebar">
+        <dragbar/>
+        <div class="content flex-1-1-auto">
+            <router-link :to="closeRoute">
+                <close-button/>
+            </router-link>
+            <slot/>
+        </div>
     </div>
 </template>
 
 <script>
     import Vue from 'vue';
     import CloseButton from '../Elements/CloseButton.vue';
+    import Dragbar from '../Elements/Dragbar';
 
     export default Vue.extend({
         props: ['closeRoute'],
         components: {
-            CloseButton
+            CloseButton,
+            Dragbar
         }
     });
 </script>
@@ -24,11 +29,14 @@
 
     .sidebar {
         min-width: 300px;
-        padding: 25px 15px 15px 15px;
 
-        .sidebar-title {
-            font-size: 1.1em;
-            margin-top: 0;
+        .content {
+            padding: 25px 15px 15px 15px;
+
+            .sidebar-title {
+                font-size: 1.1em;
+                margin-top: 0;
+            }
         }
     }
 

@@ -2,7 +2,7 @@
     <div class="full-size">
         <toolbar/>
         <div class="full-size flex-row view">
-            <router-view class="main-column flex-1-1-auto"/>
+            <router-view class="main-column js-main-column flex-1-1-auto"/>
             <router-view class="sidebar" name="sidebar"/>
         </div>
     </div>
