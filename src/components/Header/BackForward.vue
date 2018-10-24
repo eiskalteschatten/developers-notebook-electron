@@ -31,7 +31,7 @@
             const vm = this;
 
             eventBus.$on('route-changed', (to, from) => {
-                const windowHistory = window.history.length - 1;
+                const windowHistory = window.history.length;
                 vm.historyPositionIndex++;
                 vm.disableBack = vm.historyPositionIndex <= 1;
                 vm.disableForward = vm.historyPositionIndex === windowHistory;

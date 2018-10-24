@@ -27,7 +27,7 @@ new Vue({
     },
     async mounted() {
         const savedRoute = getSavedRoute();
-        this.$router.replace(savedRoute.fullPath);
+        this.$router.replace({ name: savedRoute.name });
 
         setupEvents();
 
