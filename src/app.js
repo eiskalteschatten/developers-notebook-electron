@@ -29,7 +29,7 @@ new Vue({
     },
     async created() {
         const savedRoute = getSavedRoute();
-        this.$router.replace({ name: savedRoute.name });
+        this.$router.replace(savedRoute.fullPath);
         eventBus.$emit('route-changed', savedRoute, {});
 
         setupEvents();
