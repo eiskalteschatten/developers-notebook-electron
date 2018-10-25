@@ -1,7 +1,7 @@
 <template>
     <div class="full-width">
         <list scrollable="false">
-            <list-item v-bind:class="getListItemClasses(category.id)" @contextmenu.native="showContextMenu" v-for="category in categories" :key="category.id">
+            <list-item v-bind:class="getListItemClasses(category.id)" @contextmenu.native="showContextMenu" v-for="category in categories" :key="category.id" :data-id="category.id">
                 <div class="color-stripe" v-bind:style="{ 'background-color': category.color }"></div>
                 <div @click="viewCategory(category.id)" class="content">
                     <div class="name">{{ category.name }}</div>
@@ -45,10 +45,13 @@
                 router.push({ name: 'viewCategory', params: { id }});
             },
             getListItemClasses(id) {
+                const classes = ['js-category-list-item'];
+
                 if (this.id == id) {
-                    return 'selected';
+                    classes.push('selected');
                 }
-                return '';
+
+                return classes;
             },
             showContextMenu() {
                 ipcRenderer.send('show-category-context-menu');
