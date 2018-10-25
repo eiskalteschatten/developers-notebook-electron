@@ -1,5 +1,5 @@
 <template>
-    <Sidebar closeRoute="/categories">
+    <Sidebar :close-route-name="closeRouteName">
         <sidebar-toolbar v-if="showToolbar">
             <archive-button @click.native="askArchiveCategory" v-if="showArchiveIcon"/>
             <delete-button @click.native="askDeleteCategory" v-if="showDeleteIcon"/>
@@ -42,7 +42,8 @@
                 category: {},
                 showToolbar: false,
                 showDeleteIcon: false,
-                showArchiveIcon: false
+                showArchiveIcon: false,
+                closeRouteName: 'categories'
             }
         },
         components: {
@@ -128,7 +129,7 @@
             render() {
                 this.showToolbar = this.id ? true : false;
                 this.showDeleteIcon = this.id ? true : false;
-                this.showArchiveIcon = this.id ? true : false;
+                this.showArchiveIcon = this.id && this.$route.name !== 'categoryArchiveEdit' ? true : false;
             }
         },
         created() {
@@ -137,6 +138,10 @@
             eventBus.$on('category-archived', this.askArchiveCategory);
             ipcRenderer.on('category-delete-confirmed', this.deleteCategory);
             ipcRenderer.on('category-archive-confirmed', this.archiveCategory);
+
+            if (this.$route.name === 'categoryArchiveEdit') {
+                this.closeRouteName = 'categoryArchive';
+            }
         },
         mounted() {
             this.render();
