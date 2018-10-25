@@ -19,6 +19,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
     - [ ] Archive categories
     - [ ] Pagination
     - [ ] Blank category overview page
+    - [ ] Sort categories
 - [ ] Clients
     - [ ] Create clients
     - [ ] Edit & delete clients
@@ -26,6 +27,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
     - [ ] Pagination
     - [ ] Blank client overview page
     - [ ] Add clients module to category overview page
+    - [ ] Sort clients
 - [ ] Preferences
     - [ ] Switch themes
     - [ ] Move database (similar to iTerm2's preferences)
@@ -48,6 +50,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
             - Add up the time taken by issues and to dos
             - Start and end date of the project
     - [ ] Add projects to client overview page
+    - [ ] Sort projects
 - [ ] To dos
     - [ ] Pagination
 - [ ] Issues
@@ -81,6 +84,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 ### 1.0.0
 - [ ] Command palette
 - [ ] Check for updates
+- [ ] When archiving a client, project or category, prompt the user to archive everything else assigned to it. If it is unarchived, prompt the user to unarchive everything assigned to it.
 
 ### 1.1.0
 - [ ] Journal
