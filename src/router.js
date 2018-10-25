@@ -61,7 +61,7 @@ export default new VueRouter({
             {
                 path: 'archive/',
                 name: 'categoryArchive',
-                components: { default: CategoriesArchive, topRightToolbar: CategoriesTopRightToolbar },
+                components: { default: CategoriesArchive, topRightToolbar: CategoriesTopRightToolbar }
             },
             {
                 path: 'archive/edit/:id/',

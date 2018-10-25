@@ -1,5 +1,5 @@
 <template>
-    <div class="list-item">
+    <div class="list-item" v-bind:class="{ 'selected': selected }">
         <slot/>
     </div>
 </template>
@@ -8,6 +8,7 @@
     import Vue from 'vue';
 
     export default Vue.extend({
+        props: ['selected']
     });
 </script>
 
@@ -26,6 +27,10 @@
             &:hover {
                 background: lighten($mainBgDark, 3%);
             }
+
+            &.selected {
+                background-color: lighten($mainBgDark, 4%);
+            }
         }
     }
 
@@ -35,6 +40,10 @@
 
             &:hover {
                 background: darken($mainBgLight, 10%);
+            }
+
+            &.selected {
+                background-color: darken($mainBgLight, 4%);
             }
         }
     }

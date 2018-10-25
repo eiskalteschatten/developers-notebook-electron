@@ -2,7 +2,13 @@
     <div class="full-width flex-column">
         <tabs class="flex-0-0-auto" :tabs="tabs" :activeTab="activeTab"/>
         <list scrollable="false" class="flex-1-1-auto">
-            <list-item v-bind:class="getListItemClasses(category.id)" @contextmenu.native="showContextMenu" v-for="category in categories" :key="category.id" :data-id="category.id">
+            <list-item class="js-category-list-item"
+                @contextmenu.native="showContextMenu"
+                v-for="category in categories"
+                :key="category.id"
+                :data-id="category.id"
+                :selected="category.id == $route.params.id"
+            >
                 <div class="color-stripe" v-bind:style="{ 'background-color': category.color }"></div>
                 <div @click="viewCategory(category.id)" class="content">
                     <div class="name">{{ category.name }}</div>
@@ -36,7 +42,7 @@
     import ContextMenuButton from '../../Elements/ContextMenuButton.vue';
 
     export default Vue.extend({
-        props: ['id', 'type', 'activeTab', 'editRouteName'],
+        props: ['type', 'activeTab', 'mainRouteName', 'editRouteName'],
         data() {
             return {
                 categories: [],
@@ -58,15 +64,6 @@
             viewCategory(id) {
                 router.push({ name: 'viewCategory', params: { id }});
             },
-            getListItemClasses(id) {
-                const classes = ['js-category-list-item'];
-
-                if (this.id == id) {
-                    classes.push('selected');
-                }
-
-                return classes;
-            },
             showContextMenu() {
                 ipcRenderer.send('show-category-context-menu');
             },
@@ -84,7 +81,6 @@
             ContextMenuButton
         },
         async created() {
-            console.log(this.type);
             eventBus.$on('category-updated', this.populate);
             ipcRenderer.on('category-updated', this.populate);
             await this.populate();
@@ -134,22 +130,6 @@
                 a, div {
                     margin-left: 15px;
                 }
-            }
-        }
-    }
-
-    .dark {
-        .list-item {
-            &.selected {
-                background-color: lighten($mainBgDark, 4%);
-            }
-        }
-    }
-
-    .light {
-        .list-item {
-            &.selected {
-                background-color: darken($mainBgLight, 4%);
             }
         }
     }
