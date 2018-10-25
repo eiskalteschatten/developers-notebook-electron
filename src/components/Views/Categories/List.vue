@@ -44,7 +44,7 @@
                 router.push({ name: 'viewCategory', params: { id }});
             },
             getListItemClasses(id) {
-                if (this.id === id) {
+                if (this.id == id) {
                     return 'selected';
                 }
                 return '';
