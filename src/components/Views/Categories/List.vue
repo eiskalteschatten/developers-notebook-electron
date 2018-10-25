@@ -1,6 +1,6 @@
 <template>
     <div class="full-width flex-column">
-        <tabs class="flex-0-0-auto" activeTab="categories"/>
+        <tabs class="flex-0-0-auto" :tabs="tabs" activeTab="categories"/>
         <list scrollable="false" class="flex-1-1-auto">
             <list-item v-bind:class="getListItemClasses(category.id)" @contextmenu.native="showContextMenu" v-for="category in categories" :key="category.id" :data-id="category.id">
                 <div class="color-stripe" v-bind:style="{ 'background-color': category.color }"></div>
@@ -29,7 +29,7 @@
 
     import Category from '../../../models/category';
 
-    import Tabs from './Tabs.vue';
+    import Tabs from '../../Elements/Tabs.vue';
     import List from '../../List.vue';
     import ListItem from '../../List/ListItem.vue';
     import EditButton from '../../Elements/EditButton.vue';
@@ -39,7 +39,19 @@
         props: ['id'],
         data() {
             return {
-                categories: []
+                categories: [],
+                tabs: [
+                    {
+                        name: 'All Categories',
+                        id: 'categories',
+                        routeName: 'categories'
+                    },
+                    {
+                        name: 'Archive',
+                        id: 'categoryArchive',
+                        routeName: 'categoryArchive'
+                    }
+                ]
             }
         },
         methods: {

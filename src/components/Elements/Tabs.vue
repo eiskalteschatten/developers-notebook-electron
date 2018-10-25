@@ -1,10 +1,7 @@
 <template>
     <div class="tabs">
-        <router-link :to="{ name: 'categories' }" v-bind:class="getClasses('categories')">
-            All Categories
-        </router-link>
-        <router-link :to="{ name: 'categoryArchive' }" v-bind:class="getClasses('archive')">
-            Archive
+        <router-link :to="{ name: tab.routeName }" v-bind:class="getClasses(tab.id)" v-for="tab in tabs" :key="tab.id">
+            {{ tab.name }}
         </router-link>
     </div>
 </template>
@@ -13,7 +10,7 @@
     import Vue from 'vue';
 
     export default Vue.extend({
-        props: ['activeTab'],
+        props: ['tabs', 'activeTab'],
         methods: {
             getClasses(tabName) {
                 const classes = ['tab'];
@@ -27,7 +24,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import '../../../assets/scss/variables';
+    @import '../../assets/scss/variables';
 
     .tabs {
         margin-bottom: 15px;
