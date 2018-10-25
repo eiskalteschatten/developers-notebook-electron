@@ -9,6 +9,13 @@ const template = [
         }
     },
     {
+        label: 'Archive Category',
+        click: (item, focusedWindow) => {
+            focusedWindow.webContents.send('category-event', 'archive');
+        }
+    },
+    {type: 'separator'},
+    {
         label: 'Delete Category',
         click: (item, focusedWindow) => {
             focusedWindow.webContents.send('category-event', 'delete');
