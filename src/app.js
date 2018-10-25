@@ -19,13 +19,15 @@ new Vue({
     watch:{
         '$route'(to, from) {
             eventBus.$emit('route-changed', to, from);
-            setSavedRoute({
-                fullPath: to.fullPath,
-                name: to.name
-            });
+            if (to.fullPath !== '/') {
+                setSavedRoute({
+                    fullPath: to.fullPath,
+                    name: to.name
+                });
+            }
         }
     },
-    async mounted() {
+    async created() {
         const savedRoute = getSavedRoute();
         this.$router.replace({ name: savedRoute.name });
         eventBus.$emit('route-changed', savedRoute, {});
