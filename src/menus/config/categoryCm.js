@@ -16,16 +16,16 @@ const template = [
     },
     {type: 'separator'},
     {
-        label: 'New Category',
+        label: 'Delete Category',
         click: (item, focusedWindow) => {
-            focusedWindow.webContents.send('category-event', 'new');
+            focusedWindow.webContents.send('category-event', 'delete');
         }
     },
     {type: 'separator'},
     {
-        label: 'Delete Category',
+        label: 'New Category',
         click: (item, focusedWindow) => {
-            focusedWindow.webContents.send('category-event', 'delete');
+            focusedWindow.webContents.send('category-event', 'new');
         }
     }
 ];
