@@ -57,7 +57,7 @@
                 ipcRenderer.send('show-category-context-menu');
             },
             async populate() {
-                this.categories = await Category.getAllSorted();
+                this.categories = await Category.getAllNotArchivedSorted();
             }
         },
         components: {

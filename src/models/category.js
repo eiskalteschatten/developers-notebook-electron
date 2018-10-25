@@ -16,6 +16,11 @@ const Category = db.define('category', {
     color: {
         type: Sequelize.STRING,
         allowNull: true
+    },
+    archived: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
     }
 });
 
@@ -27,6 +32,34 @@ Category.getAllSorted = async function() {
                 'ASC'
             ]
         ]
+    });
+};
+
+Category.getAllNotArchivedSorted = async function() {
+    return await this.findAll({
+        order: [
+            [
+                Sequelize.fn('lower', Sequelize.col('name')),
+                'ASC'
+            ]
+        ],
+        where: {
+            archived: false
+        }
+    });
+};
+
+Category.getAllArchivedSorted = async function() {
+    return await this.findAll({
+        order: [
+            [
+                Sequelize.fn('lower', Sequelize.col('name')),
+                'ASC'
+            ]
+        ],
+        where: {
+            archived: true
+        }
     });
 };
 

@@ -4,7 +4,7 @@ const {ipcMain, dialog, BrowserWindow} = require('electron');
 
 /*
 *    options: {
-*        type, message, detail, buttons
+*        type, message, detail, buttons, eventNames
 *    }
 */
 ipcMain.on('show-dialog', (event, options) => {
@@ -18,8 +18,9 @@ ipcMain.on('show-dialog', (event, options) => {
     }, response => {
         if (response === 1) {
             const focusedWindow = BrowserWindow.getFocusedWindow();
-            focusedWindow.send('category-delete-confirmed');
-            focusedWindow.send('category-updated');
+            for (const eventName of options.eventNames) {
+                focusedWindow.send(eventName);
+            }
         }
     });
 });

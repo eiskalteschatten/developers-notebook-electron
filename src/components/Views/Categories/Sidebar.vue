@@ -90,12 +90,29 @@
                     message: `Are you sure you want to delete "${categoryName}"?`,
                     detail: 'You can\'t undo this action.',
                     buttons: ['No', 'Yes'],
-                    type: 'warning'
+                    type: 'warning',
+                    eventNames: ['category-delete-confirmed', 'category-updated']
                 });
             },
             async deleteCategory() {
                 if (this.id) {
                     await Category.destroy({where: {id: this.id}});
+                    this.$router.replace({name: 'categories'});
+                }
+            },
+            askArchiveCategory() {
+                const categoryName = this.category.name || 'this category';
+                ipcRenderer.send('show-dialog', {
+                    message: `Are you sure you want to archive "${categoryName}"?`,
+                    detail: 'You can unarchive a category in the archive tab.',
+                    buttons: ['No', 'Yes'],
+                    type: 'warning',
+                    eventNames: ['category-archive-confirmed', 'category-updated']
+                });
+            },
+            async archiveCategory() {
+                if (this.id) {
+                    await this.category.update({ archived: true });
                     this.$router.replace({name: 'categories'});
                 }
             },
@@ -106,7 +123,9 @@
         created() {
             this.getCategory();
             eventBus.$on('category-deleted', this.askDeleteCategory);
+            eventBus.$on('category-archived', this.askArchiveCategory);
             ipcRenderer.on('category-delete-confirmed', this.deleteCategory);
+            ipcRenderer.on('category-archive-confirmed', this.archiveCategory);
         },
         mounted() {
             this.render();
