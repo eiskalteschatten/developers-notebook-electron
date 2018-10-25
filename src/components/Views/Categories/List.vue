@@ -23,6 +23,7 @@
 <script>
     import {ipcRenderer} from 'electron';
     import Vue from 'vue';
+    import {eventBus} from '../../../app';
     import router from '../../../router';
 
     import Category from '../../../models/category';
@@ -51,6 +52,9 @@
             },
             showContextMenu() {
                 ipcRenderer.send('show-category-context-menu');
+            },
+            async populate() {
+                this.categories = await Category.getAllSorted();
             }
         },
         components: {
@@ -60,7 +64,10 @@
             ContextMenuButton
         },
         async mounted() {
-            this.categories = await Category.getAllSorted();
+            await this.populate();
+        },
+        created() {
+            eventBus.$on('category-updated', this.populate);
         }
     });
 </script>

@@ -21,6 +21,7 @@
 
 <script>
     import Vue from 'vue';
+    import {eventBus} from '../../../app';
     import Category from '../../../models/category';
 
     import Sidebar from '../Sidebar';
@@ -66,6 +67,8 @@
                                 color: category.color
                             });
                         }
+
+                        eventBus.$emit('category-updated');
 
                         loader.classList.add('hidden');
                     }

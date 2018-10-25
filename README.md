@@ -14,7 +14,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
     - [x] Light and dark themes and the ability to switch between them
     - [x] Main menu
 - [ ] Categories
-    - [ ] Create categories
+    - [x] Create categories
     - [ ] Edit & delete categories
     - [ ] Archive categories
     - [ ] Pagination
