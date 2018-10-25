@@ -7,7 +7,7 @@ const fs = require('fs');
 
 const config = require('./config/config');
 const appConfig = config.app;
-const appMenu = require('./menus/config/app');
+const appMenu = require('./menus/app');
 
 const windowSettingsPath = path.join(appConfig.storagePath, appConfig.windowSettingsFile);
 
@@ -128,4 +128,4 @@ if (!fs.existsSync(windowSettingsPath)) {
 }
 
 // Menus
-require('./menus/menus');
+require('./events/main/menus');

@@ -4,8 +4,8 @@ const {app, shell} = require('electron');
 
 const path = require('path');
 
-const config = require('../../config/config');
-const themePreferences = require('../../lib/preferences/theme');
+const config = require('../config/config');
+const themePreferences = require('../lib/preferences/theme');
 
 
 const template = [

@@ -2,10 +2,10 @@
 
 const {BrowserWindow, Menu, ipcMain} = require('electron');
 
-const {switchMenu} = require('../lib/preferences/theme');
+const {switchMenu} = require('../../lib/preferences/theme');
 
-const inputCm = require('./config/inputCm');
-const categoryCm = require('./config/categoryCm');
+const inputCm = require('../../menus/inputCm');
+const categoryCm = require('../../menus/categoryCm');
 
 
 ipcMain.on('switch-theme', (event, theme) => {
