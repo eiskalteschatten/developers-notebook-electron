@@ -36,6 +36,7 @@
     @import '../../assets/scss/variables';
 
     .sidebar {
+        max-width: 800px;
         min-width: 300px;
 
         .content {

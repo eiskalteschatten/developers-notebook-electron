@@ -15,7 +15,7 @@
                 dragging = true;
 
                 document.onmousemove = function(e) {
-                    const newWidth = window.innerWidth - e.pageX;
+                    const newWidth = (window.innerWidth - e.pageX) + (dragElement.offsetWidth / 2);
                     dragElement.style.width = `${newWidth}px`;
                 };
             }
@@ -37,6 +37,8 @@
 <style lang="scss">
     .dragbar {
         cursor: col-resize;
+        position: relative;
         width: 2px;
+        z-index: 1000;
     }
 </style>
