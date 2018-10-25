@@ -57,6 +57,7 @@
 
                         if (!id) {
                             this.category = await Category.create(category);
+                            this.$router.replace({name: 'editCategory', params: { id: this.category.id }});
                         }
                         else {
                             await category.update({
