@@ -1,6 +1,7 @@
 <template>
-    <div class="full-width">
-        <list scrollable="false">
+    <div class="full-width flex-column">
+        <tabs class="flex-0-0-auto" activeTab="categories"/>
+        <list scrollable="false" class="flex-1-1-auto">
             <list-item v-bind:class="getListItemClasses(category.id)" @contextmenu.native="showContextMenu" v-for="category in categories" :key="category.id" :data-id="category.id">
                 <div class="color-stripe" v-bind:style="{ 'background-color': category.color }"></div>
                 <div @click="viewCategory(category.id)" class="content">
@@ -28,6 +29,7 @@
 
     import Category from '../../../models/category';
 
+    import Tabs from './Tabs.vue';
     import List from '../../List.vue';
     import ListItem from '../../List/ListItem.vue';
     import EditButton from '../../Elements/EditButton.vue';
@@ -61,6 +63,7 @@
             }
         },
         components: {
+            Tabs,
             List,
             ListItem,
             EditButton,

@@ -15,6 +15,7 @@ export const routeTitles = {
     newCategory: 'Categories',
     editCategory: 'Categories',
     viewCategory: 'Categories',
+    categoryArchive: 'Archived Categories',
     clients: 'Clients',
     projects: 'Projects',
     preferences: 'Preferences'
@@ -54,6 +55,11 @@ export default new VueRouter({
                 path: 'view/:id/',
                 name: 'viewCategory',
                 components: { default: CategoriesList, topRightToolbar: CategoriesTopRightToolbar }
+            },
+            {
+                path: 'archive/',
+                name: 'categoryArchive',
+                components: { default: CategoriesList, sidebar: CategoriesSidebar, topRightToolbar: CategoriesTopRightToolbar }
             }
         ]
     },
