@@ -16,6 +16,13 @@ const template = [
     },
     {type: 'separator'},
     {
+        label: 'New Category',
+        click: (item, focusedWindow) => {
+            focusedWindow.webContents.send('category-event', 'new');
+        }
+    },
+    {type: 'separator'},
+    {
         label: 'Delete Category',
         click: (item, focusedWindow) => {
             focusedWindow.webContents.send('category-event', 'delete');

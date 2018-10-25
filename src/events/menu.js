@@ -18,6 +18,9 @@ export default () => {
         const id = $('.js-category-list-item:hover').data('id');
 
         switch(command) {
+            case 'new':
+                router.push({ name: 'newCategory' });
+                break;
             case 'edit':
                 router.push({ name: 'editCategory', params: { id } });
                 break;
