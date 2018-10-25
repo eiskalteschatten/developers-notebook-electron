@@ -149,7 +149,6 @@
 
         .color-stripe {
             $size: 30px;
-            border: 1px solid #333333;
             border-radius: 50%;
             cursor: pointer;
             height: $size;
@@ -159,5 +158,17 @@
 
     .delete-button {
         margin-top: 5px;
+    }
+
+    .dark {
+        .color-stripe {
+            border: 1px solid #333333;
+        }
+    }
+
+    .light {
+        .color-stripe {
+            border: 1px solid #dcdcdc;
+        }
     }
 </style>
