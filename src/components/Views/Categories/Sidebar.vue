@@ -79,9 +79,12 @@
                 saveTimeout = setTimeout(this.saveCategory, 500);
             }
         },
+        created() {
+            this.getCategory();
+        },
         watch: {
-            id: async function() {
-                await this.getCategory();
+            id: function() {
+                this.getCategory();
             }
         }
     });
