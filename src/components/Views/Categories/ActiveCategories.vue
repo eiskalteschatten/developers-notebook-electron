@@ -1,5 +1,5 @@
 <template>
-    <list type="categories" activeTab="categories" editRouteName="editCategory"/>
+    <list type="categories" active-tab="categories" edit-route-name="editCategory"/>
 </template>
 
 <script>

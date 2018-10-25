@@ -1,5 +1,5 @@
 <template>
-    <list type="categoryArchive" activeTab="categoryArchive" editRouteName="categoryArchiveEdit"/>
+    <list type="categoryArchive" active-tab="categoryArchive" edit-route-name="categoryArchiveEdit"/>
 </template>
 
 <script>
