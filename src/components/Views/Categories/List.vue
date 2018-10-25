@@ -1,6 +1,6 @@
 <template>
     <div class="full-width flex-column">
-        <tabs class="flex-0-0-auto" :tabs="tabs" activeTab="categories"/>
+        <tabs class="flex-0-0-auto" :tabs="tabs" :activeTab="activeTab"/>
         <list scrollable="false" class="flex-1-1-auto">
             <list-item v-bind:class="getListItemClasses(category.id)" @contextmenu.native="showContextMenu" v-for="category in categories" :key="category.id" :data-id="category.id">
                 <div class="color-stripe" v-bind:style="{ 'background-color': category.color }"></div>
@@ -10,7 +10,7 @@
                 </div>
                 <div class="buttons">
                     <div class="buttons-wrapper">
-                        <router-link :to="{ name: 'editCategory', params: { id: category.id }}">
+                        <router-link :to="{ name: editRouteName, params: { id: category.id }}">
                             <edit-button/>
                         </router-link>
                         <context-menu-button @click.native="showContextMenu"/>
@@ -36,13 +36,13 @@
     import ContextMenuButton from '../../Elements/ContextMenuButton.vue';
 
     export default Vue.extend({
-        props: ['id'],
+        props: ['id', 'type', 'activeTab', 'editRouteName'],
         data() {
             return {
                 categories: [],
                 tabs: [
                     {
-                        name: 'All Categories',
+                        name: 'Active Categories',
                         id: 'categories',
                         routeName: 'categories'
                     },
@@ -71,7 +71,9 @@
                 ipcRenderer.send('show-category-context-menu');
             },
             async populate() {
-                this.categories = await Category.getAllNotArchivedSorted();
+                this.categories = this.type === 'categoryArchive'
+                    ? await Category.getAllArchivedSorted()
+                    : await Category.getAllNotArchivedSorted();
             }
         },
         components: {
@@ -81,12 +83,11 @@
             EditButton,
             ContextMenuButton
         },
-        async mounted() {
-            await this.populate();
-        },
-        created() {
+        async created() {
+            console.log(this.type);
             eventBus.$on('category-updated', this.populate);
             ipcRenderer.on('category-updated', this.populate);
+            await this.populate();
         }
     });
 </script>

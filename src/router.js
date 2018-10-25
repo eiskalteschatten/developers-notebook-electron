@@ -1,7 +1,8 @@
 import VueRouter from 'vue-router';
 import ViewWrapper from './components/ViewWrapper.vue';
 
-import CategoriesList from './components/Views/Categories/List.vue';
+import CategoriesActive from './components/Views/Categories/ActiveCategories.vue';
+import CategoriesArchive from './components/Views/Categories/Archive.vue';
 import CategoriesSidebar from './components/Views/Categories/Sidebar.vue';
 import CategoriesTopRightToolbar from './components/Views/Categories/TopRightToolbar.vue';
 
@@ -16,6 +17,7 @@ export const routeTitles = {
     editCategory: 'Categories',
     viewCategory: 'Categories',
     categoryArchive: 'Archived Categories',
+    categoryArchiveEdit:  'Archived Categories',
     clients: 'Clients',
     projects: 'Projects',
     preferences: 'Preferences'
@@ -38,29 +40,35 @@ export default new VueRouter({
             {
                 path: '',
                 name: 'categories',
-                components: { default: CategoriesList, topRightToolbar: CategoriesTopRightToolbar }
+                components: { default: CategoriesActive, topRightToolbar: CategoriesTopRightToolbar }
             },
             {
                 path: 'new/',
                 name: 'newCategory',
-                components: { default: CategoriesList, sidebar: CategoriesSidebar, topRightToolbar: CategoriesTopRightToolbar }
+                components: { default: CategoriesActive, sidebar: CategoriesSidebar, topRightToolbar: CategoriesTopRightToolbar }
             },
             {
                 path: 'edit/:id/',
                 name: 'editCategory',
-                components: { default: CategoriesList, sidebar: CategoriesSidebar, topRightToolbar: CategoriesTopRightToolbar },
+                components: { default: CategoriesActive, sidebar: CategoriesSidebar, topRightToolbar: CategoriesTopRightToolbar },
                 props: { default: true, sidebar: true }
             },
             {
                 path: 'view/:id/',
                 name: 'viewCategory',
-                components: { default: CategoriesList, topRightToolbar: CategoriesTopRightToolbar }
+                components: { default: CategoriesActive, topRightToolbar: CategoriesTopRightToolbar }
             },
             {
                 path: 'archive/',
                 name: 'categoryArchive',
-                components: { default: CategoriesList, sidebar: CategoriesSidebar, topRightToolbar: CategoriesTopRightToolbar }
-            }
+                components: { default: CategoriesArchive, topRightToolbar: CategoriesTopRightToolbar },
+            },
+            {
+                path: 'archive/edit/:id/',
+                name: 'categoryArchiveEdit',
+                components: { default: CategoriesArchive, sidebar: CategoriesSidebar, topRightToolbar: CategoriesTopRightToolbar },
+                props: { default: true, sidebar: true }
+            },
         ]
     },
     {
