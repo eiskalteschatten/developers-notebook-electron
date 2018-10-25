@@ -14,7 +14,7 @@
                 <input type="color" id="colorForm" class="hidden" v-model="category.color" @change="saveCategoryTimer">
                 <div class="color-stripe" v-bind:style="{ 'background-color': category.color }" @click="openColorPicker"></div>
             </div>
-            <delete-button @click.native="askDeleteCategory"/>
+            <delete-button @click.native="askDeleteCategory" v-if="showDeleteIcon"/>
         </div>
     </Sidebar>
 </template>
@@ -34,7 +34,8 @@
         props: ['id'],
         data() {
             return {
-                category: {}
+                category: {},
+                showDeleteIcon: false
             }
         },
         components: {
@@ -97,6 +98,9 @@
                     await Category.destroy({where: {id: this.id}});
                     this.$router.replace({name: 'categories'});
                 }
+            },
+            render() {
+                this.showDeleteIcon = this.id ? true : false;
             }
         },
         created() {
@@ -104,9 +108,13 @@
             eventBus.$on('category-deleted', this.askDeleteCategory);
             ipcRenderer.on('category-delete-confirmed', this.deleteCategory);
         },
+        mounted() {
+            this.render();
+        },
         watch: {
             id: function() {
                 this.getCategory();
+                this.render();
             }
         }
     });
