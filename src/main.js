@@ -127,5 +127,6 @@ if (!fs.existsSync(windowSettingsPath)) {
     fs.createReadStream(defaultWindowSettingsPath).pipe(fs.createWriteStream(windowSettingsPath));
 }
 
-// Menus
+// Events
+require('./events/main/main');
 require('./events/main/menus');

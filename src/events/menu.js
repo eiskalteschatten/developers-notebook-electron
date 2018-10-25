@@ -28,7 +28,7 @@ export default () => {
                 router.push({ name: 'categories' });
                 break;
             case 'delete':
-                router.push({ name: 'categories' });
+                eventBus.$emit('category-deleted');
                 break;
             default:
                 router.push({ name: 'categories' });

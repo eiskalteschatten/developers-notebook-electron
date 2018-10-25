@@ -14,12 +14,13 @@
                 <input type="color" id="colorForm" class="hidden" v-model="category.color" @change="saveCategoryTimer">
                 <div class="color-stripe" v-bind:style="{ 'background-color': category.color }" @click="openColorPicker"></div>
             </div>
-            <delete-button/>
+            <delete-button @click.native="askDeleteCategory"/>
         </div>
     </Sidebar>
 </template>
 
 <script>
+    import {ipcRenderer} from 'electron';
     import Vue from 'vue';
     import {eventBus} from '../../../app';
     import Category from '../../../models/category';
@@ -81,10 +82,27 @@
             saveCategoryTimer() {
                 clearTimeout(saveTimeout);
                 saveTimeout = setTimeout(this.saveCategory, 500);
+            },
+            askDeleteCategory() {
+                const categoryName = this.category.name || 'this category';
+                ipcRenderer.send('show-dialog', {
+                    message: `Are you sure you want to delete "${categoryName}"?`,
+                    detail: 'You can\'t undo this action.',
+                    buttons: ['No', 'Yes'],
+                    type: 'warning'
+                });
+            },
+            async deleteCategory() {
+                if (this.id) {
+                    await Category.destroy({where: {id: this.id}});
+                    this.$router.replace({name: 'categories'});
+                }
             }
         },
         created() {
             this.getCategory();
+            eventBus.$on('category-deleted', this.askDeleteCategory);
+            ipcRenderer.on('category-delete-confirmed', this.deleteCategory);
         },
         watch: {
             id: function() {

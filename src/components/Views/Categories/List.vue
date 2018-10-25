@@ -71,6 +71,7 @@
         },
         created() {
             eventBus.$on('category-updated', this.populate);
+            ipcRenderer.on('category-updated', this.populate);
         }
     });
 </script>
