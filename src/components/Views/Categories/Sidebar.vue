@@ -1,5 +1,9 @@
 <template>
     <Sidebar closeRoute="/categories">
+        <sidebar-toolbar v-if="showToolbar">
+            <archive-button @click.native="askArchiveCategory" v-if="showArchiveIcon"/>
+            <delete-button @click.native="askDeleteCategory" v-if="showDeleteIcon"/>
+        </sidebar-toolbar>
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control full-width" id="name" v-model="category.name" @keyup="saveCategoryTimer">
@@ -14,7 +18,6 @@
                 <input type="color" id="colorForm" class="hidden" v-model="category.color" @change="saveCategoryTimer">
                 <div class="color-stripe" v-bind:style="{ 'background-color': category.color }" @click="openColorPicker"></div>
             </div>
-            <delete-button @click.native="askDeleteCategory" v-if="showDeleteIcon"/>
         </div>
     </Sidebar>
 </template>
@@ -25,8 +28,10 @@
     import {eventBus} from '../../../app';
     import Category from '../../../models/category';
 
-    import Sidebar from '../Sidebar';
+    import Sidebar from '../Sidebar.vue';
+    import SidebarToolbar from '../Sidebar/Toolbar.vue';
     import DeleteButton from '../../Elements/DeleteButton.vue';
+    import ArchiveButton from '../../Elements/ArchiveButton.vue';
 
     let saveTimeout;
 
@@ -35,12 +40,16 @@
         data() {
             return {
                 category: {},
-                showDeleteIcon: false
+                showToolbar: false,
+                showDeleteIcon: false,
+                showArchiveIcon: false
             }
         },
         components: {
             Sidebar,
-            DeleteButton
+            SidebarToolbar,
+            DeleteButton,
+            ArchiveButton
         },
         methods: {
             async getCategory() {
@@ -117,7 +126,9 @@
                 }
             },
             render() {
+                this.showToolbar = this.id ? true : false;
                 this.showDeleteIcon = this.id ? true : false;
+                this.showArchiveIcon = this.id ? true : false;
             }
         },
         created() {

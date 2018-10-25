@@ -22,7 +22,7 @@
 
     .dark {
         .list-item {
-            border-bottom: 2px solid darken($mainBgDark, 3%);
+            border-bottom: 1px solid darken($mainBgDark, 3%);
 
             &:hover {
                 background: lighten($mainBgDark, 3%);
@@ -36,7 +36,7 @@
 
     .light {
         .list-item {
-            border-bottom: 2px solid darken($mainBgLight, 3%);
+            border-bottom: 1px solid darken($mainBgLight, 3%);
 
             &:hover {
                 background: darken($mainBgLight, 10%);

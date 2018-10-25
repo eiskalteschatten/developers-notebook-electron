@@ -48,7 +48,7 @@
             color: $mainFontColorDark;
 
             &.selected {
-                border-bottom: 1px solid lighten($mainBgDark, 5%);
+                border-bottom: 1px solid $borderColorDark;
             }
         }
     }
@@ -58,7 +58,7 @@
             color: $mainFontColorLight;
 
             &.selected {
-                border-bottom: 1px solid darken($mainBgLight, 5%);
+                border-bottom: 1px solid $borderColorLight;
             }
         }
     }

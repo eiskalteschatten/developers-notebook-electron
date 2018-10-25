@@ -5,8 +5,11 @@ $mainFontColorLight: #0e0e0e;
 
 $linkColorDark: #019CEE;
 $linkColorLight: #019CEE;
+
 $boxShadowColorDark: darken($mainBgDark, 50%);
 $boxShadowColorLight: darken($mainBgLight, 50%);
+$borderColorDark: lighten($mainBgDark, 5%);
+$borderColorLight: darken($mainBgLight, 5%);
 
 $formBgDark: lighten($mainBgDark, 7%);
 $formBgLight: lighten($mainBgLight, 7%);
