@@ -1,7 +1,7 @@
-'use strict';
-
-const Sequelize = require('sequelize');
-const db = require('../db');
+import {ipcRenderer} from 'electron';
+import Sequelize from 'sequelize';
+import db from '../db';
+import router from '../router';
 
 
 const Category = db.define('category', {
@@ -96,6 +96,31 @@ Category.save = async function(values) {
     }
 };
 
+Category.delete = async function(id) {
+    if (id) {
+        await this.destroy({ where: { id } });
+    }
+};
+
+
+Category.askDelete = async function(id) {
+    const category = await this.findById(id);
+    const categoryName = category.name || 'this category';
+
+    ipcRenderer.send('show-dialog', {
+        message: `Are you sure you want to delete ${categoryName}?`,
+        detail: 'You can\'t undo this action.',
+        buttons: ['Yes', 'No'],
+        type: 'warning',
+        eventNames: ['category-delete-confirmed', 'category-updated']
+    });
+
+    ipcRenderer.once('category-delete-confirmed', async () => {
+        await Category.delete(category.id);
+        router.replace({ name: 'categories' });
+    });
+};
+
 Category.sync();
 
-module.exports = Category;
+export default Category;

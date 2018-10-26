@@ -90,24 +90,8 @@
                 clearTimeout(saveTimeout);
                 saveTimeout = setTimeout(this.saveCategory, 500);
             },
-            askDeleteCategory(id) {
-                const categoryName = this.category.name || 'this category';
-                ipcRenderer.send('show-dialog', {
-                    message: `Are you sure you want to delete ${categoryName}?`,
-                    detail: 'You can\'t undo this action.',
-                    buttons: ['Yes', 'No'],
-                    type: 'warning',
-                    eventNames: ['category-delete-confirmed', 'category-updated'],
-                    data: {
-                        id
-                    }
-                });
-            },
-            async deleteCategory(id) {
-                if (id) {
-                    await Category.destroy({ where: { id } });
-                    this.$router.replace({ name: 'categories' });
-                }
+            askDeleteCategory() {
+                Category.askDelete(this.id);
             },
             askArchiveCategory(id) {
                 const categoryName = this.category.name || 'this category';
@@ -137,14 +121,8 @@
         created() {
             this.getCategory();
 
-            eventBus.$on('category-deleted', id => {
-                this.askDeleteCategory(id);
-            });
             eventBus.$on('category-archived', id => {
                 this.askArchiveCategory(id);
-            });
-            ipcRenderer.on('category-delete-confirmed', (event, data) => {
-                this.deleteCategory(data.id);
             });
             ipcRenderer.on('category-archive-confirmed', (event, data) => {
                 this.archiveCategory(data.id);

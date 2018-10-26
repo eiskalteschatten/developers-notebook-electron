@@ -4,6 +4,8 @@ import $ from 'jquery';
 import {eventBus} from '../app';
 import router from '../router';
 
+import Category from '../models/category';
+
 
 export default () => {
     ipcRenderer.on('open-route', (event, route) => {
@@ -28,7 +30,7 @@ export default () => {
                 eventBus.$emit('category-archived', id);
                 break;
             case 'delete':
-                eventBus.$emit('category-deleted', id);
+                Category.askDelete(id);
                 break;
             default:
                 router.push({ name: 'categories' });
