@@ -5,7 +5,7 @@ const {BrowserWindow, Menu, ipcMain} = require('electron');
 const {switchMenu} = require('../../lib/preferences/theme');
 
 const inputCm = require('../../menus/inputCm');
-const categoryCm = require('../../menus/categoryCm');
+const {activeCategories, archivedCategories} = require('../../menus/categoryCm');
 
 
 ipcMain.on('switch-theme', (event, theme) => {
@@ -18,8 +18,9 @@ ipcMain.on('show-input-context-menu', event => {
     menu.popup(window);
 });
 
-ipcMain.on('show-category-context-menu', event => {
+ipcMain.on('show-category-context-menu', (event, type) => {
     const window = BrowserWindow.fromWebContents(event.sender);
-    const menu = Menu.buildFromTemplate(categoryCm);
+    const template = type === 'categoryArchive' ? archivedCategories : activeCategories;
+    const menu = Menu.buildFromTemplate(template);
     menu.popup(window);
 });

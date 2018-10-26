@@ -65,7 +65,7 @@
                 router.push({ name: 'viewCategory', params: { id }});
             },
             showContextMenu() {
-                ipcRenderer.send('show-category-context-menu');
+                ipcRenderer.send('show-category-context-menu', this.type);
             },
             async populate() {
                 this.categories = this.type === 'categoryArchive'

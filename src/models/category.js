@@ -140,6 +140,7 @@ Category.archive = async function(id) {
 Category.unarchive = async function(id) {
     if (id) {
         await this.update({ archived: false }, { where: { id } });
+        redirectOrRefresh(false);
     }
 };
 
