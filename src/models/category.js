@@ -137,6 +137,12 @@ Category.archive = async function(id) {
     }
 };
 
+Category.unarchive = async function(id) {
+    if (id) {
+        await this.update({ archived: false }, { where: { id } });
+    }
+};
+
 Category.askArchive = async function(id, redirect, redirectRouteName) {
     const category = await this.findById(id);
     const categoryName = category.name || 'this category';
