@@ -24,7 +24,9 @@ export default () => {
                 router.push({ name: 'newCategory' });
                 break;
             case 'edit':
-                router.push({ name: 'editCategory', params: { id } });
+                const currentRouteName = sessionStorage.getItem('currentRouteName');
+                const routeToPush = currentRouteName.indexOf('categoryArchive') > -1 ? 'categoryArchiveEdit' : 'editCategory';
+                router.push({ name: routeToPush, params: { id } });
                 break;
             case 'archive':
                 Category.askArchive(id, false);

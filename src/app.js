@@ -24,6 +24,8 @@ new Vue({
                     fullPath: to.fullPath,
                     name: to.name
                 });
+
+                sessionStorage.setItem('currentRouteName', to.name);
             }
         }
     },
