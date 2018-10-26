@@ -91,10 +91,10 @@
                 saveTimeout = setTimeout(this.saveCategory, 500);
             },
             askDeleteCategory() {
-                Category.askDelete(this.id);
+                Category.askDelete(this.id, true, this.closeRouteName);
             },
             askArchiveCategory() {
-                Category.askArchive(this.id);
+                Category.askArchive(this.id, true, this.closeRouteName);
             },
             render() {
                 this.showToolbar = this.id ? true : false;

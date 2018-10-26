@@ -1,6 +1,8 @@
 import {ipcRenderer} from 'electron';
 import Sequelize from 'sequelize';
 import db from '../db';
+
+import {eventBus} from '../app';
 import router from '../router';
 
 
@@ -96,13 +98,22 @@ Category.save = async function(values) {
     }
 };
 
+function redirectOrRefresh(redirect, routeName) {
+    if (redirect) {
+        router.replace({ name: routeName });
+    }
+    else {
+        eventBus.$emit('category-updated');
+    }
+}
+
 Category.delete = async function(id) {
     if (id) {
         await this.destroy({ where: { id } });
     }
 };
 
-Category.askDelete = async function(id) {
+Category.askDelete = async function(id, redirect, redirectRouteName) {
     const category = await this.findById(id);
     const categoryName = category.name || 'this category';
 
@@ -116,7 +127,7 @@ Category.askDelete = async function(id) {
 
     ipcRenderer.once('category-delete-confirmed', async () => {
         await Category.delete(category.id);
-        router.replace({ name: 'categories' });
+        redirectOrRefresh(redirect, redirectRouteName);
     });
 };
 
@@ -126,7 +137,7 @@ Category.archive = async function(id) {
     }
 };
 
-Category.askArchive = async function(id) {
+Category.askArchive = async function(id, redirect, redirectRouteName) {
     const category = await this.findById(id);
     const categoryName = category.name || 'this category';
 
@@ -140,7 +151,7 @@ Category.askArchive = async function(id) {
 
     ipcRenderer.once('category-archive-confirmed', async () => {
         await Category.archive(category.id);
-        router.replace({ name: 'categories' });
+        redirectOrRefresh(redirect, redirectRouteName);
     });
 };
 

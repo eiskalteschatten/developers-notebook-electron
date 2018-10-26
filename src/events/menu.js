@@ -27,10 +27,10 @@ export default () => {
                 router.push({ name: 'editCategory', params: { id } });
                 break;
             case 'archive':
-                Category.askArchive(id);
+                Category.askArchive(id, false);
                 break;
             case 'delete':
-                Category.askDelete(id);
+                Category.askDelete(id, false);
                 break;
             default:
                 router.push({ name: 'categories' });
