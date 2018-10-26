@@ -63,6 +63,39 @@ Category.getAllArchivedSorted = async function() {
     });
 };
 
+Category.save = async function(values) {
+    if (!values.name) {
+        const errorMessage = 'A name is required to save the category!';
+        console.error(errorMessage);
+        return {
+            error: true,
+            errorMessage
+        };
+    }
+
+    try {
+        const savedCategory = {};
+
+        if (values.id) {
+            savedCategory.category = await this.update(values, { where: { id: values.id } });
+            savedCategory.created = false;
+        }
+        else {
+            savedCategory.category = await this.create(values);
+            savedCategory.created = true;
+        }
+
+        return savedCategory;
+    }
+    catch(errorMessage) {
+        console.error(errorMessage);
+        return {
+            error: true,
+            errorMessage
+        };
+    }
+};
+
 Category.sync();
 
 module.exports = Category;

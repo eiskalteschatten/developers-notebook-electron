@@ -28,7 +28,7 @@ export default () => {
                 eventBus.$emit('category-archived', id);
                 break;
             case 'delete':
-                eventBus.$emit('category-deleted');
+                eventBus.$emit('category-deleted', id);
                 break;
             default:
                 router.push({ name: 'categories' });

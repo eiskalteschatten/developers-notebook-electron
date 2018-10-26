@@ -13,13 +13,13 @@ ipcMain.on('show-dialog', (event, options) => {
         detail: options.detail,
         buttons: options.buttons,
         type: options.type,
-        defaultId: 1,
-        cancelId: 0
+        defaultId: 0,
+        cancelId: 1
     }, response => {
-        if (response === 1) {
+        if (response === 0) {
             const focusedWindow = BrowserWindow.getFocusedWindow();
             for (const eventName of options.eventNames) {
-                focusedWindow.send(eventName);
+                focusedWindow.send(eventName, options.data);
             }
         }
     });

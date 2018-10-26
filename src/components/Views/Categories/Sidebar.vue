@@ -1,8 +1,8 @@
 <template>
     <Sidebar :close-route-name="closeRouteName">
         <sidebar-toolbar v-if="showToolbar">
-            <archive-button @click.native="askArchiveCategory" v-if="showArchiveIcon"/>
-            <delete-button @click.native="askDeleteCategory" v-if="showDeleteIcon"/>
+            <archive-button @click.native="askArchiveCategory(id)" v-if="showArchiveIcon"/>
+            <delete-button @click.native="askDeleteCategory(id)" v-if="showDeleteIcon"/>
         </sidebar-toolbar>
         <div class="form-group">
             <label for="name">Name</label>
@@ -62,68 +62,70 @@
             async saveCategory() {
                 const loader = document.getElementById('generalLoader');
                 const category = this.category;
-                const id = category.id;
 
-                try {
-                    if (category.name) {
-                        loader.classList.remove('hidden');
+                loader.classList.remove('hidden');
 
-                        if (!id) {
-                            this.category = await Category.create(category);
-                            this.$router.replace({name: 'editCategory', params: { id: this.category.id }});
-                        }
-                        else {
-                            await category.update({
-                                name: category.name,
-                                description: category.description,
-                                color: category.color
-                            });
-                        }
+                const results = await Category.save({
+                    id: category.id,
+                    name: category.name,
+                    description: category.description,
+                    color: category.color
+                });
 
-                        eventBus.$emit('category-updated');
+                if (!results.error) {
+                    eventBus.$emit('category-updated');
 
-                        loader.classList.add('hidden');
+                    if (results.created) {
+                        this.category = results.category;
+                        this.$router.replace({name: 'editCategory', params: { id: this.category.id }});
                     }
                 }
-                catch(error) {
-                    console.error(error);
-                    loader.classList.add('hidden');
+                else {
+                    // do something with the error
                 }
+
+                loader.classList.add('hidden');
             },
             saveCategoryTimer() {
                 clearTimeout(saveTimeout);
                 saveTimeout = setTimeout(this.saveCategory, 500);
             },
-            askDeleteCategory() {
+            askDeleteCategory(id) {
                 const categoryName = this.category.name || 'this category';
                 ipcRenderer.send('show-dialog', {
-                    message: `Are you sure you want to delete "${categoryName}"?`,
+                    message: `Are you sure you want to delete ${categoryName}?`,
                     detail: 'You can\'t undo this action.',
-                    buttons: ['No', 'Yes'],
+                    buttons: ['Yes', 'No'],
                     type: 'warning',
-                    eventNames: ['category-delete-confirmed', 'category-updated']
+                    eventNames: ['category-delete-confirmed', 'category-updated'],
+                    data: {
+                        id
+                    }
                 });
             },
-            async deleteCategory() {
-                if (this.id) {
-                    await Category.destroy({where: {id: this.id}});
-                    this.$router.replace({name: 'categories'});
+            async deleteCategory(id) {
+                if (id) {
+                    await Category.destroy({ where: { id } });
+                    this.$router.replace({ name: 'categories' });
                 }
             },
-            askArchiveCategory() {
+            askArchiveCategory(id) {
                 const categoryName = this.category.name || 'this category';
                 ipcRenderer.send('show-dialog', {
-                    message: `Are you sure you want to archive "${categoryName}"?`,
+                    message: `Are you sure you want to archive ${categoryName}?`,
                     detail: 'You can unarchive a category in the archive tab.',
-                    buttons: ['No', 'Yes'],
+                    buttons: ['Yes', 'No'],
                     type: 'warning',
-                    eventNames: ['category-archive-confirmed', 'category-updated']
+                    eventNames: ['category-archive-confirmed', 'category-updated'],
+                    data: {
+                        id
+                    }
                 });
             },
-            async archiveCategory() {
-                if (this.id) {
-                    await this.category.update({ archived: true });
-                    this.$router.replace({name: 'categories'});
+            async archiveCategory(id) {
+                if (id) {
+                    await Category.update({ archived: true }, { where: { id } });
+                    this.$router.replace({ name: 'categories' });
                 }
             },
             render() {
@@ -134,10 +136,19 @@
         },
         created() {
             this.getCategory();
-            eventBus.$on('category-deleted', this.askDeleteCategory);
-            eventBus.$on('category-archived', this.askArchiveCategory);
-            ipcRenderer.on('category-delete-confirmed', this.deleteCategory);
-            ipcRenderer.on('category-archive-confirmed', this.archiveCategory);
+
+            eventBus.$on('category-deleted', id => {
+                this.askDeleteCategory(id);
+            });
+            eventBus.$on('category-archived', id => {
+                this.askArchiveCategory(id);
+            });
+            ipcRenderer.on('category-delete-confirmed', (event, data) => {
+                this.deleteCategory(data.id);
+            });
+            ipcRenderer.on('category-archive-confirmed', (event, data) => {
+                this.archiveCategory(data.id);
+            });
 
             if (this.$route.name === 'categoryArchiveEdit') {
                 this.closeRouteName = 'categoryArchive';
