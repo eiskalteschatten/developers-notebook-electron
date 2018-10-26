@@ -102,7 +102,6 @@ Category.delete = async function(id) {
     }
 };
 
-
 Category.askDelete = async function(id) {
     const category = await this.findById(id);
     const categoryName = category.name || 'this category';
@@ -117,6 +116,30 @@ Category.askDelete = async function(id) {
 
     ipcRenderer.once('category-delete-confirmed', async () => {
         await Category.delete(category.id);
+        router.replace({ name: 'categories' });
+    });
+};
+
+Category.archive = async function(id) {
+    if (id) {
+        await this.update({ archived: true }, { where: { id } });
+    }
+};
+
+Category.askArchive = async function(id) {
+    const category = await this.findById(id);
+    const categoryName = category.name || 'this category';
+
+    ipcRenderer.send('show-dialog', {
+        message: `Are you sure you want to archive ${categoryName}?`,
+        detail: 'You can unarchive a category in the archive tab.',
+        buttons: ['Yes', 'No'],
+        type: 'warning',
+        eventNames: ['category-archive-confirmed', 'category-updated']
+    });
+
+    ipcRenderer.once('category-archive-confirmed', async () => {
+        await Category.archive(category.id);
         router.replace({ name: 'categories' });
     });
 };

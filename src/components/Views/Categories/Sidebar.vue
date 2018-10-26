@@ -93,24 +93,8 @@
             askDeleteCategory() {
                 Category.askDelete(this.id);
             },
-            askArchiveCategory(id) {
-                const categoryName = this.category.name || 'this category';
-                ipcRenderer.send('show-dialog', {
-                    message: `Are you sure you want to archive ${categoryName}?`,
-                    detail: 'You can unarchive a category in the archive tab.',
-                    buttons: ['Yes', 'No'],
-                    type: 'warning',
-                    eventNames: ['category-archive-confirmed', 'category-updated'],
-                    data: {
-                        id
-                    }
-                });
-            },
-            async archiveCategory(id) {
-                if (id) {
-                    await Category.update({ archived: true }, { where: { id } });
-                    this.$router.replace({ name: 'categories' });
-                }
+            askArchiveCategory() {
+                Category.askArchive(this.id);
             },
             render() {
                 this.showToolbar = this.id ? true : false;
@@ -120,13 +104,6 @@
         },
         created() {
             this.getCategory();
-
-            eventBus.$on('category-archived', id => {
-                this.askArchiveCategory(id);
-            });
-            ipcRenderer.on('category-archive-confirmed', (event, data) => {
-                this.archiveCategory(data.id);
-            });
 
             if (this.$route.name === 'categoryArchiveEdit') {
                 this.closeRouteName = 'categoryArchive';

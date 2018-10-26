@@ -27,7 +27,7 @@ export default () => {
                 router.push({ name: 'editCategory', params: { id } });
                 break;
             case 'archive':
-                eventBus.$emit('category-archived', id);
+                Category.askArchive(id);
                 break;
             case 'delete':
                 Category.askDelete(id);
