@@ -35,6 +35,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 - [x] About modal
 - [x] Back and forward navigation button using Vue's routing
 - [x] Figure out a better way to have two themes with Vue's Single File Components
+- [ ] Error handling and component for showing error messages
 
 
 ## Roadmap
