@@ -52,8 +52,6 @@ Developer's Notebook is intended to be a cross-platform, open-source application
             - Start and end date of the project
     - [ ] Add projects to client overview page
     - [ ] Sort projects
-- [ ] To dos
-    - [ ] Pagination
 - [ ] Issues
     - [ ] Pagination
 - [ ] Allow raw SQL queries for clients, projects, to dos & issues. Show the database schema in a sidebar.
@@ -66,6 +64,8 @@ Developer's Notebook is intended to be a cross-platform, open-source application
     - [ ] Links to creating new projects, clients, to dos and issues
     - [ ] List of projects, to dos and issues due within the next week
 - [ ] Tools (color picker/converter, image and file compression, etc)
+- [ ] To dos
+    - [ ] Pagination
 - [ ] Update category, client and project overview pages
 - [ ] Daily planning section
 
