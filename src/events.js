@@ -25,6 +25,7 @@ export default () => {
     $(document).keydown(function(e) {
         if (e.keyCode === 27) {
             eventBus.$emit('toggle-modal');
+            eventBus.$emit('close-notification');
         }
     });
 

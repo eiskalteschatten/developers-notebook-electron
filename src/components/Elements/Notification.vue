@@ -45,6 +45,7 @@
 
                 setTimeout(() => {
                     this.iExist = false;
+                    this.$destory();
                 }, 500);
             }
         },
@@ -55,6 +56,9 @@
              setTimeout(() => {
                 this.isOpen = true;
             }, 50);
+        },
+        created() {
+            eventBus.$once('close-notification', this.close);
         }
     });
 </script>
