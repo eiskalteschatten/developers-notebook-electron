@@ -31,10 +31,10 @@
                         classes.push('error');
                         break;
                     case 'warning':
-                        // push warning icon class
+                        classes.push('warning');
                         break;
                     default:
-                        // push information icon class
+                        classes.push('info');
                         break;
                 }
 
@@ -107,6 +107,16 @@
         .notification {
             background: $mainBgDark;
             box-shadow: 0 0 15px $boxShadowColorDark;
+
+            .icon {
+                &.info {
+                    background-image: url('../../assets/images/dark/info.svg');
+                }
+
+                &.warning {
+                    background-image: url('../../assets/images/dark/warning.svg');
+                }
+            }
         }
     }
 
@@ -114,6 +124,16 @@
         .notification {
             background: $mainBgLight;
             box-shadow: 0 0 15px $boxShadowColorLight;
+
+            .icon {
+                &.info {
+                    background-image: url('../../assets/images/light/info.svg');
+                }
+
+                &.warning {
+                    background-image: url('../../assets/images/light/warning.svg');
+                }
+            }
         }
     }
 </style>
