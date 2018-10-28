@@ -36,8 +36,8 @@
     import Category from '../../../models/category';
 
     import Tabs from '../../Elements/Tabs.vue';
-    import List from '../../List.vue';
-    import ListItem from '../../List/ListItem.vue';
+    import List from '../../Elements/List.vue';
+    import ListItem from '../../Elements/List/ListItem.vue';
     import EditButton from '../../Elements/Buttons/EditButton.vue';
     import ContextMenuButton from '../../Elements/Buttons/ContextMenuButton.vue';
 

@@ -13,7 +13,7 @@
 </script>
 
 <style lang="scss">
-    @import '../../assets/scss/variables';
+    @import '../../../assets/scss/variables';
 
     .list-item {
         cursor: default;

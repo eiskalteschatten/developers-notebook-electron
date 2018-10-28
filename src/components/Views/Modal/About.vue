@@ -32,7 +32,7 @@
 
 <script>
     import Vue from 'vue';
-    import config from '../../config/config';
+    import config from '../../../config/config';
 
     export default Vue.extend({
         data() {
@@ -57,7 +57,7 @@
     }
 
     .icon {
-        background: url('../../assets/images/icon.svg') no-repeat;
+        background: url('../../../assets/images/icon.svg') no-repeat;
         background-size: cover;
         height: 175px;
         width: 175px;

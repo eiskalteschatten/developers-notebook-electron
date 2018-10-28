@@ -21,8 +21,8 @@
     import {eventBus} from '../app';
 
     import LeftNav from './Nav.vue';
-    import Modal from './Modal.vue';
-    import AboutModal from './Modal/About.vue';
+    import Modal from './Views/Modal.vue';
+    import AboutModal from './Views/Modal/About.vue';
 
     export default Vue.extend({
         mounted() {

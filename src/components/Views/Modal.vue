@@ -7,9 +7,9 @@
 
 <script>
     import Vue from 'vue';
-    import {eventBus} from '../app';
+    import {eventBus} from '../../app';
 
-    import CloseButton from './Elements/Buttons/CloseButton.vue';
+    import CloseButton from '../Elements/Buttons/CloseButton.vue';
 
     export default Vue.extend({
         methods: {
@@ -24,7 +24,7 @@
 </script>
 
 <style lang="scss">
-    @import '../assets/scss/variables';
+    @import '../../assets/scss/variables';
 
     .modal {
         border-radius: 5px;
