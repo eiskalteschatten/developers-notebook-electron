@@ -1,5 +1,5 @@
 <template>
-    <div class="contextmenu-button"></div>
+    <div class="icon-button contextmenu-button"></div>
 </template>
 
 <script>

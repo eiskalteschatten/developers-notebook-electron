@@ -1,5 +1,5 @@
 <template>
-    <div class="close-button"></div>
+    <div class="icon-button close-button"></div>
 </template>
 
 <script>

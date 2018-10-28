@@ -1,8 +1,14 @@
 <template>
     <Sidebar :close-route-name="closeRouteName">
         <sidebar-toolbar v-if="showToolbar">
-            <archive-button @click.native="askArchiveCategory(id)" v-if="showArchiveIcon"/>
-            <delete-button @click.native="askDeleteCategory(id)" v-if="showDeleteIcon"/>
+            <sidebar-toolbar-button @click.native="askArchiveCategory(id)" v-if="showArchiveIcon">
+                <archive-button/>
+                <span class="label">Archive</span>
+            </sidebar-toolbar-button>
+            <sidebar-toolbar-button @click.native="askDeleteCategory(id)" v-if="showDeleteIcon">
+                <delete-button/>
+                <span class="label">Delete</span>
+            </sidebar-toolbar-button>
         </sidebar-toolbar>
         <div class="form-group">
             <label for="name">Name</label>
@@ -30,6 +36,7 @@
 
     import Sidebar from '../Sidebar.vue';
     import SidebarToolbar from '../Sidebar/Toolbar.vue';
+    import SidebarToolbarButton from '../Sidebar/ToolbarButton.vue';
     import DeleteButton from '../../Elements/DeleteButton.vue';
     import ArchiveButton from '../../Elements/ArchiveButton.vue';
 
@@ -49,6 +56,7 @@
         components: {
             Sidebar,
             SidebarToolbar,
+            SidebarToolbarButton,
             DeleteButton,
             ArchiveButton
         },

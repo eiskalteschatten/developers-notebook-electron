@@ -1,5 +1,5 @@
 <template>
-    <div class="archive-button"></div>
+    <div class="icon-button archive-button"></div>
 </template>
 
 <script>

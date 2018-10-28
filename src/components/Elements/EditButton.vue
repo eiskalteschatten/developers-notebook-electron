@@ -1,5 +1,5 @@
 <template>
-    <div class="edit-button"></div>
+    <div class="icon-button edit-button"></div>
 </template>
 
 <script>
