@@ -27,5 +27,4 @@ export function showNotification(message, type) {
     });
 
     notification.$mount();
-    document.body.appendChild(notification.$el);
 }

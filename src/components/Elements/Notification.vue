@@ -1,5 +1,5 @@
 <template>
-    <div class="notification flex-row" v-bind:class="{ open: isOpen }" v-if="iExist">
+    <div class="notification flex-row" v-bind:class="{ open: isOpen }" v-if="iExist" :id="id">
         <div class="flex-0-0-auto" v-if="hasIcon" v-bind:class="['icon', type]"></div>
         <div class="flex-1-1-auto">
             {{ message }}
@@ -18,6 +18,7 @@
         props: ['hasIcon', 'type', 'message'],
         data() {
             return {
+                id: '',
                 isOpen: false,
                 iExist: true
             };
@@ -36,12 +37,19 @@
             CloseButton
         },
         mounted() {
-             setTimeout(() => {
-                this.isOpen = true;
-            }, 50);
-        },
-        created() {
-            eventBus.$once('close-notification', this.close);
+            this.id = this.type + '_' + this.message;
+
+            if (document.getElementById(this.id)) {
+                this.$destroy();
+            }
+            else {
+                document.body.appendChild(this.$el);
+                eventBus.$once('close-notification', this.close);
+
+                setTimeout(() => {
+                    this.isOpen = true;
+                }, 50);
+            }
         }
     });
 </script>

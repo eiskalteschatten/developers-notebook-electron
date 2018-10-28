@@ -67,7 +67,7 @@ Category.getAllArchivedSorted = async function() {
 
 Category.save = async function(values) {
     if (!values.name) {
-        const errorMessage = 'A name is required to save the category!';
+        const errorMessage = 'A name is required to save the category.';
         console.error(errorMessage);
         return {
             error: true,
