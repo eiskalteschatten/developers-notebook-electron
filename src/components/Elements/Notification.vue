@@ -1,6 +1,6 @@
 <template>
     <div class="notification flex-row" v-bind:class="{ open: isOpen }" v-if="iExist">
-        <div class="flex-0-0-auto" v-if="hasIcon" v-bind:class="getIconClass()"></div>
+        <div class="flex-0-0-auto" v-if="hasIcon" v-bind:class="['icon', type]"></div>
         <div class="flex-1-1-auto">
             {{ message }}
         </div>
@@ -23,23 +23,6 @@
             };
         },
         methods: {
-            getIconClass() {
-                const classes = ['icon'];
-
-                switch(this.type) {
-                    case 'error':
-                        classes.push('error');
-                        break;
-                    case 'warning':
-                        classes.push('warning');
-                        break;
-                    default:
-                        classes.push('info');
-                        break;
-                }
-
-                return classes;
-            },
             close() {
                 this.isOpen = false;
 
