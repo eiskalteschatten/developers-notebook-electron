@@ -36,6 +36,7 @@
     import {ipcRenderer} from 'electron';
     import Vue from 'vue';
     import {eventBus} from '../../../app';
+    import {showNotification} from '../../../helper';
     import Category from '../../../models/category';
 
     import Sidebar from '../Sidebar.vue';
@@ -96,7 +97,7 @@
                     }
                 }
                 else {
-                    // do something with the error
+                    showNotification(results.errorMessage, 'error');
                 }
 
                 loader.classList.add('hidden');

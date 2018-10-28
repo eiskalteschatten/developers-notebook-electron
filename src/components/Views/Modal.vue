@@ -1,6 +1,6 @@
 <template>
     <div class="modal">
-        <close-button @click="closeModal"></close-button>
+        <close-button @click="closeModal" topRight="true"></close-button>
         <slot/>
     </div>
 </template>

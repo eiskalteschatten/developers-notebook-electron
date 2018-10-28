@@ -1,11 +1,12 @@
 <template>
-    <div class="icon-button close-button"></div>
+    <div class="icon-button close-button" v-bind:class="{ 'top-right': topRight }"></div>
 </template>
 
 <script>
     import Vue from 'vue';
 
     export default Vue.extend({
+        props: ['topRight']
     });
 </script>
 
@@ -18,10 +19,14 @@
         background-size: $size;
         cursor: pointer;
         height: $size;
-        position: absolute;
-        right: 10px;
-        top: 10px;
         width: $size;
+
+        &.top-right {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
     }
 
     .dark {

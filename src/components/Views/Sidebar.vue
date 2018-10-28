@@ -3,7 +3,7 @@
         <dragbar dragElementId="sidebar" saveName="sidebarWidth"/>
         <div class="content flex-1-1-auto">
             <router-link :to="{ name: closeRouteName }">
-                <close-button/>
+                <close-button topRight="true"/>
             </router-link>
             <slot/>
         </div>
