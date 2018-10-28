@@ -1,11 +1,15 @@
 <template>
     <Sidebar :close-route-name="closeRouteName">
         <sidebar-toolbar v-if="showToolbar">
-            <sidebar-toolbar-button @click.native="askArchiveCategory(id)" v-if="showArchiveIcon">
+            <sidebar-toolbar-button @click.native="askArchiveCategory()" v-if="showArchiveIcon">
                 <archive-button/>
                 <span class="label">Archive</span>
             </sidebar-toolbar-button>
-            <sidebar-toolbar-button @click.native="askDeleteCategory(id)" v-if="showDeleteIcon">
+            <sidebar-toolbar-button @click.native="askUnarchiveCategory()" v-if="showUnarchiveIcon">
+                <unarchive-button/>
+                <span class="label">Unarchive</span>
+            </sidebar-toolbar-button>
+            <sidebar-toolbar-button @click.native="askDeleteCategory()" v-if="showDeleteIcon">
                 <delete-button/>
                 <span class="label">Delete</span>
             </sidebar-toolbar-button>
@@ -39,6 +43,7 @@
     import SidebarToolbarButton from '../Sidebar/ToolbarButton.vue';
     import DeleteButton from '../../Elements/DeleteButton.vue';
     import ArchiveButton from '../../Elements/ArchiveButton.vue';
+    import UnarchiveButton from '../../Elements/UnarchiveButton.vue';
 
     let saveTimeout;
 
@@ -50,6 +55,7 @@
                 showToolbar: false,
                 showDeleteIcon: false,
                 showArchiveIcon: false,
+                showUnarchiveIcon: false,
                 closeRouteName: 'categories'
             }
         },
@@ -58,7 +64,8 @@
             SidebarToolbar,
             SidebarToolbarButton,
             DeleteButton,
-            ArchiveButton
+            ArchiveButton,
+            UnarchiveButton
         },
         methods: {
             async getCategory() {
@@ -104,10 +111,14 @@
             askArchiveCategory() {
                 Category.askArchive(this.id, true, this.closeRouteName);
             },
+            askUnarchiveCategory() {
+                Category.askUnarchive(this.id, true, this.closeRouteName);
+            },
             render() {
                 this.showToolbar = this.id ? true : false;
                 this.showDeleteIcon = this.id ? true : false;
                 this.showArchiveIcon = this.id && this.$route.name !== 'categoryArchiveEdit' ? true : false;
+                this.showUnarchiveIcon = this.id && this.$route.name === 'categoryArchiveEdit' ? true : false;
             }
         },
         created() {

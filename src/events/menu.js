@@ -32,7 +32,7 @@ export default () => {
                 Category.askArchive(id, false);
                 break;
             case 'unarchive':
-                Category.unarchive(id);
+                Category.askUnarchive(id, false);
                 break;
             case 'delete':
                 Category.askDelete(id, false);

@@ -137,13 +137,6 @@ Category.archive = async function(id) {
     }
 };
 
-Category.unarchive = async function(id) {
-    if (id) {
-        await this.update({ archived: false }, { where: { id } });
-        redirectOrRefresh(false);
-    }
-};
-
 Category.askArchive = async function(id, redirect, redirectRouteName) {
     const category = await this.findById(id);
     const categoryName = category.name || 'this category';
@@ -158,6 +151,30 @@ Category.askArchive = async function(id, redirect, redirectRouteName) {
 
     ipcRenderer.once('category-archive-confirmed', async () => {
         await Category.archive(category.id);
+        redirectOrRefresh(redirect, redirectRouteName);
+    });
+};
+
+Category.unarchive = async function(id) {
+    if (id) {
+        await this.update({ archived: false }, { where: { id } });
+    }
+};
+
+Category.askUnarchive = async function(id, redirect, redirectRouteName) {
+    const category = await this.findById(id);
+    const categoryName = category.name || 'this category';
+
+    ipcRenderer.send('show-dialog', {
+        message: `Are you sure you want to unarchive ${categoryName}?`,
+        detail: 'You can archive the category again in the active categories tab.',
+        buttons: ['Yes', 'No'],
+        type: 'warning',
+        eventNames: ['category-unarchive-confirmed', 'category-updated']
+    });
+
+    ipcRenderer.once('category-unarchive-confirmed', async () => {
+        await Category.unarchive(category.id);
         redirectOrRefresh(redirect, redirectRouteName);
     });
 };
