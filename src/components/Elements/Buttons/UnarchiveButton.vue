@@ -1,5 +1,5 @@
 <template>
-    <div class="icon-button close-button"></div>
+    <div class="icon-button unarchive-button"></div>
 </template>
 
 <script>
@@ -10,7 +10,7 @@
 </script>
 
 <style lang="scss">
-     .close-button {
+     .unarchive-button {
         $size: 15px;
 
         background-position: center;
@@ -18,21 +18,18 @@
         background-size: $size;
         cursor: pointer;
         height: $size;
-        position: absolute;
-        right: 10px;
-        top: 10px;
         width: $size;
     }
 
     .dark {
-        .close-button {
-            background-image: url('../../assets/images/dark/close-x.svg');
+        .unarchive-button {
+            background-image: url('../../../assets/images/dark/unarchive.svg');
         }
     }
 
     .light {
-        .close-button {
-            background-image: url('../../assets/images/light/close-x.svg');
+        .unarchive-button {
+            background-image: url('../../../assets/images/light/unarchive.svg');
         }
     }
 </style>

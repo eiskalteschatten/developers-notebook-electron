@@ -9,7 +9,7 @@
     import Vue from 'vue';
     import {eventBus} from '../app';
 
-    import CloseButton from './Elements/CloseButton.vue';
+    import CloseButton from './Elements/Buttons/CloseButton.vue';
 
     export default Vue.extend({
         methods: {

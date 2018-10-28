@@ -1,5 +1,5 @@
 <template>
-    <div class="icon-button unarchive-button"></div>
+    <div class="icon-button archive-button"></div>
 </template>
 
 <script>
@@ -10,7 +10,7 @@
 </script>
 
 <style lang="scss">
-     .unarchive-button {
+     .archive-button {
         $size: 15px;
 
         background-position: center;
@@ -22,14 +22,14 @@
     }
 
     .dark {
-        .unarchive-button {
-            background-image: url('../../assets/images/dark/unarchive.svg');
+        .archive-button {
+            background-image: url('../../../assets/images/dark/archive.svg');
         }
     }
 
     .light {
-        .unarchive-button {
-            background-image: url('../../assets/images/light/unarchive.svg');
+        .archive-button {
+            background-image: url('../../../assets/images/light/archive.svg');
         }
     }
 </style>

@@ -38,8 +38,8 @@
     import Tabs from '../../Elements/Tabs.vue';
     import List from '../../List.vue';
     import ListItem from '../../List/ListItem.vue';
-    import EditButton from '../../Elements/EditButton.vue';
-    import ContextMenuButton from '../../Elements/ContextMenuButton.vue';
+    import EditButton from '../../Elements/Buttons/EditButton.vue';
+    import ContextMenuButton from '../../Elements/Buttons/ContextMenuButton.vue';
 
     export default Vue.extend({
         props: ['type', 'activeTab', 'mainRouteName', 'editRouteName'],

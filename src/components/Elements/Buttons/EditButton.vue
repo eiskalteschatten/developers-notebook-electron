@@ -1,5 +1,5 @@
 <template>
-    <div class="icon-button contextmenu-button"></div>
+    <div class="icon-button edit-button"></div>
 </template>
 
 <script>
@@ -10,7 +10,7 @@
 </script>
 
 <style lang="scss">
-     .contextmenu-button {
+     .edit-button {
         $size: 15px;
 
         background-position: center;
@@ -22,14 +22,14 @@
     }
 
     .dark {
-        .contextmenu-button {
-            background-image: url('../../assets/images/dark/contextmenu.svg');
+        .edit-button {
+            background-image: url('../../../assets/images/dark/edit.svg');
         }
     }
 
     .light {
-        .contextmenu-button {
-            background-image: url('../../assets/images/light/contextmenu.svg');
+        .edit-button {
+            background-image: url('../../../assets/images/light/edit.svg');
         }
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="icon-button archive-button"></div>
+    <div class="icon-button contextmenu-button"></div>
 </template>
 
 <script>
@@ -10,7 +10,7 @@
 </script>
 
 <style lang="scss">
-     .archive-button {
+     .contextmenu-button {
         $size: 15px;
 
         background-position: center;
@@ -22,14 +22,14 @@
     }
 
     .dark {
-        .archive-button {
-            background-image: url('../../assets/images/dark/archive.svg');
+        .contextmenu-button {
+            background-image: url('../../../assets/images/dark/contextmenu.svg');
         }
     }
 
     .light {
-        .archive-button {
-            background-image: url('../../assets/images/light/archive.svg');
+        .contextmenu-button {
+            background-image: url('../../../assets/images/light/contextmenu.svg');
         }
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="icon-button edit-button"></div>
+    <div class="icon-button close-button"></div>
 </template>
 
 <script>
@@ -10,7 +10,7 @@
 </script>
 
 <style lang="scss">
-     .edit-button {
+     .close-button {
         $size: 15px;
 
         background-position: center;
@@ -18,18 +18,21 @@
         background-size: $size;
         cursor: pointer;
         height: $size;
+        position: absolute;
+        right: 10px;
+        top: 10px;
         width: $size;
     }
 
     .dark {
-        .edit-button {
-            background-image: url('../../assets/images/dark/edit.svg');
+        .close-button {
+            background-image: url('../../../assets/images/dark/close-x.svg');
         }
     }
 
     .light {
-        .edit-button {
-            background-image: url('../../assets/images/light/edit.svg');
+        .close-button {
+            background-image: url('../../../assets/images/light/close-x.svg');
         }
     }
 </style>

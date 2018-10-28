@@ -12,7 +12,7 @@
 
 <script>
     import Vue from 'vue';
-    import CloseButton from '../Elements/CloseButton.vue';
+    import CloseButton from '../Elements/Buttons/CloseButton.vue';
     import Dragbar from '../Elements/Dragbar';
 
     export default Vue.extend({

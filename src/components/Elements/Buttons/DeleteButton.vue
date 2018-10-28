@@ -13,7 +13,7 @@
      .delete-button {
         $size: 15px;
 
-        background-image: url('../../assets/images/delete.svg');
+        background-image: url('../../../assets/images/delete.svg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: $size;

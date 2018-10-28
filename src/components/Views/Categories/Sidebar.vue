@@ -41,9 +41,9 @@
     import Sidebar from '../Sidebar.vue';
     import SidebarToolbar from '../Sidebar/Toolbar.vue';
     import SidebarToolbarButton from '../Sidebar/ToolbarButton.vue';
-    import DeleteButton from '../../Elements/DeleteButton.vue';
-    import ArchiveButton from '../../Elements/ArchiveButton.vue';
-    import UnarchiveButton from '../../Elements/UnarchiveButton.vue';
+    import DeleteButton from '../../Elements/Buttons/DeleteButton.vue';
+    import ArchiveButton from '../../Elements/Buttons/ArchiveButton.vue';
+    import UnarchiveButton from '../../Elements/Buttons/UnarchiveButton.vue';
 
     let saveTimeout;
 
