@@ -5,6 +5,7 @@ import db from '../db';
 import {eventBus} from '../app';
 import router from '../router';
 
+export const paginationLimit = 1;
 
 const Category = db.define('category', {
     name: {
@@ -37,30 +38,18 @@ Category.getAllSorted = async function() {
     });
 };
 
-Category.getAllNotArchivedSorted = async function() {
-    return await this.findAll({
+Category.getPaginatedSorted = async function(archived, page) {
+    return await this.findAndCountAll({
         order: [
             [
                 Sequelize.fn('lower', Sequelize.col('name')),
                 'ASC'
             ]
         ],
+        limit: paginationLimit,
+        offset: paginationLimit * (page - 1),
         where: {
-            archived: false
-        }
-    });
-};
-
-Category.getAllArchivedSorted = async function() {
-    return await this.findAll({
-        order: [
-            [
-                Sequelize.fn('lower', Sequelize.col('name')),
-                'ASC'
-            ]
-        ],
-        where: {
-            archived: true
+            archived
         }
     });
 };

@@ -23,6 +23,13 @@
                     </div>
                 </div>
             </list-item>
+            <pagination
+                v-if="numberOfPages > 1"
+                :current-page="page"
+                :total-count="count"
+                :number-of-pages="numberOfPages"
+                :list-route-name="mainRouteName"
+            />
         </list>
     </div>
 </template>
@@ -33,13 +40,15 @@
     import {eventBus} from '../../../app';
     import router from '../../../router';
 
-    import Category from '../../../models/category';
+    import Category, {paginationLimit} from '../../../models/category';
 
     import Tabs from '../../Elements/Tabs.vue';
     import List from '../../Elements/List.vue';
     import ListItem from '../../Elements/List/ListItem.vue';
     import EditButton from '../../Elements/Buttons/EditButton.vue';
     import ContextMenuButton from '../../Elements/Buttons/ContextMenuButton.vue';
+
+    import Pagination from '../../Elements/Pagination.vue';
 
     export default Vue.extend({
         props: ['type', 'activeTab', 'mainRouteName', 'editRouteName'],
@@ -57,7 +66,10 @@
                         id: 'categoryArchive',
                         routeName: 'categoryArchive'
                     }
-                ]
+                ],
+                page: this.$route.query.page || 1,
+                count: 0,
+                numberOfPages: 1
             }
         },
         methods: {
@@ -68,9 +80,10 @@
                 ipcRenderer.send('show-category-context-menu', this.type);
             },
             async populate() {
-                this.categories = this.type === 'categoryArchive'
-                    ? await Category.getAllArchivedSorted()
-                    : await Category.getAllNotArchivedSorted();
+                const archived = this.type === 'categoryArchive';
+                const queryResults = await Category.getPaginatedSorted(archived, this.page);
+                this.categories = queryResults.rows;
+                this.numberOfPages = Math.ceil(queryResults.count / paginationLimit);
             }
         },
         components: {
@@ -78,12 +91,19 @@
             List,
             ListItem,
             EditButton,
-            ContextMenuButton
+            ContextMenuButton,
+            Pagination
         },
         async created() {
             eventBus.$on('category-updated', this.populate);
             ipcRenderer.on('category-updated', this.populate);
             await this.populate();
+        },
+        watch: {
+            '$route.query.page': function() {
+                this.page = this.$route.query.page;
+                this.populate();
+            }
         }
     });
 </script>
