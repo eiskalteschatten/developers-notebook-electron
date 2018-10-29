@@ -1,6 +1,16 @@
 <template>
     <div class="full-width flex-column">
-        <tabs class="flex-0-0-auto" :tabs="tabs" :activeTab="activeTab"/>
+        <div class="flex-0-0-auto flex-row">
+            <tabs class="flex-1-0-auto" :tabs="tabs" :activeTab="activeTab"/>
+            <sort-field class="flex-0-0-auto sort-field">
+                <select class="form-control">
+                    <option value="name">Name</option>
+                    <option value="description">Description</option>
+                    <option value="dateCreated">Date Created</option>
+                    <option value="dateUpdated">Date Updated</option>
+                </select>
+            </sort-field>
+        </div>
         <list scrollable="false" class="flex-1-1-auto">
             <list-item class="js-category-list-item"
                 @contextmenu.native="showContextMenu"
@@ -49,6 +59,7 @@
     import ContextMenuButton from '../../Elements/Buttons/ContextMenuButton.vue';
 
     import Pagination from '../../Elements/Pagination.vue';
+    import SortField from '../../Elements/SortField.vue';
 
     export default Vue.extend({
         props: ['type', 'activeTab', 'mainRouteName', 'editRouteName'],
@@ -92,7 +103,8 @@
             ListItem,
             EditButton,
             ContextMenuButton,
-            Pagination
+            Pagination,
+            SortField
         },
         async created() {
             eventBus.$on('category-updated', this.populate);
