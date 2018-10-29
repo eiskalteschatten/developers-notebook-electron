@@ -29,11 +29,12 @@ new Vue({
             }
         }
     },
-    async created() {
+    mounted() {
         const savedRoute = getSavedRoute();
         this.$router.replace(savedRoute.fullPath);
         eventBus.$emit('route-changed', savedRoute, {});
-
+    },
+    async created() {
         setupEvents();
 
         const preferences = await loadPreferences();
