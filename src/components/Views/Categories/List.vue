@@ -122,6 +122,7 @@
             eventBus.$on(`${this.type}-change-sort-by`, function(sortBy) {
                 self.sortBy = sortBy;
                 self.populate();
+                self.$router.replace({ name: self.$route.name, query: { page: 1 } });
             });
 
             this.sortBy = localStorage.getItem(`${this.type}SortBy`) || this.sortBy;
