@@ -5,7 +5,7 @@ import db from '../db';
 import {eventBus} from '../app';
 import router from '../router';
 
-export const paginationLimit = 2;
+export const paginationLimit = 25;
 
 const Category = db.define('category', {
     name: {

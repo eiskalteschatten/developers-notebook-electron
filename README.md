@@ -17,7 +17,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
     - [x] Create categories
     - [x] Edit & delete categories
     - [x] Archive categories
-    - [ ] Pagination
+    - [x] Pagination
     - [ ] Blank category overview page
     - [ ] Sort categories
 - [ ] Clients
