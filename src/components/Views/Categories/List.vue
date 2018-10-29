@@ -119,8 +119,9 @@
 
             const self = this;
 
-            eventBus.$on(`${this.type}-change-sort-by`, function(sortBy) {
+            eventBus.$on(`${this.type}-change-sort`, function(sortBy, sortDirection) {
                 self.sortBy = sortBy;
+                self.sortDirection = sortDirection;
                 self.populate();
                 self.$router.replace({ name: self.$route.name, query: { page: 1 } });
             });
@@ -131,7 +132,7 @@
             await this.populate();
         },
         beforeDestroy() {
-            eventBus.$off(`${this.type}-change-sort-by`);
+            eventBus.$off(`${this.type}-change-sort`);
             eventBus.$off('category-updated');
             ipcRenderer.removeAllListeners('category-updated');
         },

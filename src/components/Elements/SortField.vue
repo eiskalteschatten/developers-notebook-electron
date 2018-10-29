@@ -6,7 +6,10 @@
                 {{ field }}
             </option>
         </select>
-        <a href="#" class="book-sort-order" title="Change sort order">&uarr;</a>
+        <span class="book-sort-order" title="Change sort order" @click="changeSortDirection">
+            <span v-if="sortDirection === 'ASC'">&uarr;</span>
+            <span v-else>&darr;</span>
+        </span>
     </div>
 </template>
 
@@ -26,7 +29,15 @@
         methods: {
             changeSortBy() {
                 localStorage.setItem(`${this.type}SortBy`, this.sortBy);
-                eventBus.$emit(`${this.type}-change-sort-by`, this.sortBy);
+                this.emitEvent();
+            },
+            changeSortDirection() {
+                this.sortDirection = this.sortDirection === 'ASC' ? 'DESC' : 'ASC';
+                localStorage.setItem(`${this.type}SortDirection`, this.sortDirection);
+                this.emitEvent();
+            },
+            emitEvent() {
+                eventBus.$emit(`${this.type}-change-sort`, this.sortBy, this.sortDirection);
             }
         }
     });
@@ -40,7 +51,7 @@
         margin-top: 10px;
 
         .book-sort-order {
-            text-decoration: none;
+            cursor: pointer;
         }
     }
 
@@ -50,10 +61,6 @@
                 background: $mainBgDark;
             }
         }
-
-        .book-sort-order {
-            color: $mainFontColorDark;
-        }
     }
 
     .light {
@@ -61,10 +68,6 @@
             .form-control {
                 background: $mainBgLight;
             }
-        }
-
-        .book-sort-order {
-            color: $mainFontColorLight;
         }
     }
 </style>
