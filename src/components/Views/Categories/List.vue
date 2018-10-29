@@ -11,24 +11,22 @@
             />
         </div>
         <list scrollable="false" class="flex-1-1-auto">
-            <list-item class="js-category-list-item"
+            <list-item class="js-category-list-item flex-row"
                 @contextmenu.native="showContextMenu"
                 v-for="category in categories"
                 :key="category.id"
                 :data-id="category.id"
                 :selected="category.id == $route.params.id"
             >
-                <div class="color-stripe" v-bind:style="{ 'background-color': category.color }"></div>
-                <div @click="viewCategory(category.id)" class="content">
+                <div class="color-stripe flex-0-0-auto" v-bind:style="{ 'background-color': category.color }"></div>
+                <div @click="viewCategory(category.id)" class="content flex-1-1-auto">
                     <div class="name">{{ category.name }}</div>
                     <div class="description">{{ category.description }}</div>
-                    <div class="dates">
-                        <span class="date">Date Updated: {{ convertDate(category.updatedAt) }}</span>
-                        <span class="date">Date Created: {{ convertDate(category.createdAt) }}</span>
-                    </div>
+                    <div class="date" v-if="sortBy === 'updatedAt'">Date Updated: {{ convertDate(category.updatedAt) }}</div>
+                    <div class="date" v-if="sortBy === 'createdAt'">Date Created: {{ convertDate(category.createdAt) }}</div>
                 </div>
                 <div class="buttons">
-                    <div class="buttons-wrapper">
+                    <div class="buttons-wrapper flex-row">
                         <router-link :to="{ name: editRouteName, params: { id: category.id }}">
                             <edit-button/>
                         </router-link>
@@ -157,8 +155,6 @@
     @import '../../../assets/scss/variables';
 
     .list-item {
-        display: flex;
-        flex-direction: row;
         padding: 0;
 
         .color-stripe {
@@ -177,18 +173,14 @@
 
             .description {
                 font-size: .8em;
-                margin-bottom: 15px;
                 opacity: .7;
             }
 
-            .dates {
+            .date {
+                display: inline-block;
                 font-size: .7em;
                 opacity: .6;
-
-                .date {
-                    display: inline-block;
-                    margin-right: 15px;
-                }
+                margin-top: 15px;
             }
         }
 
@@ -196,8 +188,6 @@
             position: relative;
 
             .buttons-wrapper {
-                display: flex;
-                flex-direction: row;
                 position: absolute;
                 right: 15px;
                 top: 50%;
