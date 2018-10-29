@@ -6,6 +6,7 @@
                 {{ field.title }}
             </option>
         </select>
+        <a href="#" class="book-sort-order" title="Change sort order">&uarr;</a>
     </div>
 </template>
 
@@ -23,6 +24,10 @@
     .sort-field {
         font-size: .8em;
         margin-top: 10px;
+
+        .book-sort-order {
+            text-decoration: none;
+        }
     }
 
     .dark {
@@ -31,6 +36,10 @@
                 background: $mainBgDark;
             }
         }
+
+        .book-sort-order {
+            color: $mainFontColorDark;
+        }
     }
 
     .light {
@@ -38,6 +47,10 @@
             .form-control {
                 background: $mainBgLight;
             }
+        }
+
+        .book-sort-order {
+            color: $mainFontColorLight;
         }
     }
 </style>
