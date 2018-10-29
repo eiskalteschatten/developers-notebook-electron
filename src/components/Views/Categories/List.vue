@@ -22,6 +22,10 @@
                 <div @click="viewCategory(category.id)" class="content">
                     <div class="name">{{ category.name }}</div>
                     <div class="description">{{ category.description }}</div>
+                    <div class="dates">
+                        <span class="date">Date Updated: {{ convertDate(category.updatedAt) }}</span>
+                        <span class="date">Date Created: {{ convertDate(category.createdAt) }}</span>
+                    </div>
                 </div>
                 <div class="buttons">
                     <div class="buttons-wrapper">
@@ -102,6 +106,10 @@
                 const queryResults = await Category.getPaginatedSorted(archived, this.page, this.sortBy, this.sortDirection);
                 this.categories = queryResults.rows;
                 this.numberOfPages = Math.ceil(queryResults.count / paginationLimit);
+            },
+            convertDate(dateStr) {
+                const date = new Date(dateStr);
+                return date.toLocaleString();
             }
         },
         components: {
@@ -169,7 +177,18 @@
 
             .description {
                 font-size: .8em;
+                margin-bottom: 15px;
                 opacity: .7;
+            }
+
+            .dates {
+                font-size: .7em;
+                opacity: .6;
+
+                .date {
+                    display: inline-block;
+                    margin-right: 15px;
+                }
             }
         }
 
