@@ -2,7 +2,7 @@
     <div class="pagination align-center">
         <ul class="pagination-list">
             <li v-if="currentPage > 1">
-                <router-link :to="{ name: listRouteName, query: { page: previousPage } }" class="pagination-link">prev</router-link>
+                <router-link :to="{ name: listRouteName, query: { page: previousPage } }" class="pagination-link">&larr;</router-link>
             </li>
 
             <li v-for="page in numberOfPages" :key="page">
@@ -12,7 +12,7 @@
             </li>
 
             <li v-if="nextPage > 0">
-                <router-link :to="{ name: listRouteName, query: { page: nextPage } }" class="pagination-link">next</router-link>
+                <router-link :to="{ name: listRouteName, query: { page: nextPage } }" class="pagination-link">&rarr;</router-link>
             </li>
         </ul>
     </div>
