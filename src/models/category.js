@@ -38,12 +38,12 @@ Category.getAllSorted = async function() {
     });
 };
 
-Category.getPaginatedSorted = async function(archived, page) {
+Category.getPaginatedSorted = async function(archived, page, sortBy = 'name', sortOrder = 'ASC') {
     return await this.findAndCountAll({
         order: [
             [
-                Sequelize.fn('lower', Sequelize.col('name')),
-                'ASC'
+                Sequelize.fn('lower', Sequelize.col(sortBy)),
+                sortOrder
             ]
         ],
         limit: paginationLimit,

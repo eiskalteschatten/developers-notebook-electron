@@ -1,9 +1,9 @@
 <template>
     <div class="sort-field">
         Sort by:
-        <select class="form-control">
-            <option v-for="(field, value) in fields" :key="value" value="value" v-bind:selected="field.default">
-                {{ field.title }}
+        <select class="form-control" v-model="sortBy" @change="changeSortBy">
+            <option v-for="(field, value) in fields" :key="value" :value="value">
+                {{ field }}
             </option>
         </select>
         <a href="#" class="book-sort-order" title="Change sort order">&uarr;</a>
@@ -13,8 +13,22 @@
 <script>
     import Vue from 'vue';
 
+    import {eventBus} from '../../app';
+
     export default Vue.extend({
-        props: ['fields']
+        props: ['fields', 'type', 'sortByDefault', 'sortDirectionDefault'],
+        data() {
+            return {
+                sortBy: this.sortByDefault,
+                sortDirection: this.sortDirectionDefault
+            }
+        },
+        methods: {
+            changeSortBy() {
+                localStorage.setItem(`${this.type}SortBy`, this.sortBy);
+                eventBus.$emit(`${this.type}-change-sort-by`, this.sortBy);
+            }
+        }
     });
 </script>
 

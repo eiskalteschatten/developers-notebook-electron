@@ -2,7 +2,13 @@
     <div class="full-width flex-column">
         <div class="flex-0-0-auto flex-row">
             <tabs class="flex-1-0-auto" :tabs="tabs" :activeTab="activeTab"/>
-            <sort-field class="flex-0-0-auto sort-field" :fields="sortFields"/>
+            <sort-field
+                class="flex-0-0-auto sort-field"
+                :fields="sortFields"
+                :type="type"
+                :sort-by-default="sortBy"
+                :sort-direction-default="sortDirection"
+            />
         </div>
         <list scrollable="false" class="flex-1-1-auto">
             <list-item class="js-category-list-item"
@@ -75,11 +81,13 @@
                 count: 0,
                 numberOfPages: 1,
                 sortFields: {
-                    description: { title: 'Description' },
-                    dateCreated: { title: 'Date Created' },
-                    dateUpdated: { title: 'Date Updated' },
-                    name: { title: 'Name', default: true }
-                }
+                    description: 'Description',
+                    createdAt: 'Date Created',
+                    updatedAt: 'Date Updated',
+                    name: 'Name'
+                },
+                sortBy: 'name',
+                sortDirection: 'ASC'
             }
         },
         methods: {
@@ -91,7 +99,7 @@
             },
             async populate() {
                 const archived = this.type === 'categoryArchive';
-                const queryResults = await Category.getPaginatedSorted(archived, this.page);
+                const queryResults = await Category.getPaginatedSorted(archived, this.page, this.sortBy, this.sortDirection);
                 this.categories = queryResults.rows;
                 this.numberOfPages = Math.ceil(queryResults.count / paginationLimit);
             }
@@ -108,7 +116,23 @@
         async created() {
             eventBus.$on('category-updated', this.populate);
             ipcRenderer.on('category-updated', this.populate);
+
+            const self = this;
+
+            eventBus.$on(`${this.type}-change-sort-by`, function(sortBy) {
+                self.sortBy = sortBy;
+                self.populate();
+            });
+
+            this.sortBy = localStorage.getItem(`${this.type}SortBy`) || this.sortBy;
+            this.sortDirection = localStorage.getItem(`${this.type}SortDirection`) || this.sortDirection;
+
             await this.populate();
+        },
+        beforeDestroy() {
+            eventBus.$off(`${this.type}-change-sort-by`);
+            eventBus.$off('category-updated');
+            ipcRenderer.removeAllListeners('category-updated');
         },
         watch: {
             '$route.query.page': function() {
