@@ -2,14 +2,7 @@
     <div class="full-width flex-column">
         <div class="flex-0-0-auto flex-row">
             <tabs class="flex-1-0-auto" :tabs="tabs" :activeTab="activeTab"/>
-            <sort-field class="flex-0-0-auto sort-field">
-                <select class="form-control">
-                    <option value="name">Name</option>
-                    <option value="description">Description</option>
-                    <option value="dateCreated">Date Created</option>
-                    <option value="dateUpdated">Date Updated</option>
-                </select>
-            </sort-field>
+            <sort-field class="flex-0-0-auto sort-field" :fields="sortFields"/>
         </div>
         <list scrollable="false" class="flex-1-1-auto">
             <list-item class="js-category-list-item"
@@ -80,7 +73,13 @@
                 ],
                 page: this.$route.query.page || 1,
                 count: 0,
-                numberOfPages: 1
+                numberOfPages: 1,
+                sortFields: {
+                    name: 'Name',
+                    description: 'Description',
+                    dateCreated: 'Date Created',
+                    dateUpdated: 'Date Updated'
+                }
             }
         },
         methods: {

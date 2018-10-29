@@ -1,6 +1,11 @@
 <template>
     <div class="sort-field">
-        Sort by: <slot/>
+        Sort by:
+        <select class="form-control">
+            <option v-for="(field, value) in fields" :key="value" value="value">
+                {{ field }}
+            </option>
+        </select>
     </div>
 </template>
 
@@ -8,6 +13,7 @@
     import Vue from 'vue';
 
     export default Vue.extend({
+        props: ['fields']
     });
 </script>
 
@@ -21,7 +27,7 @@
 
     .dark {
         .sort-field {
-            select {
+            .form-control {
                 background: $mainBgDark;
             }
         }
@@ -29,7 +35,7 @@
 
     .light {
         .sort-field {
-            select {
+            .form-control {
                 background: $mainBgLight;
             }
         }
