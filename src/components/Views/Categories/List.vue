@@ -138,11 +138,6 @@
 
             await this.populate();
         },
-        beforeDestroy() {
-            eventBus.$off(`${this.type}-change-sort`);
-            eventBus.$off('category-updated');
-            ipcRenderer.removeAllListeners('category-updated');
-        },
         watch: {
             '$route.query.page': function() {
                 this.page = this.$route.query.page;
