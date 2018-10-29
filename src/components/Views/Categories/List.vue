@@ -75,10 +75,10 @@
                 count: 0,
                 numberOfPages: 1,
                 sortFields: {
-                    name: 'Name',
-                    description: 'Description',
-                    dateCreated: 'Date Created',
-                    dateUpdated: 'Date Updated'
+                    description: { title: 'Description' },
+                    dateCreated: { title: 'Date Created' },
+                    dateUpdated: { title: 'Date Updated' },
+                    name: { title: 'Name', default: true }
                 }
             }
         },

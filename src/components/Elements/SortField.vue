@@ -2,8 +2,8 @@
     <div class="sort-field">
         Sort by:
         <select class="form-control">
-            <option v-for="(field, value) in fields" :key="value" value="value">
-                {{ field }}
+            <option v-for="(field, value) in fields" :key="value" value="value" v-bind:selected="field.default">
+                {{ field.title }}
             </option>
         </select>
     </div>
