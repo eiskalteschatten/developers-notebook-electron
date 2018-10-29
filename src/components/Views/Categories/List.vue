@@ -83,6 +83,7 @@
                 count: 0,
                 numberOfPages: 1,
                 sortFields: {
+                    color: 'Color',
                     description: 'Description',
                     createdAt: 'Date Created',
                     updatedAt: 'Date Updated',
