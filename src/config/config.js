@@ -3,7 +3,6 @@
 const path = require('path');
 const os = require('os');
 const fs = require('fs');
-const mkdirp = require('mkdirp');
 
 const env = process.env.NODE_ENV;
 
@@ -22,7 +21,7 @@ switch(process.platform) {
 }
 
 if (!fs.existsSync(storagePath)) {
-    mkdirp.sync(storagePath);
+    fs.mkdirSync(storagePath, { recursive: true });
 }
 
 console.log('Application data is saved at:', storagePath);
