@@ -79,6 +79,12 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 - [ ] Search for code cache, notes
 - [ ] Update dashboard with links to creating notes and new code stashes
 
+### 0.5.0
+- [ ] Collapsible utility sidebar (on the right side) with quick access to notes and todos
+- [ ] Project status on the project overview page
+    - [ ] Graph showing how much is finished/left based on how many issues and todos assigned to the project are finished
+    - [ ] Time spent so far on project (or entirely on project if the project is finished)
+
 ### 1.0.0
 - [ ] Command palette
 - [ ] Check for updates
