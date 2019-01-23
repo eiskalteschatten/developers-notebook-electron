@@ -87,6 +87,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 
 ### 1.0.0
 - [ ] Command palette
+- [ ] Spell checker: https://github.com/atom/node-spellchecker
 - [ ] Check for updates
 - [ ] When archiving a client, project or category, prompt the user to archive everything else assigned to it. If it is unarchived, prompt the user to unarchive everything assigned to it.
 
