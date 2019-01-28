@@ -20,7 +20,7 @@
     },
     "build": {
         "productName": "Developer's Notebook",
-        "copyright": "Copyright © 2018 Alex Seifert",
+        "copyright": "Copyright © 2019 Alex Seifert",
         "appId": "com.alexseifert.developersnotebook",
         "buildDependenciesFromSource": true,
         "files": [
