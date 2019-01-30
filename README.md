@@ -106,7 +106,7 @@ Developer's Notebook is intended to be a cross-platform, open-source application
 - [ ] Search for bookmarks
 
 
-### Future Ideos
+### Future Ideas
 - [ ] Custom UI theme
 - [ ] Support for multiple databases
 
